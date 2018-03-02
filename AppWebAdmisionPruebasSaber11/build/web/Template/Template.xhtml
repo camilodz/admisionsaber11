@@ -58,51 +58,12 @@
                             </p:menu>
                         </f:facet>
                     </p:toolbar>
->>>>>>> e87c7225992a447337bd51b6f93fa44bc11cc817
                 </h:form>
                 
             </ui:insert>
         </div>
         <!--Fin Cabecera-->
         
-
-        <div>
-            <!--Inicio Menú desplegable-->
-            <div id="left">
-                <ui:insert name="left">
-                    <h:form>
-                        <p:growl id="messages" showDetail="false"/>
-                        <p:menu toggleable="true">
-                            <p:submenu label="Opciones">
-                                <p:menuitem value="Gestionar Programas" actionListener="#{menuView.save}" update="messages" />
-                                <p:menuitem value="Configurar Programas" actionListener="#{menuView.save}" update="messages" />
-                                <p:menuitem value="Gestionar Ponderables" actionListener="#{menuView.save}" update="messages" />
-                                <p:menuitem value="Generar listado de admitidos" actionListener="#{menuView.save}" update="messages" />
-                            </p:submenu>
-                        </p:menu>
-                    </h:form>
-                </ui:insert>
-            </div>
-            <!--Fin Menú desplegable-->
-            
-            <div id="content" class="left_content">
-                <ui:insert name="content">
-                    
-                </ui:insert>
-            </div>
-        </div>
-        <!--Inicio Pie de página-->
-        <div id="bottom">
-            <ui:insert name="bottom">
-                <footer class="bottom">
-                    <div id="PiePagina"></div>
-                    <p>2018  |  Grupo Desarrollo Admisión Saber 11 <br />
-                            <a href="http://www.unicauca.edu.co">Universidad del Cauca</a>  		
-                    </p>
-                </footer>
-            </ui:insert>
-        </div>
-        <!--Fin Pie de página-->
     </h:body>
 
 </html>
