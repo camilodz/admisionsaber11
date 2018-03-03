@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"      
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
         <title>cuposAdmision</title>
@@ -10,58 +11,58 @@
     </h:head>
 
     <h:body>
-        <h:form id="form">
-
-            <p:growl id="msgs" showDetail="true" />
-
-            <p:tabView>
-                <p:tab title="Cupos">
-                    <h:panelGrid columns="1" >                        
-                        <h2><h:outputText value="Defina el número de cupos regulares a ofertar:"/></h2>                        
-                        <p:spinner min="0" max="100" value="0"/>
-                        <!--<p:outputPanel>
-                            <p:spinner id="ajaxSpinner" value="#{spinnerView.number5}">
-                                <p:ajax update="ajaxSpinnerValue" process="@this" />
-                            </p:spinner>
-                            <h:outputText id="ajaxSpinnerValue" value="#{spinnerView.number5}" style="padding-left: 10px" />
-                        </p:outputPanel> -->
-                        <br />
-                        <h2><h:outputText value="Defina el número de cupos para casos especiales:"/></h2>                        
-                        <p:fieldset legend="Casos Especiales" style="margin-bottom:20px">
-                            <h:panelGrid columns="2" cellpadding="5">                                
-                                <h:outputText value="Dificil Acceso:"/>
-                                <p:spinner min="0" max="2" value="1"/>
-                                <h:outputText value="Normalistas:"/>
-                                <p:spinner min="0" max="2" value="1"/>
-                                <h:outputText value="Indígena:"/>
-                                <p:spinner min="0" max="2" value="1"/>
-                                <h:outputText value="Zona Marginal:"/>
-                                <p:spinner min="0" max="2" value="1"/>
-                                <h:outputText value="Afrodescendiente:"/>
-                                <p:spinner min="0" max="100" value="1"/>
-                                <h:outputText value="Costa Pacífica:"/>
-                                <p:spinner min="0" max="2" value="1"/>
+        <ui:composition template="./../Template/Template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:growl id="msgs" showDetail="true" />
+                    
+                        <p:tab title="Cupos">
+                            <h:panelGrid columns="1" >                        
+                                <h2><h:outputText value="Defina el número de cupos regulares a ofertar:"/></h2>                        
+                                <p:spinner min="0" max="100" value="0"/>
+                                <!--<p:outputPanel>
+                                    <p:spinner id="ajaxSpinner" value="#{spinnerView.number5}">
+                                        <p:ajax update="ajaxSpinnerValue" process="@this" />
+                                    </p:spinner>
+                                    <h:outputText id="ajaxSpinnerValue" value="#{spinnerView.number5}" style="padding-left: 10px" />
+                                </p:outputPanel> -->
+                                <br />
+                                <h2><h:outputText value="Defina el número de cupos para casos especiales:"/></h2>                        
+                                <p:fieldset legend="Casos Especiales" style="margin-bottom:20px">
+                                    <h:panelGrid columns="2" cellpadding="5">                                
+                                        <h:outputText value="Dificil Acceso:"/>
+                                        <p:spinner min="0" max="2" value="1"/>
+                                        <h:outputText value="Normalistas:"/>
+                                        <p:spinner min="0" max="2" value="1"/>
+                                        <h:outputText value="Indígena:"/>
+                                        <p:spinner min="0" max="2" value="1"/>
+                                        <h:outputText value="Zona Marginal:"/>
+                                        <p:spinner min="0" max="2" value="1"/>
+                                        <h:outputText value="Afrodescendiente:"/>
+                                        <p:spinner min="0" max="100" value="1"/>
+                                        <h:outputText value="Costa Pacífica:"/>
+                                        <p:spinner min="0" max="2" value="1"/>
+                                    </h:panelGrid>
+                                </p:fieldset>
                             </h:panelGrid>
-                        </p:fieldset>
-                    </h:panelGrid>
-                    <h:panelGrid columns="2">
-                        <p:commandButton action="/index" value="Cancelar"/>
-                        <p:commandButton action="Ponderados" value="Guardar"/>
-                    </h:panelGrid>
-                </p:tab>
-                <p:tab title="Ponderados">
-                    <h:panelGrid columns="2" cellpadding="10">                        
-                        <h:outputText value="Pendiente..." />
-                    </h:panelGrid>
-                    <h:panelGrid columns="2">
-                        <p:commandButton action="/index" value="Cancelar"/>
-                        <p:commandButton action="/index" value="Guardar"/>
-                    </h:panelGrid>
-                </p:tab>                
-            </p:tabView>
-
-        </h:form>
-
+                            <h:panelGrid columns="2">
+                                <p:commandButton action="/index" value="Cancelar"/>
+                                <p:commandButton action="Ponderados" value="Guardar"/>
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Ponderados">
+                            <h:panelGrid columns="2" cellpadding="10">                        
+                                <h:outputText value="Pendiente..." />
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <p:commandButton action="/index" value="Cancelar"/>
+                                <p:commandButton action="/index" value="Guardar"/>
+                            </h:panelGrid>
+                        </p:tab>                
+                    
+                </h:form>
+            </ui:define>>
+        </ui:composition>
     </h:body>
 
 </html>

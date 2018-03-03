@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProgramaofertadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_programaofertadoPK_pofperiodo}" for="programaofertadoPK_pofperiodo" />
+                    <h:inputText id="programaofertadoPK_pofperiodo" value="#{programaofertadoController.selected.programaofertadoPK.pofperiodo}" title="#{bundle.CreateProgramaofertadoTitle_programaofertadoPK_pofperiodo}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_programaofertadoPK_pofperiodo}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposreg}" for="pofcuposreg" />
+                    <h:inputText id="pofcuposreg" value="#{programaofertadoController.selected.pofcuposreg}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposreg}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposreg}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposzonamarginal}" for="pofcuposzonamarginal" />
+                    <h:inputText id="pofcuposzonamarginal" value="#{programaofertadoController.selected.pofcuposzonamarginal}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposzonamarginal}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposzonamarginal}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposdificilacceso}" for="pofcuposdificilacceso" />
+                    <h:inputText id="pofcuposdificilacceso" value="#{programaofertadoController.selected.pofcuposdificilacceso}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposdificilacceso}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposdificilacceso}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposnormalista}" for="pofcuposnormalista" />
+                    <h:inputText id="pofcuposnormalista" value="#{programaofertadoController.selected.pofcuposnormalista}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposnormalista}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposnormalista}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposindigena}" for="pofcuposindigena" />
+                    <h:inputText id="pofcuposindigena" value="#{programaofertadoController.selected.pofcuposindigena}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposindigena}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposindigena}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposafrodescendiente}" for="pofcuposafrodescendiente" />
+                    <h:inputText id="pofcuposafrodescendiente" value="#{programaofertadoController.selected.pofcuposafrodescendiente}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposafrodescendiente}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposafrodescendiente}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofcuposcostapacifica}" for="pofcuposcostapacifica" />
+                    <h:inputText id="pofcuposcostapacifica" value="#{programaofertadoController.selected.pofcuposcostapacifica}" title="#{bundle.CreateProgramaofertadoTitle_pofcuposcostapacifica}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofcuposcostapacifica}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondlecturacritica}" for="pofpondlecturacritica" />
+                    <h:inputText id="pofpondlecturacritica" value="#{programaofertadoController.selected.pofpondlecturacritica}" title="#{bundle.CreateProgramaofertadoTitle_pofpondlecturacritica}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofpondlecturacritica}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondmatematicas}" for="pofpondmatematicas" />
+                    <h:inputText id="pofpondmatematicas" value="#{programaofertadoController.selected.pofpondmatematicas}" title="#{bundle.CreateProgramaofertadoTitle_pofpondmatematicas}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofpondmatematicas}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondcsociales}" for="pofpondcsociales" />
+                    <h:inputText id="pofpondcsociales" value="#{programaofertadoController.selected.pofpondcsociales}" title="#{bundle.CreateProgramaofertadoTitle_pofpondcsociales}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofpondcsociales}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondcnaturales}" for="pofpondcnaturales" />
+                    <h:inputText id="pofpondcnaturales" value="#{programaofertadoController.selected.pofpondcnaturales}" title="#{bundle.CreateProgramaofertadoTitle_pofpondcnaturales}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofpondcnaturales}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondingles}" for="pofpondingles" />
+                    <h:inputText id="pofpondingles" value="#{programaofertadoController.selected.pofpondingles}" title="#{bundle.CreateProgramaofertadoTitle_pofpondingles}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofpondingles}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofpondpruebaad}" for="pofpondpruebaad" />
+                    <h:inputText id="pofpondpruebaad" value="#{programaofertadoController.selected.pofpondpruebaad}" title="#{bundle.CreateProgramaofertadoTitle_pofpondpruebaad}" />
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_pofesofertado}" for="pofesofertado" />
+                    <h:inputText id="pofesofertado" value="#{programaofertadoController.selected.pofesofertado}" title="#{bundle.CreateProgramaofertadoTitle_pofesofertado}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_pofesofertado}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramaofertadoLabel_programa}" for="programa" />
+                    <h:selectOneMenu id="programa" value="#{programaofertadoController.selected.programa}" title="#{bundle.CreateProgramaofertadoTitle_programa}" required="true" requiredMessage="#{bundle.CreateProgramaofertadoRequiredMessage_programa}">
+                        <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programaofertadoController.create}" value="#{bundle.CreateProgramaofertadoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{programaofertadoController.prepareList}" value="#{bundle.CreateProgramaofertadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProgramaofertadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

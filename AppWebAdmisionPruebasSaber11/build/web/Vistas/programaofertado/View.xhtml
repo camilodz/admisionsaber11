@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProgramaofertadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_programaofertadoPK_pofperiodo}"/>
+                    <h:outputText value="#{programaofertadoController.selected.programaofertadoPK.pofperiodo}" title="#{bundle.ViewProgramaofertadoTitle_programaofertadoPK_pofperiodo}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposreg}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposreg}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposreg}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposzonamarginal}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposzonamarginal}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposzonamarginal}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposdificilacceso}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposdificilacceso}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposdificilacceso}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposnormalista}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposnormalista}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposnormalista}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposindigena}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposindigena}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposindigena}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposafrodescendiente}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposafrodescendiente}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposafrodescendiente}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofcuposcostapacifica}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofcuposcostapacifica}" title="#{bundle.ViewProgramaofertadoTitle_pofcuposcostapacifica}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondlecturacritica}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondlecturacritica}" title="#{bundle.ViewProgramaofertadoTitle_pofpondlecturacritica}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondmatematicas}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondmatematicas}" title="#{bundle.ViewProgramaofertadoTitle_pofpondmatematicas}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondcsociales}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondcsociales}" title="#{bundle.ViewProgramaofertadoTitle_pofpondcsociales}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondcnaturales}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondcnaturales}" title="#{bundle.ViewProgramaofertadoTitle_pofpondcnaturales}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondingles}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondingles}" title="#{bundle.ViewProgramaofertadoTitle_pofpondingles}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofpondpruebaad}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofpondpruebaad}" title="#{bundle.ViewProgramaofertadoTitle_pofpondpruebaad}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_pofesofertado}"/>
+                    <h:outputText value="#{programaofertadoController.selected.pofesofertado}" title="#{bundle.ViewProgramaofertadoTitle_pofesofertado}"/>
+                    <h:outputText value="#{bundle.ViewProgramaofertadoLabel_programa}"/>
+                    <h:outputText value="#{programaofertadoController.selected.programa}" title="#{bundle.ViewProgramaofertadoTitle_programa}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programaofertadoController.destroyAndView}" value="#{bundle.ViewProgramaofertadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProgramaofertadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{programaofertadoController.prepareCreate}" value="#{bundle.ViewProgramaofertadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{programaofertadoController.prepareList}" value="#{bundle.ViewProgramaofertadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProgramaofertadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

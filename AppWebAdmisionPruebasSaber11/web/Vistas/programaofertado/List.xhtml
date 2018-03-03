@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProgramaofertadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProgramaofertadoEmpty}" rendered="#{programaofertadoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{programaofertadoController.items.rowCount > 0}">
+                    <h:outputText value="#{programaofertadoController.pagination.pageFirstItem + 1}..#{programaofertadoController.pagination.pageLastItem + 1}/#{programaofertadoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{programaofertadoController.previous}" value="#{bundle.Previous} #{programaofertadoController.pagination.pageSize}" rendered="#{programaofertadoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{programaofertadoController.next}" value="#{bundle.Next} #{programaofertadoController.pagination.pageSize}" rendered="#{programaofertadoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{programaofertadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_programaofertadoPK_pofperiodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.programaofertadoPK.pofperiodo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposreg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposreg}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposzonamarginal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposzonamarginal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposdificilacceso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposdificilacceso}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposnormalista}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposnormalista}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposindigena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposindigena}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposafrodescendiente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposafrodescendiente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposcostapacifica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofcuposcostapacifica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondlecturacritica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondlecturacritica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondmatematicas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondmatematicas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondcsociales}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondcsociales}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondcnaturales}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondcnaturales}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondingles}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondingles}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondpruebaad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofpondpruebaad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofesofertado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pofesofertado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_programa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.programa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{programaofertadoController.prepareView}" value="#{bundle.ListProgramaofertadoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programaofertadoController.prepareEdit}" value="#{bundle.ListProgramaofertadoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programaofertadoController.destroy}" value="#{bundle.ListProgramaofertadoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{programaofertadoController.prepareCreate}" value="#{bundle.ListProgramaofertadoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProgramaofertadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
