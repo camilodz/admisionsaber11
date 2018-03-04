@@ -130,6 +130,14 @@ public class Programaofertado implements Serializable {
         this.pofesofertado = pofesofertado;
     }
 
+    //Adicional
+    public String getEsOfertado() {
+        if(this.pofesofertado == 1)
+            return "Si";
+        else
+            return "No";
+    }
+    
     public Programaofertado(short proid, String pofperiodo) {
         this.programaofertadoPK = new ProgramaofertadoPK(proid, pofperiodo);
     }
