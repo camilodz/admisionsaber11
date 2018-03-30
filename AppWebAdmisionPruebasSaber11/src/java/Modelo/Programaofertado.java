@@ -295,4 +295,34 @@ public class Programaofertado implements Serializable {
         return "Modelo.Programaofertado[ programaofertadoPK=" + programaofertadoPK + " ]";
     }
     
+    
+    public String getEsOfertado(){
+        if(this.pofesofertado == 1)
+            return "Si";
+        else return "No";
+    
+    }
+    
+    public int getCuposTotales(){
+        return this.pofcuposreg + this.pofcuposafrodescendiente + this.pofcuposcostapacifica 
+                + this.pofcuposdificilacceso + this.pofcuposindigena + this.pofcuposnormalista
+                + this.pofcuposzonamarginal;
+    }
+    
+    public String getPorcentajePruebaAdicional(){
+        if(this.pofpondpruebaad == 0)
+            return "No aplica";
+        else 
+            return "" + this.pofpondpruebaad;
+    }
+    
+     public String getPorcentajePruebaICFES(){
+        if(this.pofpondpruebaad == 0)
+            return "100";
+        else{
+            int res = 100 - this.pofpondpruebaad;
+            return "" + res;
+        }
+    }
+    
 }
