@@ -5,61 +5,115 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
-    <ui:composition template="/Template/Template.xhtml">
-
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListProgramaTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="content">
-            <h:form >      
-                <p:panel id="panel" header="Lista" >
-                    <p:toolbar >
-                                    <f:facet name="left">
-                                        
-                                        <h:panelGrid columns="4" cellpadding="5">
-                                            <h:outputLabel for="txt3" value="Ver por: " />
-                                            <h:selectOneMenu id="txt3" value= " " label="Text 3">
-                                                <f:selectItem itemLabel="Todos los programas" itemValue="" noSelectionOption="true" />
-                                                <f:selectItem itemLabel="Sede Popayán" itemValue="1" />
-                                                <f:selectItem itemLabel="Regionalización" itemValue="2" />
-                                                
-                                            </h:selectOneMenu>
-                                        </h:panelGrid>
-                                    </f:facet>
-
-                                    <f:facet name="right">
-                                        <h:panelGrid columns="4" cellpadding="5" >
-                                            <h:outputLabel for="txt1" value="Buscar: " />
-                                            <p:inputText id="txt1"  value="Buscar por facultad" required="true" label="Text 1">
-                                                <f:validateLength minimum="2" />
-                                            </p:inputText>
-                                        </h:panelGrid>
-                                    </f:facet>
-                    </p:toolbar>
+    
+    <body>
+        
+        <ui:composition template="./../../Template/Template.xhtml">
+            <ui:define name="content">
+                                
+                <ui:define name="title">
                     
-                    <p:dataTable id="basicDT" var="item" value="#{programaofertadoController.items}" >
                     
-                        <p:column headerText="Facultad">
-                            <h:outputText value="#{item.programa.facid.facnombre}" />
-                        </p:column>
-
-                        <p:column style="width:74px;text-align: center" headerText="Acciones">
-                                    <p:toolbar>
-                                        <f:facet name="left">
-                                            <p:commandButton   icon="ui-icon-info" title="Ver"  action="#{programaofertadoController.prepareView}"/>
-                                        </f:facet>
-                                        <f:facet name="left">
-                                            <p:commandButton   icon="ui-icon-document" title="Editar"  action="#{programaofertadoController.prepareEdit}"/>
-                                        </f:facet>
-                                    </p:toolbar>
-                        </p:column>
-                    </p:dataTable>
-                    
-                </p:panel>
+                </ui:define>
                 
-            </h:form>
-        </ui:define>
-    </ui:composition>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
 
+                <h:form id="form" >
+                    <h3>Visualizando la configuración de Cupos de los programas ofertados pertenecientes a la #{programaofertadoController.selected.programa.facid.facnombre} para el periodo académico #{programaofertadoController.selected.programaofertadoPK.pofperiodo}</h3>
+                                        
+                    <p:growl id="msgs" life="1000"/>
+                    <p:tabView scrollable="true">
+                        <p:tab title="Cupos">
+                            <p:dataTable var="item" value="programaofertadoController.selected">
+                                <p:column headerText="Programa">
+                                    <h:outputText value="#{programaofertadoController.selected.programa.pronombre}" />
+                                </p:column>
+
+                                <p:column headerText="Cupos Regulares">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposreg}" />
+                                </p:column>
+                                
+                                <p:column headerText="Dificil Acceso">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposdificilacceso}" />
+                                </p:column>
+                                
+                                <p:column headerText="Normalistas">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposnormalista}" />
+                                </p:column>
+                                
+                                <p:column headerText="Indígena">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposindigena}" />
+                                </p:column>
+                                
+                                <p:column headerText="Zona Marginal">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposzonamarginal}" />
+                                </p:column>
+                                
+                                <p:column headerText="Afrodescendiente">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposafrodescendiente}" />
+                                </p:column>
+                                
+                                <p:column headerText="Costa Pacífica">
+                                    <h:outputText value="#{programaofertadoController.selected.pofcuposcostapacifica}" />
+                                </p:column>
+                                
+                                <p:column headerText="Cupos totales">
+                                    <h:outputText value="#{programaofertadoController.selected.cuposTotales}" />
+                                </p:column>
+                                
+                                <p:column headerText="Lista de Espera">
+                                    <h:outputText value="Pendiente" />
+                                </p:column>
+
+                            </p:dataTable>
+
+                        </p:tab>
+                        <p:tab title="Ponderados ICFES">
+                           
+                             <p:dataTable var="item" value="programaofertadoController.selected">
+                                <p:column headerText="Programa">
+                                    <h:outputText value="#{programaofertadoController.selected.programa.pronombre}" />
+                                </p:column>
+
+                                <p:column headerText="%Lectura Crítica">
+                                    <h:outputText value="#{programaofertadoController.selected.pofpondlecturacritica}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Matemáticas">
+                                    <h:outputText value="#{programaofertadoController.selected.pofpondmatematicas}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Sociales y Ciudadanas">
+                                    <h:outputText value="#{programaofertadoController.selected.pofpondcsociales}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Ciencias Naturales">
+                                    <h:outputText value="#{programaofertadoController.selected.pofpondcnaturales}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Inglés">
+                                    <h:outputText value="#{programaofertadoController.selected.pofpondingles}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Prueba ICFES">
+                                    <h:outputText value="#{programaofertadoController.selected.porcentajePruebaICFES}" />
+                                </p:column>
+                                
+                                <p:column headerText="%Prueba Adicional">
+                                    <h:outputText value="#{programaofertadoController.selected.porcentajePruebaAdicional}" />
+                                </p:column>
+
+                            </p:dataTable>
+                            
+                            
+                            
+                        </p:tab>                
+                    </p:tabView>
+                </h:form>
+
+            </ui:define>          
+        </ui:composition>
+    </body>
 </html>
