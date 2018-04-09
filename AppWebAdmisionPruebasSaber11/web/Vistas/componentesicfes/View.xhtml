@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../Template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewComponentesicfesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewComponentesicfesLabel_compid}"/>
+                    <h:outputText value="#{componentesicfesController.selected.compid}" title="#{bundle.ViewComponentesicfesTitle_compid}"/>
+                    <h:outputText value="#{bundle.ViewComponentesicfesLabel_compnombre}"/>
+                    <h:outputText value="#{componentesicfesController.selected.compnombre}" title="#{bundle.ViewComponentesicfesTitle_compnombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{componentesicfesController.destroyAndView}" value="#{bundle.ViewComponentesicfesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewComponentesicfesEditLink}"/>
+                <br />
+                <h:commandLink action="#{componentesicfesController.prepareCreate}" value="#{bundle.ViewComponentesicfesCreateLink}" />
+                <br />
+                <h:commandLink action="#{componentesicfesController.prepareList}" value="#{bundle.ViewComponentesicfesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewComponentesicfesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

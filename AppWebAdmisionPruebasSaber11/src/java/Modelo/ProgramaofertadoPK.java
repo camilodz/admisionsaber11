@@ -6,11 +6,11 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -23,18 +23,18 @@ public class ProgramaofertadoPK implements Serializable {
     @NotNull
     @Column(name = "PROID")
     private short proid;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 6)
-    @Column(name = "POFPERIODO")
-    private String pofperiodo;
+    @Column(name = "PERID")
+    private BigDecimal perid;
 
     public ProgramaofertadoPK() {
     }
 
-    public ProgramaofertadoPK(short proid, String pofperiodo) {
+    public ProgramaofertadoPK(short proid, BigDecimal perid) {
         this.proid = proid;
-        this.pofperiodo = pofperiodo;
+        this.perid = perid;
     }
 
     public short getProid() {
@@ -45,19 +45,19 @@ public class ProgramaofertadoPK implements Serializable {
         this.proid = proid;
     }
 
-    public String getPofperiodo() {
-        return pofperiodo;
+    public BigDecimal getPerid() {
+        return perid;
     }
 
-    public void setPofperiodo(String pofperiodo) {
-        this.pofperiodo = pofperiodo;
+    public void setPerid(BigDecimal perid) {
+        this.perid = perid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (int) proid;
-        hash += (pofperiodo != null ? pofperiodo.hashCode() : 0);
+        hash += (perid != null ? perid.hashCode() : 0);
         return hash;
     }
 
@@ -71,7 +71,7 @@ public class ProgramaofertadoPK implements Serializable {
         if (this.proid != other.proid) {
             return false;
         }
-        if ((this.pofperiodo == null && other.pofperiodo != null) || (this.pofperiodo != null && !this.pofperiodo.equals(other.pofperiodo))) {
+        if ((this.perid == null && other.perid != null) || (this.perid != null && !this.perid.equals(other.perid))) {
             return false;
         }
         return true;
@@ -79,7 +79,7 @@ public class ProgramaofertadoPK implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.ProgramaofertadoPK[ proid=" + proid + ", pofperiodo=" + pofperiodo + " ]";
+        return "Modelo.ProgramaofertadoPK[ proid=" + proid + ", perid=" + perid + " ]";
     }
     
 }

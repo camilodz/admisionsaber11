@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../Template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProgramacasosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProgramacasosLabel_progcasoscupos}"/>
+                    <h:outputText value="#{programacasosController.selected.progcasoscupos}" title="#{bundle.ViewProgramacasosTitle_progcasoscupos}"/>
+                    <h:outputText value="#{bundle.ViewProgramacasosLabel_casosespeciales}"/>
+                    <h:outputText value="#{programacasosController.selected.casosespeciales}" title="#{bundle.ViewProgramacasosTitle_casosespeciales}"/>
+                    <h:outputText value="#{bundle.ViewProgramacasosLabel_programa}"/>
+                    <h:outputText value="#{programacasosController.selected.programa}" title="#{bundle.ViewProgramacasosTitle_programa}"/>
+                    <h:outputText value="#{bundle.ViewProgramacasosLabel_periodoacademico}"/>
+                    <h:outputText value="#{programacasosController.selected.periodoacademico}" title="#{bundle.ViewProgramacasosTitle_periodoacademico}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programacasosController.destroyAndView}" value="#{bundle.ViewProgramacasosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProgramacasosEditLink}"/>
+                <br />
+                <h:commandLink action="#{programacasosController.prepareCreate}" value="#{bundle.ViewProgramacasosCreateLink}" />
+                <br />
+                <h:commandLink action="#{programacasosController.prepareList}" value="#{bundle.ViewProgramacasosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProgramacasosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

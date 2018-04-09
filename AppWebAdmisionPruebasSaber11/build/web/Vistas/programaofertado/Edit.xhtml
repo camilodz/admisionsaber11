@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/Template/Template.xhtml">
+    <ui:composition template="./../../Template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.EditProgramaofertadoTitle}"></h:outputText>
         </ui:define>
@@ -15,36 +15,14 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_programaofertadoPK_pofperiodo}" for="programaofertadoPK_pofperiodo" />
-                    <h:inputText id="programaofertadoPK_pofperiodo" value="#{programaofertadoController.selected.programaofertadoPK.pofperiodo}" title="#{bundle.EditProgramaofertadoTitle_programaofertadoPK_pofperiodo}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_programaofertadoPK_pofperiodo}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposreg}" for="pofcuposreg" />
-                    <h:inputText id="pofcuposreg" value="#{programaofertadoController.selected.pofcuposreg}" title="#{bundle.EditProgramaofertadoTitle_pofcuposreg}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposreg}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposzonamarginal}" for="pofcuposzonamarginal" />
-                    <h:inputText id="pofcuposzonamarginal" value="#{programaofertadoController.selected.pofcuposzonamarginal}" title="#{bundle.EditProgramaofertadoTitle_pofcuposzonamarginal}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposzonamarginal}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposdificilacceso}" for="pofcuposdificilacceso" />
-                    <h:inputText id="pofcuposdificilacceso" value="#{programaofertadoController.selected.pofcuposdificilacceso}" title="#{bundle.EditProgramaofertadoTitle_pofcuposdificilacceso}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposdificilacceso}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposnormalista}" for="pofcuposnormalista" />
-                    <h:inputText id="pofcuposnormalista" value="#{programaofertadoController.selected.pofcuposnormalista}" title="#{bundle.EditProgramaofertadoTitle_pofcuposnormalista}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposnormalista}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposindigena}" for="pofcuposindigena" />
-                    <h:inputText id="pofcuposindigena" value="#{programaofertadoController.selected.pofcuposindigena}" title="#{bundle.EditProgramaofertadoTitle_pofcuposindigena}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposindigena}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposafrodescendiente}" for="pofcuposafrodescendiente" />
-                    <h:inputText id="pofcuposafrodescendiente" value="#{programaofertadoController.selected.pofcuposafrodescendiente}" title="#{bundle.EditProgramaofertadoTitle_pofcuposafrodescendiente}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposafrodescendiente}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofcuposcostapacifica}" for="pofcuposcostapacifica" />
-                    <h:inputText id="pofcuposcostapacifica" value="#{programaofertadoController.selected.pofcuposcostapacifica}" title="#{bundle.EditProgramaofertadoTitle_pofcuposcostapacifica}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofcuposcostapacifica}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondlecturacritica}" for="pofpondlecturacritica" />
-                    <h:inputText id="pofpondlecturacritica" value="#{programaofertadoController.selected.pofpondlecturacritica}" title="#{bundle.EditProgramaofertadoTitle_pofpondlecturacritica}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofpondlecturacritica}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondmatematicas}" for="pofpondmatematicas" />
-                    <h:inputText id="pofpondmatematicas" value="#{programaofertadoController.selected.pofpondmatematicas}" title="#{bundle.EditProgramaofertadoTitle_pofpondmatematicas}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofpondmatematicas}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondcsociales}" for="pofpondcsociales" />
-                    <h:inputText id="pofpondcsociales" value="#{programaofertadoController.selected.pofpondcsociales}" title="#{bundle.EditProgramaofertadoTitle_pofpondcsociales}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofpondcsociales}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondcnaturales}" for="pofpondcnaturales" />
-                    <h:inputText id="pofpondcnaturales" value="#{programaofertadoController.selected.pofpondcnaturales}" title="#{bundle.EditProgramaofertadoTitle_pofpondcnaturales}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofpondcnaturales}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondingles}" for="pofpondingles" />
-                    <h:inputText id="pofpondingles" value="#{programaofertadoController.selected.pofpondingles}" title="#{bundle.EditProgramaofertadoTitle_pofpondingles}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofpondingles}"/>
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofpondpruebaad}" for="pofpondpruebaad" />
-                    <h:inputText id="pofpondpruebaad" value="#{programaofertadoController.selected.pofpondpruebaad}" title="#{bundle.EditProgramaofertadoTitle_pofpondpruebaad}" />
-                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_pofesofertado}" for="pofesofertado" />
-                    <h:inputText id="pofesofertado" value="#{programaofertadoController.selected.pofesofertado}" title="#{bundle.EditProgramaofertadoTitle_pofesofertado}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_pofesofertado}"/>
+                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_progofcuposregulares}" for="progofcuposregulares" />
+                    <h:inputText id="progofcuposregulares" value="#{programaofertadoController.selected.progofcuposregulares}" title="#{bundle.EditProgramaofertadoTitle_progofcuposregulares}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_progofcuposregulares}"/>
+                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_progoflistadeespera}" for="progoflistadeespera" />
+                    <h:inputText id="progoflistadeespera" value="#{programaofertadoController.selected.progoflistadeespera}" title="#{bundle.EditProgramaofertadoTitle_progoflistadeespera}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_progoflistadeespera}"/>
+                    <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_periodoacademico}" for="periodoacademico" />
+                    <h:selectOneMenu id="periodoacademico" value="#{programaofertadoController.selected.periodoacademico}" title="#{bundle.EditProgramaofertadoTitle_periodoacademico}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_periodoacademico}">
+                        <f:selectItems value="#{periodoacademicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditProgramaofertadoLabel_programa}" for="programa" />
                     <h:selectOneMenu id="programa" value="#{programaofertadoController.selected.programa}" title="#{bundle.EditProgramaofertadoTitle_programa}" required="true" requiredMessage="#{bundle.EditProgramaofertadoRequiredMessage_programa}">
                         <f:selectItems value="#{programaController.itemsAvailableSelectOne}"/>

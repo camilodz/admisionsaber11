@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/Template/Template.xhtml">
+    <ui:composition template="./../../Template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListProgramaofertadoTitle}"></h:outputText>
         </ui:define>
@@ -22,93 +22,21 @@
                     <h:dataTable value="#{programaofertadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_programaofertadoPK_pofperiodo}"/>
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_progofcuposregulares}"/>
                             </f:facet>
-                            <h:outputText value="#{item.programaofertadoPK.pofperiodo}"/>
+                            <h:outputText value="#{item.progofcuposregulares}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposreg}"/>
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_progoflistadeespera}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pofcuposreg}"/>
+                            <h:outputText value="#{item.progoflistadeespera}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposzonamarginal}"/>
+                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_periodoacademico}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pofcuposzonamarginal}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposdificilacceso}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofcuposdificilacceso}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposnormalista}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofcuposnormalista}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposindigena}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofcuposindigena}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposafrodescendiente}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofcuposafrodescendiente}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofcuposcostapacifica}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofcuposcostapacifica}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondlecturacritica}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondlecturacritica}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondmatematicas}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondmatematicas}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondcsociales}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondcsociales}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondcnaturales}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondcnaturales}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondingles}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondingles}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofpondpruebaad}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofpondpruebaad}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProgramaofertadoTitle_pofesofertado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.pofesofertado}"/>
+                            <h:outputText value="#{item.periodoacademico}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

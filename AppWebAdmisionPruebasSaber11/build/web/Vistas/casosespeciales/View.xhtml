@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../Template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCasosespecialesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCasosespecialesLabel_espid}"/>
+                    <h:outputText value="#{casosespecialesController.selected.espid}" title="#{bundle.ViewCasosespecialesTitle_espid}"/>
+                    <h:outputText value="#{bundle.ViewCasosespecialesLabel_espnombre}"/>
+                    <h:outputText value="#{casosespecialesController.selected.espnombre}" title="#{bundle.ViewCasosespecialesTitle_espnombre}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{casosespecialesController.destroyAndView}" value="#{bundle.ViewCasosespecialesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCasosespecialesEditLink}"/>
+                <br />
+                <h:commandLink action="#{casosespecialesController.prepareCreate}" value="#{bundle.ViewCasosespecialesCreateLink}" />
+                <br />
+                <h:commandLink action="#{casosespecialesController.prepareList}" value="#{bundle.ViewCasosespecialesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCasosespecialesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

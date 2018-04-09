@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../Template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePeriodoacademicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePeriodoacademicoLabel_perid}" for="perid" />
+                    <h:inputText id="perid" value="#{periodoacademicoController.selected.perid}" title="#{bundle.CreatePeriodoacademicoTitle_perid}" required="true" requiredMessage="#{bundle.CreatePeriodoacademicoRequiredMessage_perid}"/>
+                    <h:outputLabel value="#{bundle.CreatePeriodoacademicoLabel_perpuntajeminpopayan}" for="perpuntajeminpopayan" />
+                    <h:inputText id="perpuntajeminpopayan" value="#{periodoacademicoController.selected.perpuntajeminpopayan}" title="#{bundle.CreatePeriodoacademicoTitle_perpuntajeminpopayan}" required="true" requiredMessage="#{bundle.CreatePeriodoacademicoRequiredMessage_perpuntajeminpopayan}"/>
+                    <h:outputLabel value="#{bundle.CreatePeriodoacademicoLabel_perpuntajeminregionalizacion}" for="perpuntajeminregionalizacion" />
+                    <h:inputText id="perpuntajeminregionalizacion" value="#{periodoacademicoController.selected.perpuntajeminregionalizacion}" title="#{bundle.CreatePeriodoacademicoTitle_perpuntajeminregionalizacion}" required="true" requiredMessage="#{bundle.CreatePeriodoacademicoRequiredMessage_perpuntajeminregionalizacion}"/>
+                    <h:outputLabel value="#{bundle.CreatePeriodoacademicoLabel_perestado}" for="perestado" />
+                    <h:inputText id="perestado" value="#{periodoacademicoController.selected.perestado}" title="#{bundle.CreatePeriodoacademicoTitle_perestado}" required="true" requiredMessage="#{bundle.CreatePeriodoacademicoRequiredMessage_perestado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{periodoacademicoController.create}" value="#{bundle.CreatePeriodoacademicoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{periodoacademicoController.prepareList}" value="#{bundle.CreatePeriodoacademicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePeriodoacademicoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

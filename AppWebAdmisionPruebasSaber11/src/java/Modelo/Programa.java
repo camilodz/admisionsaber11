@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Programa.findAll", query = "SELECT p FROM Programa p")
     , @NamedQuery(name = "Programa.findByProid", query = "SELECT p FROM Programa p WHERE p.proid = :proid")
-    , @NamedQuery(name = "Programa.findByPronombre", query = "SELECT p FROM Programa p WHERE p.pronombre = :pronombre")})
+    , @NamedQuery(name = "Programa.findByPronombre", query = "SELECT p FROM Programa p WHERE p.pronombre = :pronombre")
+    , @NamedQuery(name = "Programa.findByPropruebaad", query = "SELECT p FROM Programa p WHERE p.propruebaad = :propruebaad")})
 public class Programa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,11 +48,21 @@ public class Programa implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "PRONOMBRE")
     private String pronombre;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PROPRUEBAAD")
+    private short propruebaad;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
+    private Collection<Programacasos> programacasosCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
+    private Collection<Programacomponentes> programacomponentesCollection;
     @JoinColumn(name = "FACID", referencedColumnName = "FACID")
     @ManyToOne(optional = false)
     private Facultad facid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
     private Collection<Programaofertado> programaofertadoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "programa")
+    private Collection<Pruebaadicional> pruebaadicionalCollection;
 
     public Programa() {
     }
@@ -60,9 +71,10 @@ public class Programa implements Serializable {
         this.proid = proid;
     }
 
-    public Programa(Short proid, String pronombre) {
+    public Programa(Short proid, String pronombre, short propruebaad) {
         this.proid = proid;
         this.pronombre = pronombre;
+        this.propruebaad = propruebaad;
     }
 
     public Short getProid() {
@@ -81,6 +93,32 @@ public class Programa implements Serializable {
         this.pronombre = pronombre;
     }
 
+    public short getPropruebaad() {
+        return propruebaad;
+    }
+
+    public void setPropruebaad(short propruebaad) {
+        this.propruebaad = propruebaad;
+    }
+
+    @XmlTransient
+    public Collection<Programacasos> getProgramacasosCollection() {
+        return programacasosCollection;
+    }
+
+    public void setProgramacasosCollection(Collection<Programacasos> programacasosCollection) {
+        this.programacasosCollection = programacasosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Programacomponentes> getProgramacomponentesCollection() {
+        return programacomponentesCollection;
+    }
+
+    public void setProgramacomponentesCollection(Collection<Programacomponentes> programacomponentesCollection) {
+        this.programacomponentesCollection = programacomponentesCollection;
+    }
+
     public Facultad getFacid() {
         return facid;
     }
@@ -96,6 +134,15 @@ public class Programa implements Serializable {
 
     public void setProgramaofertadoCollection(Collection<Programaofertado> programaofertadoCollection) {
         this.programaofertadoCollection = programaofertadoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Pruebaadicional> getPruebaadicionalCollection() {
+        return pruebaadicionalCollection;
+    }
+
+    public void setPruebaadicionalCollection(Collection<Pruebaadicional> pruebaadicionalCollection) {
+        this.pruebaadicionalCollection = pruebaadicionalCollection;
     }
 
     @Override

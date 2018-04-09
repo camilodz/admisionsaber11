@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./../../Template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProgramacasosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProgramacasosEmpty}" rendered="#{programacasosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{programacasosController.items.rowCount > 0}">
+                    <h:outputText value="#{programacasosController.pagination.pageFirstItem + 1}..#{programacasosController.pagination.pageLastItem + 1}/#{programacasosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{programacasosController.previous}" value="#{bundle.Previous} #{programacasosController.pagination.pageSize}" rendered="#{programacasosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{programacasosController.next}" value="#{bundle.Next} #{programacasosController.pagination.pageSize}" rendered="#{programacasosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{programacasosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacasosTitle_progcasoscupos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.progcasoscupos}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacasosTitle_casosespeciales}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.casosespeciales}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacasosTitle_programa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.programa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacasosTitle_periodoacademico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodoacademico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{programacasosController.prepareView}" value="#{bundle.ListProgramacasosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programacasosController.prepareEdit}" value="#{bundle.ListProgramacasosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programacasosController.destroy}" value="#{bundle.ListProgramacasosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{programacasosController.prepareCreate}" value="#{bundle.ListProgramacasosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProgramacasosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
