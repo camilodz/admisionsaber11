@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="./../../Template.xhtml">
+
+            <ui:define name="content">
+                <br/>            
+                <h:form id="configPro">
+                    <p:panel>
+                        <h2 align="center"><h:outputText value="Configurar Programas - #{periodoacademicoController.selected.perid}"></h:outputText></h2>
+                        <h2><h:outputText value="Seleccione una Facultad para configurar cupos y ponderados de los programas pertenecientes" /> </h2>                    
+                        <p:outputLabel for="console" value="Ver por:" />
+                        <p:selectOneMenu id="console" style="width:150px">
+                            <f:selectItem itemLabel="Todos los Programas" itemValue="Todos los Programas" />
+                            <f:selectItem itemLabel="Sede Popayán" itemValue="Sede Popayán" />
+                            <f:selectItem itemLabel="Regionalización" itemValue="Regionalización" />                                
+                        </p:selectOneMenu>
+                        <br/>
+                        <br/>                    
+                        <p:dataTable value="#{facultadController.items}" var="facultades" >
+                            <p:column headerText="Facultad" >
+                                <h:outputText value="#{facultades.facnombre}" />
+                            </p:column>
+
+                            <p:column headerText="Acciones">
+                                <p:column><p:commandButton action="#{facultadController.prepareViewConfigPro}" value="VER"/></p:column>                            
+                                <p:column><p:commandButton action="#{facultadController.prepareViewEditConfigPro}" value="CONFIGURAR"/></p:column>                       
+                            </p:column>
+                        </p:dataTable>                                            
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

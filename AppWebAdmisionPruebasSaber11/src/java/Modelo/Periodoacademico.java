@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Periodoacademico.findByPerid", query = "SELECT p FROM Periodoacademico p WHERE p.perid = :perid")
     , @NamedQuery(name = "Periodoacademico.findByPerpuntajeminpopayan", query = "SELECT p FROM Periodoacademico p WHERE p.perpuntajeminpopayan = :perpuntajeminpopayan")
     , @NamedQuery(name = "Periodoacademico.findByPerpuntajeminregionalizacion", query = "SELECT p FROM Periodoacademico p WHERE p.perpuntajeminregionalizacion = :perpuntajeminregionalizacion")
-    , @NamedQuery(name = "Periodoacademico.findByPerestado", query = "SELECT p FROM Periodoacademico p WHERE p.perestado = :perestado")})
+    , @NamedQuery(name = "Periodoacademico.findByPerestado", query = "SELECT p FROM Periodoacademico p WHERE p.perestado = :perestado")
+    , @NamedQuery(name = "Periodoacademico.findByPeridActual", query = "SELECT p FROM Periodoacademico p WHERE p.perestado = 1")})
 public class Periodoacademico implements Serializable {
 
     private static final long serialVersionUID = 1L;

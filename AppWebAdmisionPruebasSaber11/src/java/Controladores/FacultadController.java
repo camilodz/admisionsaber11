@@ -73,6 +73,18 @@ public class FacultadController implements Serializable {
         return "View";
     }
 
+    public String prepareViewConfigPro(){
+        current = (Facultad) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "verConfigPrograma";
+    }
+    
+    public String prepareViewEditConfigPro(){
+        current = (Facultad) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "editConfigPrograma";
+    }
+    
     public String prepareCreate() {
         current = new Facultad();
         selectedItemIndex = -1;

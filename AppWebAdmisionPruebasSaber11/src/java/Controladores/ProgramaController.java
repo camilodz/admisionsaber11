@@ -158,8 +158,8 @@ public class ProgramaController implements Serializable {
             items = getPagination().createPageDataModel();
         }
         return items;
-    }
-
+    }   
+    
     private void recreateModel() {
         items = null;
     }

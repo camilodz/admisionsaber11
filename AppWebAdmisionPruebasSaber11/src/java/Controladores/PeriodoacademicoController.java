@@ -40,6 +40,11 @@ public class PeriodoacademicoController implements Serializable {
         return current;
     }
 
+    public String getPeriodo(){
+        String periodo = ""+current.getPerid();
+        return periodo;
+    }
+    
     private PeriodoacademicoFacade getFacade() {
         return ejbFacade;
     }
