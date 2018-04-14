@@ -18,9 +18,9 @@
                     <br/>
                     <p:tabView scrollable="true">
                         <p:tab title="Cupos">
-                            <p:dataTable value="#{facultadController.items}" var="facultades" >
-                                <p:column headerText="Programa" >
-                                    <h:outputText value="#{facultades.facnombre}" />
+                            <p:dataTable value="#{programaController.items}" var="programas" >
+                                <p:column headerText="Programa" width="300" >
+                                    <h:outputText value="#{programas.facnombre}" />
                                 </p:column>
 
                                 <p:column headerText="Cupos Regulares" > 
@@ -62,7 +62,7 @@
                         </p:tab>
                         <p:tab title="Ponderados ICFES">
                             <p:dataTable value="#{facultadController.items}" var="facultades" >
-                                <p:column headerText="Programa" >
+                                <p:column headerText="Programa" width="300" >
                                     <h:outputText value="#{facultades.facnombre}" />
                                 </p:column>
 

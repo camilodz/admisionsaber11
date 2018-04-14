@@ -26,9 +26,9 @@
                             <h:outputText value="#{facultades.facnombre}" />
                         </p:column>
 
-                        <p:column headerText="Acciones" colspan="2" >
-                            <p:column><p:button outcome="verConfigProgramas.xhtml" value="Ver" /></p:column>                            
-                            <p:column><p:button outcome="vistaInicio.xhtml" value="Configurar" /></p:column>                          
+                        <p:column headerText="Acciones" >
+                            <p:column><p:commandButton action="#{facultadController.prepareViewConfigPro}" value="VER"/></p:column>
+                            <p:column><p:commandButton action="#{facultadController.prepareViewEditConfigPro}" value="CONFIGURAR"/></p:column>                
                         </p:column>
                     </p:dataTable>                                            
                 </h:form>
