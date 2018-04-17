@@ -2,10 +2,10 @@
 -- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 31-03-2018 a las 00:14:45
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.1
+-- Host: localhost
+-- Generation Time: Apr 17, 2018 at 04:52 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `admisiones2`
+-- Database: `admisiones2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `CASOSESPECIALES`
+-- Table structure for table `CASOSESPECIALES`
 --
 
 CREATE TABLE `CASOSESPECIALES` (
@@ -34,7 +34,7 @@ CREATE TABLE `CASOSESPECIALES` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `CASOSESPECIALES`
+-- Dumping data for table `CASOSESPECIALES`
 --
 
 INSERT INTO `CASOSESPECIALES` (`ESPID`, `ESPNOMBRE`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `CASOSESPECIALES` (`ESPID`, `ESPNOMBRE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `COMPONENTESICFES`
+-- Table structure for table `COMPONENTESICFES`
 --
 
 CREATE TABLE `COMPONENTESICFES` (
@@ -57,7 +57,7 @@ CREATE TABLE `COMPONENTESICFES` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `COMPONENTESICFES`
+-- Dumping data for table `COMPONENTESICFES`
 --
 
 INSERT INTO `COMPONENTESICFES` (`COMPID`, `COMPNOMBRE`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `COMPONENTESICFES` (`COMPID`, `COMPNOMBRE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `FACULTAD`
+-- Table structure for table `FACULTAD`
 --
 
 CREATE TABLE `FACULTAD` (
@@ -79,7 +79,7 @@ CREATE TABLE `FACULTAD` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `FACULTAD`
+-- Dumping data for table `FACULTAD`
 --
 
 INSERT INTO `FACULTAD` (`FACID`, `FACNOMBRE`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `FACULTAD` (`FACID`, `FACNOMBRE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PERIODOACADEMICO`
+-- Table structure for table `PERIODOACADEMICO`
 --
 
 CREATE TABLE `PERIODOACADEMICO` (
@@ -107,7 +107,7 @@ CREATE TABLE `PERIODOACADEMICO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PERIODOACADEMICO`
+-- Dumping data for table `PERIODOACADEMICO`
 --
 
 INSERT INTO `PERIODOACADEMICO` (`PERID`, `PERPUNTAJEMINPOPAYAN`, `PERPUNTAJEMINREGIONALIZACION`, `PERESTADO`) VALUES
@@ -117,57 +117,58 @@ INSERT INTO `PERIODOACADEMICO` (`PERID`, `PERPUNTAJEMINPOPAYAN`, `PERPUNTAJEMINR
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PROGRAMA`
+-- Table structure for table `PROGRAMA`
 --
 
 CREATE TABLE `PROGRAMA` (
   `PROID` decimal(3,0) NOT NULL,
   `FACID` decimal(3,0) NOT NULL,
   `PRONOMBRE` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `PROPRUEBAAD` decimal(1,0) NOT NULL
+  `PROPRUEBAAD` decimal(1,0) NOT NULL,
+  `PROSEDE` varchar(25) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PROGRAMA`
+-- Dumping data for table `PROGRAMA`
 --
 
-INSERT INTO `PROGRAMA` (`PROID`, `FACID`, `PRONOMBRE`, `PROPRUEBAAD`) VALUES
-('200', '100', 'Artes Plásticas', '1'),
-('201', '100', 'Música', '1'),
-('202', '100', 'Diseño Gráfico', '0'),
-('300', '120', 'Medicina', '0'),
-('301', '120', 'Enfermería', '0'),
-('302', '120', 'Fisioterapia', '0'),
-('303', '120', 'Fonoaudiología', '0'),
-('400', '130', 'Economía', '0'),
-('401', '130', 'Administración de Empresas', '0'),
-('402', '130', 'Turismo', '0'),
-('403', '130', 'Contaduría Pública', '0'),
-('404', '130', 'Administración Financiera', '0'),
-('500', '140', 'Antropología', '0'),
-('501', '140', 'Filosofía', '0'),
-('502', '140', 'Geografía', '0'),
-('503', '140', 'Historia', '0'),
-('504', '140', 'Licenciatura en Español y Literatura', '0'),
-('505', '140', 'Licenciatura en Etnoeducación', '0'),
-('506', '140', 'Licenciatura en Lenguas Modernas Inglés-Francés', '0'),
-('600', '150', 'Matemáticas', '0'),
-('700', '160', 'Ciencia Política', '0'),
-('701', '160', 'Comunicación Social', '0'),
-('702', '160', 'Derecho y Extensiones', '0'),
-('703', '160', 'Derecho Cobertura', '0'),
-('800', '170', 'Geotecnología', '0'),
-('801', '170', 'Ingeniería Ambiental', '0'),
-('802', '170', 'Ingeniería Civil', '0'),
-('900', '180', 'Ingeniería Electrónica y Telecomunicaciones', '0'),
-('901', '180', 'Ingeniería en Automática Industrial', '0'),
-('902', '180', 'Ingeniería de Sistemas', '0'),
-('903', '180', 'Tecnología en Telemática', '0');
+INSERT INTO `PROGRAMA` (`PROID`, `FACID`, `PRONOMBRE`, `PROPRUEBAAD`, `PROSEDE`) VALUES
+('200', '100', 'Artes Plásticas', '1', 'Popayán'),
+('201', '100', 'Música', '1', 'Popayán'),
+('202', '100', 'Diseño Gráfico', '0', 'Popayán'),
+('300', '120', 'Medicina', '0', 'Popayán'),
+('301', '120', 'Enfermería', '0', 'Popayán'),
+('302', '120', 'Fisioterapia', '0', 'Popayán'),
+('303', '120', 'Fonoaudiología', '0', 'Popayán'),
+('400', '130', 'Economía', '0', 'Popayán'),
+('401', '130', 'Administración de Empresas', '0', 'Popayán'),
+('402', '130', 'Turismo', '0', 'Popayán'),
+('403', '130', 'Contaduría Pública', '0', 'Popayán'),
+('404', '130', 'Administración Financiera', '0', 'Regionalización'),
+('500', '140', 'Antropología', '0', 'Popayán'),
+('501', '140', 'Filosofía', '0', 'Popayán'),
+('502', '140', 'Geografía', '0', 'Popayán'),
+('503', '140', 'Historia', '0', 'Regionalización'),
+('504', '140', 'Licenciatura en Español y Literatura', '0', 'Popayán'),
+('505', '140', 'Licenciatura en Etnoeducación', '0', 'Regionalización'),
+('506', '140', 'Licenciatura en Lenguas Modernas Inglés-Francés', '0', 'Regionalización'),
+('600', '150', 'Matemáticas', '0', 'Popayán'),
+('700', '160', 'Ciencia Política', '0', 'Popayán'),
+('701', '160', 'Comunicación Social', '0', 'Popayán'),
+('702', '160', 'Derecho y Extensiones', '0', 'Popayán'),
+('703', '160', 'Derecho Cobertura', '0', 'Regionalización'),
+('800', '170', 'Geotecnología', '0', 'Regionalización'),
+('801', '170', 'Ingeniería Ambiental', '0', 'Popayán'),
+('802', '170', 'Ingeniería Civil', '0', 'Popayán'),
+('900', '180', 'Ingeniería Electrónica y Telecomunicaciones', '0', 'Popayán'),
+('901', '180', 'Ingeniería en Automática Industrial', '0', 'Popayán'),
+('902', '180', 'Ingeniería de Sistemas', '0', 'Popayán'),
+('903', '180', 'Tecnología en Telemática', '0', 'Popayán');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PROGRAMACASOS`
+-- Table structure for table `PROGRAMACASOS`
 --
 
 CREATE TABLE `PROGRAMACASOS` (
@@ -178,7 +179,7 @@ CREATE TABLE `PROGRAMACASOS` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PROGRAMACASOS`
+-- Dumping data for table `PROGRAMACASOS`
 --
 
 INSERT INTO `PROGRAMACASOS` (`ESPID`, `PROID`, `PERID`, `PROGCASOSCUPOS`) VALUES
@@ -225,7 +226,7 @@ INSERT INTO `PROGRAMACASOS` (`ESPID`, `PROID`, `PERID`, `PROGCASOSCUPOS`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PROGRAMACOMPONENTES`
+-- Table structure for table `PROGRAMACOMPONENTES`
 --
 
 CREATE TABLE `PROGRAMACOMPONENTES` (
@@ -236,11 +237,15 @@ CREATE TABLE `PROGRAMACOMPONENTES` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PROGRAMACOMPONENTES`
+-- Dumping data for table `PROGRAMACOMPONENTES`
 --
 
 INSERT INTO `PROGRAMACOMPONENTES` (`PROID`, `PERID`, `COMPID`, `PROGCOMPPONDERADO`) VALUES
+('200', '2017.2', '160', '45'),
+('200', '2017.2', '161', '43'),
 ('200', '2017.2', '162', '40'),
+('200', '2017.2', '163', '35'),
+('200', '2017.2', '164', '40'),
 ('202', '2017.2', '160', '25'),
 ('202', '2017.2', '161', '25'),
 ('202', '2017.2', '162', '45'),
@@ -256,78 +261,112 @@ INSERT INTO `PROGRAMACOMPONENTES` (`PROID`, `PERID`, `COMPID`, `PROGCOMPPONDERAD
 ('401', '2017.2', '162', '45'),
 ('401', '2017.2', '163', '20'),
 ('401', '2017.2', '164', '30'),
+('403', '2017.2', '160', '40'),
+('403', '2017.2', '161', '43'),
+('403', '2017.2', '162', '37'),
+('403', '2017.2', '163', '36'),
+('403', '2017.2', '164', '39'),
 ('404', '2017.2', '160', '25'),
 ('404', '2017.2', '161', '35'),
 ('404', '2017.2', '162', '25'),
 ('404', '2017.2', '163', '25'),
+('404', '2017.2', '164', '45'),
+('500', '2017.2', '160', '39'),
 ('500', '2017.2', '161', '50'),
+('500', '2017.2', '162', '40'),
 ('500', '2017.2', '163', '40'),
 ('500', '2017.2', '164', '40'),
+('502', '2017.2', '160', '46'),
+('502', '2017.2', '161', '38'),
+('502', '2017.2', '162', '39'),
+('502', '2017.2', '163', '36'),
+('502', '2017.2', '164', '37'),
 ('600', '2017.2', '160', '25'),
 ('600', '2017.2', '161', '60'),
 ('600', '2017.2', '162', '25'),
 ('600', '2017.2', '163', '25'),
 ('600', '2017.2', '164', '25'),
+('703', '2017.2', '160', '36'),
+('703', '2017.2', '161', '41'),
+('703', '2017.2', '162', '40'),
+('703', '2017.2', '163', '34'),
+('703', '2017.2', '164', '41'),
+('801', '2017.2', '160', '38'),
+('801', '2017.2', '161', '58'),
+('801', '2017.2', '162', '49'),
+('801', '2017.2', '163', '43'),
+('801', '2017.2', '164', '45'),
+('901', '2017.2', '160', '45'),
+('901', '2017.2', '161', '56'),
+('901', '2017.2', '162', '40'),
+('901', '2017.2', '163', '43'),
+('901', '2017.2', '164', '40'),
 ('902', '2017.2', '160', '25'),
 ('902', '2017.2', '161', '25'),
 ('902', '2017.2', '162', '25'),
 ('902', '2017.2', '163', '35'),
-('902', '2017.2', '164', '35');
+('902', '2017.2', '164', '35'),
+('903', '2017.2', '160', '40'),
+('903', '2017.2', '161', '41'),
+('903', '2017.2', '162', '40'),
+('903', '2017.2', '163', '35'),
+('903', '2017.2', '164', '39');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PROGRAMAOFERTADO`
+-- Table structure for table `PROGRAMAOFERTADO`
 --
 
 CREATE TABLE `PROGRAMAOFERTADO` (
   `PROID` decimal(3,0) NOT NULL,
   `PERID` decimal(5,1) NOT NULL,
   `PROGOFCUPOSREGULARES` decimal(2,0) NOT NULL,
-  `PROGOFLISTADEESPERA` decimal(2,0) NOT NULL
+  `PROGOFLISTADEESPERA` decimal(2,0) NOT NULL,
+  `PROGOFCUPOSTOTALES` decimal(3,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PROGRAMAOFERTADO`
+-- Dumping data for table `PROGRAMAOFERTADO`
 --
 
-INSERT INTO `PROGRAMAOFERTADO` (`PROID`, `PERID`, `PROGOFCUPOSREGULARES`, `PROGOFLISTADEESPERA`) VALUES
-('200', '2017.2', '54', '10'),
-('201', '2017.2', '40', '12'),
-('202', '2017.2', '60', '10'),
-('300', '2017.2', '40', '12'),
-('301', '2017.2', '60', '10'),
-('302', '2017.2', '60', '10'),
-('303', '2017.2', '65', '10'),
-('400', '2017.2', '50', '12'),
-('401', '2017.2', '60', '10'),
-('402', '2017.2', '55', '12'),
-('403', '2017.2', '45', '12'),
-('404', '2017.2', '55', '12'),
-('500', '2017.2', '43', '12'),
-('501', '2017.2', '55', '12'),
-('502', '2017.2', '56', '12'),
-('503', '2017.2', '50', '10'),
-('504', '2017.2', '45', '12'),
-('505', '2017.2', '50', '10'),
-('506', '2017.2', '65', '10'),
-('600', '2017.2', '50', '10'),
-('700', '2017.2', '60', '10'),
-('701', '2017.2', '60', '12'),
-('702', '2017.2', '45', '10'),
-('703', '2017.2', '56', '10'),
-('800', '2017.2', '45', '10'),
-('801', '2017.2', '50', '10'),
-('802', '2017.2', '45', '10'),
-('900', '2017.2', '46', '10'),
-('901', '2017.2', '50', '10'),
-('902', '2017.2', '40', '10'),
-('903', '2017.2', '45', '12');
+INSERT INTO `PROGRAMAOFERTADO` (`PROID`, `PERID`, `PROGOFCUPOSREGULARES`, `PROGOFLISTADEESPERA`, `PROGOFCUPOSTOTALES`) VALUES
+('200', '2017.2', '54', '10', '64'),
+('201', '2017.2', '40', '12', '52'),
+('202', '2017.2', '60', '10', '70'),
+('300', '2017.2', '40', '12', '52'),
+('301', '2017.2', '60', '10', '70'),
+('302', '2017.2', '60', '10', '70'),
+('303', '2017.2', '65', '10', '75'),
+('400', '2017.2', '50', '12', '62'),
+('401', '2017.2', '60', '10', '70'),
+('402', '2017.2', '55', '12', '67'),
+('403', '2017.2', '45', '12', '57'),
+('404', '2017.2', '55', '12', '67'),
+('500', '2017.2', '43', '12', '57'),
+('501', '2017.2', '55', '12', '57'),
+('502', '2017.2', '56', '12', '68'),
+('503', '2017.2', '50', '10', '60'),
+('504', '2017.2', '45', '12', '57'),
+('505', '2017.2', '50', '10', '60'),
+('506', '2017.2', '65', '10', '75'),
+('600', '2017.2', '50', '10', '60'),
+('700', '2017.2', '60', '10', '70'),
+('701', '2017.2', '60', '12', '72'),
+('702', '2017.2', '45', '10', '55'),
+('703', '2017.2', '56', '10', '66'),
+('800', '2017.2', '45', '10', '55'),
+('801', '2017.2', '50', '10', '60'),
+('802', '2017.2', '45', '10', '54'),
+('900', '2017.2', '46', '10', '64'),
+('901', '2017.2', '50', '10', '60'),
+('902', '2017.2', '40', '10', '50'),
+('903', '2017.2', '45', '12', '57');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PRUEBAADICIONAL`
+-- Table structure for table `PRUEBAADICIONAL`
 --
 
 CREATE TABLE `PRUEBAADICIONAL` (
@@ -337,7 +376,7 @@ CREATE TABLE `PRUEBAADICIONAL` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `PRUEBAADICIONAL`
+-- Dumping data for table `PRUEBAADICIONAL`
 --
 
 INSERT INTO `PRUEBAADICIONAL` (`PROID`, `PERID`, `PRUEBAPONDERADO`) VALUES
@@ -345,42 +384,42 @@ INSERT INTO `PRUEBAADICIONAL` (`PROID`, `PERID`, `PRUEBAPONDERADO`) VALUES
 ('201', '2017.2', '40');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `CASOSESPECIALES`
+-- Indexes for table `CASOSESPECIALES`
 --
 ALTER TABLE `CASOSESPECIALES`
   ADD PRIMARY KEY (`ESPID`);
 
 --
--- Indices de la tabla `COMPONENTESICFES`
+-- Indexes for table `COMPONENTESICFES`
 --
 ALTER TABLE `COMPONENTESICFES`
   ADD PRIMARY KEY (`COMPID`);
 
 --
--- Indices de la tabla `FACULTAD`
+-- Indexes for table `FACULTAD`
 --
 ALTER TABLE `FACULTAD`
   ADD PRIMARY KEY (`FACID`);
 
 --
--- Indices de la tabla `PERIODOACADEMICO`
+-- Indexes for table `PERIODOACADEMICO`
 --
 ALTER TABLE `PERIODOACADEMICO`
   ADD PRIMARY KEY (`PERID`);
 
 --
--- Indices de la tabla `PROGRAMA`
+-- Indexes for table `PROGRAMA`
 --
 ALTER TABLE `PROGRAMA`
   ADD PRIMARY KEY (`PROID`),
   ADD KEY `FACID` (`FACID`);
 
 --
--- Indices de la tabla `PROGRAMACASOS`
+-- Indexes for table `PROGRAMACASOS`
 --
 ALTER TABLE `PROGRAMACASOS`
   ADD PRIMARY KEY (`ESPID`,`PROID`,`PERID`),
@@ -389,7 +428,7 @@ ALTER TABLE `PROGRAMACASOS`
   ADD KEY `PERID` (`PERID`);
 
 --
--- Indices de la tabla `PROGRAMACOMPONENTES`
+-- Indexes for table `PROGRAMACOMPONENTES`
 --
 ALTER TABLE `PROGRAMACOMPONENTES`
   ADD PRIMARY KEY (`PROID`,`PERID`,`COMPID`),
@@ -398,7 +437,7 @@ ALTER TABLE `PROGRAMACOMPONENTES`
   ADD KEY `COMPID` (`COMPID`);
 
 --
--- Indices de la tabla `PROGRAMAOFERTADO`
+-- Indexes for table `PROGRAMAOFERTADO`
 --
 ALTER TABLE `PROGRAMAOFERTADO`
   ADD PRIMARY KEY (`PROID`,`PERID`),
@@ -406,7 +445,7 @@ ALTER TABLE `PROGRAMAOFERTADO`
   ADD KEY `PROID` (`PROID`);
 
 --
--- Indices de la tabla `PRUEBAADICIONAL`
+-- Indexes for table `PRUEBAADICIONAL`
 --
 ALTER TABLE `PRUEBAADICIONAL`
   ADD PRIMARY KEY (`PROID`,`PERID`),
@@ -414,17 +453,17 @@ ALTER TABLE `PRUEBAADICIONAL`
   ADD KEY `PERID` (`PERID`);
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `PROGRAMA`
+-- Constraints for table `PROGRAMA`
 --
 ALTER TABLE `PROGRAMA`
   ADD CONSTRAINT `PROGRAMA_ibfk_1` FOREIGN KEY (`FACID`) REFERENCES `FACULTAD` (`FACID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `PROGRAMACASOS`
+-- Constraints for table `PROGRAMACASOS`
 --
 ALTER TABLE `PROGRAMACASOS`
   ADD CONSTRAINT `PROGRAMACASOS_ibfk_2` FOREIGN KEY (`ESPID`) REFERENCES `CASOSESPECIALES` (`ESPID`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -432,7 +471,7 @@ ALTER TABLE `PROGRAMACASOS`
   ADD CONSTRAINT `PROGRAMACASOS_ibfk_6` FOREIGN KEY (`PERID`) REFERENCES `PERIODOACADEMICO` (`PERID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `PROGRAMACOMPONENTES`
+-- Constraints for table `PROGRAMACOMPONENTES`
 --
 ALTER TABLE `PROGRAMACOMPONENTES`
   ADD CONSTRAINT `PROGRAMACOMPONENTES_ibfk_1` FOREIGN KEY (`COMPID`) REFERENCES `COMPONENTESICFES` (`COMPID`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -440,14 +479,14 @@ ALTER TABLE `PROGRAMACOMPONENTES`
   ADD CONSTRAINT `PROGRAMACOMPONENTES_ibfk_3` FOREIGN KEY (`PERID`) REFERENCES `PERIODOACADEMICO` (`PERID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `PROGRAMAOFERTADO`
+-- Constraints for table `PROGRAMAOFERTADO`
 --
 ALTER TABLE `PROGRAMAOFERTADO`
   ADD CONSTRAINT `PROGRAMAOFERTADO_ibfk_1` FOREIGN KEY (`PERID`) REFERENCES `PERIODOACADEMICO` (`PERID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `PROGRAMAOFERTADO_ibfk_2` FOREIGN KEY (`PROID`) REFERENCES `PROGRAMA` (`PROID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `PRUEBAADICIONAL`
+-- Constraints for table `PRUEBAADICIONAL`
 --
 ALTER TABLE `PRUEBAADICIONAL`
   ADD CONSTRAINT `PRUEBAADICIONAL_ibfk_1` FOREIGN KEY (`PERID`) REFERENCES `PERIODOACADEMICO` (`PERID`) ON DELETE CASCADE ON UPDATE CASCADE,
