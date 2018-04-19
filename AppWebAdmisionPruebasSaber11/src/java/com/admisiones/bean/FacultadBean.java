@@ -16,24 +16,24 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
+
 @ManagedBean
 @RequestScoped
-
 public class FacultadBean {
-    
+
     private List<Facultad> listFacultades = new ArrayList();
     private EntityManagerFactory emf;
-    private String selectedFac;       
+    private String selectedFac; 
     
     /**
      * Creates a new instance of FacultadBean
      */
     public FacultadBean() {
     }
-
-    public String getSelectedFac() {
+    
+        public String getSelectedFac() {
         return selectedFac;
     }
 
@@ -42,7 +42,7 @@ public class FacultadBean {
     }
 
     public List<Facultad> getListFacultades() {
-        emf = Persistence.createEntityManagerFactory("admisionesPU");
+        emf = Persistence.createEntityManagerFactory("ProyectoII_AdmisionesSaber11PU");
         FacultadJpaController ctrl = new FacultadJpaController(emf);
         listFacultades = ctrl.findFacultadEntities();
         return listFacultades;        
@@ -55,9 +55,5 @@ public class FacultadBean {
     public void setListFacultades(List<Facultad> listFacultades) {
         this.listFacultades = listFacultades;
     }
-    
-    
-    
-    
-    
+
 }

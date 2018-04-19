@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @ManagedBean
 @RequestScoped
@@ -41,7 +41,7 @@ public class ProgramaBean {
     }
 
     public List<Programa> getListProgramas() {
-        emf = Persistence.createEntityManagerFactory("admisionesPU");
+        emf = Persistence.createEntityManagerFactory("ProyectoII_AdmisionesSaber11PU");
         ProgramaJpaController ctrl = new ProgramaJpaController(emf);
         listProgramas = ctrl.findProgramaEntities();
         return listProgramas;
@@ -59,5 +59,4 @@ public class ProgramaBean {
         }
         return listProgramasFac;
     }
-
 }

@@ -16,13 +16,14 @@ import com.admisiones.jpa.exceptions.IllegalOrphanException;
 import com.admisiones.jpa.exceptions.NonexistentEntityException;
 import com.admisiones.jpa.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class ComponentesicfesJpaController implements Serializable {
 
@@ -36,27 +37,27 @@ public class ComponentesicfesJpaController implements Serializable {
     }
 
     public void create(Componentesicfes componentesicfes) throws PreexistingEntityException, Exception {
-        if (componentesicfes.getProgramacomponentesList() == null) {
-            componentesicfes.setProgramacomponentesList(new ArrayList<Programacomponentes>());
+        if (componentesicfes.getProgramacomponentesCollection() == null) {
+            componentesicfes.setProgramacomponentesCollection(new ArrayList<Programacomponentes>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Programacomponentes> attachedProgramacomponentesList = new ArrayList<Programacomponentes>();
-            for (Programacomponentes programacomponentesListProgramacomponentesToAttach : componentesicfes.getProgramacomponentesList()) {
-                programacomponentesListProgramacomponentesToAttach = em.getReference(programacomponentesListProgramacomponentesToAttach.getClass(), programacomponentesListProgramacomponentesToAttach.getProgramacomponentesPK());
-                attachedProgramacomponentesList.add(programacomponentesListProgramacomponentesToAttach);
+            Collection<Programacomponentes> attachedProgramacomponentesCollection = new ArrayList<Programacomponentes>();
+            for (Programacomponentes programacomponentesCollectionProgramacomponentesToAttach : componentesicfes.getProgramacomponentesCollection()) {
+                programacomponentesCollectionProgramacomponentesToAttach = em.getReference(programacomponentesCollectionProgramacomponentesToAttach.getClass(), programacomponentesCollectionProgramacomponentesToAttach.getProgramacomponentesPK());
+                attachedProgramacomponentesCollection.add(programacomponentesCollectionProgramacomponentesToAttach);
             }
-            componentesicfes.setProgramacomponentesList(attachedProgramacomponentesList);
+            componentesicfes.setProgramacomponentesCollection(attachedProgramacomponentesCollection);
             em.persist(componentesicfes);
-            for (Programacomponentes programacomponentesListProgramacomponentes : componentesicfes.getProgramacomponentesList()) {
-                Componentesicfes oldComponentesicfesOfProgramacomponentesListProgramacomponentes = programacomponentesListProgramacomponentes.getComponentesicfes();
-                programacomponentesListProgramacomponentes.setComponentesicfes(componentesicfes);
-                programacomponentesListProgramacomponentes = em.merge(programacomponentesListProgramacomponentes);
-                if (oldComponentesicfesOfProgramacomponentesListProgramacomponentes != null) {
-                    oldComponentesicfesOfProgramacomponentesListProgramacomponentes.getProgramacomponentesList().remove(programacomponentesListProgramacomponentes);
-                    oldComponentesicfesOfProgramacomponentesListProgramacomponentes = em.merge(oldComponentesicfesOfProgramacomponentesListProgramacomponentes);
+            for (Programacomponentes programacomponentesCollectionProgramacomponentes : componentesicfes.getProgramacomponentesCollection()) {
+                Componentesicfes oldComponentesicfesOfProgramacomponentesCollectionProgramacomponentes = programacomponentesCollectionProgramacomponentes.getComponentesicfes();
+                programacomponentesCollectionProgramacomponentes.setComponentesicfes(componentesicfes);
+                programacomponentesCollectionProgramacomponentes = em.merge(programacomponentesCollectionProgramacomponentes);
+                if (oldComponentesicfesOfProgramacomponentesCollectionProgramacomponentes != null) {
+                    oldComponentesicfesOfProgramacomponentesCollectionProgramacomponentes.getProgramacomponentesCollection().remove(programacomponentesCollectionProgramacomponentes);
+                    oldComponentesicfesOfProgramacomponentesCollectionProgramacomponentes = em.merge(oldComponentesicfesOfProgramacomponentesCollectionProgramacomponentes);
                 }
             }
             em.getTransaction().commit();
@@ -78,36 +79,36 @@ public class ComponentesicfesJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Componentesicfes persistentComponentesicfes = em.find(Componentesicfes.class, componentesicfes.getCompid());
-            List<Programacomponentes> programacomponentesListOld = persistentComponentesicfes.getProgramacomponentesList();
-            List<Programacomponentes> programacomponentesListNew = componentesicfes.getProgramacomponentesList();
+            Collection<Programacomponentes> programacomponentesCollectionOld = persistentComponentesicfes.getProgramacomponentesCollection();
+            Collection<Programacomponentes> programacomponentesCollectionNew = componentesicfes.getProgramacomponentesCollection();
             List<String> illegalOrphanMessages = null;
-            for (Programacomponentes programacomponentesListOldProgramacomponentes : programacomponentesListOld) {
-                if (!programacomponentesListNew.contains(programacomponentesListOldProgramacomponentes)) {
+            for (Programacomponentes programacomponentesCollectionOldProgramacomponentes : programacomponentesCollectionOld) {
+                if (!programacomponentesCollectionNew.contains(programacomponentesCollectionOldProgramacomponentes)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programacomponentes " + programacomponentesListOldProgramacomponentes + " since its componentesicfes field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programacomponentes " + programacomponentesCollectionOldProgramacomponentes + " since its componentesicfes field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Programacomponentes> attachedProgramacomponentesListNew = new ArrayList<Programacomponentes>();
-            for (Programacomponentes programacomponentesListNewProgramacomponentesToAttach : programacomponentesListNew) {
-                programacomponentesListNewProgramacomponentesToAttach = em.getReference(programacomponentesListNewProgramacomponentesToAttach.getClass(), programacomponentesListNewProgramacomponentesToAttach.getProgramacomponentesPK());
-                attachedProgramacomponentesListNew.add(programacomponentesListNewProgramacomponentesToAttach);
+            Collection<Programacomponentes> attachedProgramacomponentesCollectionNew = new ArrayList<Programacomponentes>();
+            for (Programacomponentes programacomponentesCollectionNewProgramacomponentesToAttach : programacomponentesCollectionNew) {
+                programacomponentesCollectionNewProgramacomponentesToAttach = em.getReference(programacomponentesCollectionNewProgramacomponentesToAttach.getClass(), programacomponentesCollectionNewProgramacomponentesToAttach.getProgramacomponentesPK());
+                attachedProgramacomponentesCollectionNew.add(programacomponentesCollectionNewProgramacomponentesToAttach);
             }
-            programacomponentesListNew = attachedProgramacomponentesListNew;
-            componentesicfes.setProgramacomponentesList(programacomponentesListNew);
+            programacomponentesCollectionNew = attachedProgramacomponentesCollectionNew;
+            componentesicfes.setProgramacomponentesCollection(programacomponentesCollectionNew);
             componentesicfes = em.merge(componentesicfes);
-            for (Programacomponentes programacomponentesListNewProgramacomponentes : programacomponentesListNew) {
-                if (!programacomponentesListOld.contains(programacomponentesListNewProgramacomponentes)) {
-                    Componentesicfes oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes = programacomponentesListNewProgramacomponentes.getComponentesicfes();
-                    programacomponentesListNewProgramacomponentes.setComponentesicfes(componentesicfes);
-                    programacomponentesListNewProgramacomponentes = em.merge(programacomponentesListNewProgramacomponentes);
-                    if (oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes != null && !oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes.equals(componentesicfes)) {
-                        oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes.getProgramacomponentesList().remove(programacomponentesListNewProgramacomponentes);
-                        oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes = em.merge(oldComponentesicfesOfProgramacomponentesListNewProgramacomponentes);
+            for (Programacomponentes programacomponentesCollectionNewProgramacomponentes : programacomponentesCollectionNew) {
+                if (!programacomponentesCollectionOld.contains(programacomponentesCollectionNewProgramacomponentes)) {
+                    Componentesicfes oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes = programacomponentesCollectionNewProgramacomponentes.getComponentesicfes();
+                    programacomponentesCollectionNewProgramacomponentes.setComponentesicfes(componentesicfes);
+                    programacomponentesCollectionNewProgramacomponentes = em.merge(programacomponentesCollectionNewProgramacomponentes);
+                    if (oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes != null && !oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes.equals(componentesicfes)) {
+                        oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes.getProgramacomponentesCollection().remove(programacomponentesCollectionNewProgramacomponentes);
+                        oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes = em.merge(oldComponentesicfesOfProgramacomponentesCollectionNewProgramacomponentes);
                     }
                 }
             }
@@ -141,12 +142,12 @@ public class ComponentesicfesJpaController implements Serializable {
                 throw new NonexistentEntityException("The componentesicfes with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Programacomponentes> programacomponentesListOrphanCheck = componentesicfes.getProgramacomponentesList();
-            for (Programacomponentes programacomponentesListOrphanCheckProgramacomponentes : programacomponentesListOrphanCheck) {
+            Collection<Programacomponentes> programacomponentesCollectionOrphanCheck = componentesicfes.getProgramacomponentesCollection();
+            for (Programacomponentes programacomponentesCollectionOrphanCheckProgramacomponentes : programacomponentesCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Componentesicfes (" + componentesicfes + ") cannot be destroyed since the Programacomponentes " + programacomponentesListOrphanCheckProgramacomponentes + " in its programacomponentesList field has a non-nullable componentesicfes field.");
+                illegalOrphanMessages.add("This Componentesicfes (" + componentesicfes + ") cannot be destroyed since the Programacomponentes " + programacomponentesCollectionOrphanCheckProgramacomponentes + " in its programacomponentesCollection field has a non-nullable componentesicfes field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

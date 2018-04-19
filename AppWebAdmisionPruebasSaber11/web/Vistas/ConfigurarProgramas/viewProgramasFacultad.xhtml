@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="./../../Template.xhtml">
+
+            <ui:define name="content">                
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form id="form" > 
+                    <p:panel>
+                        <h2><h:outputText value="Ver Configuración de Programas Ofertados - #{facultadController.selected.facnombre} - #{periodoacademicoController.periodoActual}"></h:outputText></h2>
+                        <p:growl id="msgs" life="1000"/>
+                        <br/>
+                        <br/>
+                        <p:tabView scrollable="true">
+                            <p:tab title="Cupos">
+                                <p:dataTable var="obj" value="#{programaBean.programasFacultad}" >
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{obj.pronombre}" />
+                                    </p:column>   
+
+                                    <p:column headerText="Cupos Regulares" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getCupos('Cupos Regulares', obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Dificil Acceso" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getDificilAcceso(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Normalistas" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getNormalistas(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Indígena" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getIndigenas(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Zona Marginal" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getZonaMarginal(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Afrodescendiente" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getAfro(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Costa Pacífica" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getCostaPacifica(obj.proid)}"  />
+                                    </p:column>
+
+                                    <p:column headerText="Lista Espera" > 
+                                        <h:outputText value="#{gestionarInformacionProgramaBean.getCuposListaEspera(obj.proid)}"  />
+                                    </p:column>                                </p:dataTable>    
+                            </p:tab>
+                            <p:tab title="Ponderados ICFES">
+                                <p:dataTable var="obj" value="#{programaBean.programasFacultad}" >
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{obj.pronombre}" />
+                                    </p:column>   
+                                </p:dataTable>    
+                            </p:tab>
+                        </p:tabView>
+                    </p:panel>
+                </h:form>
+            </ui:define>            
+        </ui:composition>
+    </h:body>
+</html>

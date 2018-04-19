@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Embeddable
 public class ProgramacasosPK implements Serializable {

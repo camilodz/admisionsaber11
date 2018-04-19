@@ -23,7 +23,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class ProgramacomponentesJpaController implements Serializable {
 
@@ -40,9 +40,9 @@ public class ProgramacomponentesJpaController implements Serializable {
         if (programacomponentes.getProgramacomponentesPK() == null) {
             programacomponentes.setProgramacomponentesPK(new ProgramacomponentesPK());
         }
-        programacomponentes.getProgramacomponentesPK().setCompid(programacomponentes.getComponentesicfes().getCompid());
         programacomponentes.getProgramacomponentesPK().setPerid(programacomponentes.getPeriodoacademico().getPerid());
         programacomponentes.getProgramacomponentesPK().setProid(programacomponentes.getPrograma().getProid());
+        programacomponentes.getProgramacomponentesPK().setCompid(programacomponentes.getComponentesicfes().getCompid());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -64,15 +64,15 @@ public class ProgramacomponentesJpaController implements Serializable {
             }
             em.persist(programacomponentes);
             if (componentesicfes != null) {
-                componentesicfes.getProgramacomponentesList().add(programacomponentes);
+                componentesicfes.getProgramacomponentesCollection().add(programacomponentes);
                 componentesicfes = em.merge(componentesicfes);
             }
             if (programa != null) {
-                programa.getProgramacomponentesList().add(programacomponentes);
+                programa.getProgramacomponentesCollection().add(programacomponentes);
                 programa = em.merge(programa);
             }
             if (periodoacademico != null) {
-                periodoacademico.getProgramacomponentesList().add(programacomponentes);
+                periodoacademico.getProgramacomponentesCollection().add(programacomponentes);
                 periodoacademico = em.merge(periodoacademico);
             }
             em.getTransaction().commit();
@@ -89,9 +89,9 @@ public class ProgramacomponentesJpaController implements Serializable {
     }
 
     public void edit(Programacomponentes programacomponentes) throws NonexistentEntityException, Exception {
-        programacomponentes.getProgramacomponentesPK().setCompid(programacomponentes.getComponentesicfes().getCompid());
         programacomponentes.getProgramacomponentesPK().setPerid(programacomponentes.getPeriodoacademico().getPerid());
         programacomponentes.getProgramacomponentesPK().setProid(programacomponentes.getPrograma().getProid());
+        programacomponentes.getProgramacomponentesPK().setCompid(programacomponentes.getComponentesicfes().getCompid());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -117,27 +117,27 @@ public class ProgramacomponentesJpaController implements Serializable {
             }
             programacomponentes = em.merge(programacomponentes);
             if (componentesicfesOld != null && !componentesicfesOld.equals(componentesicfesNew)) {
-                componentesicfesOld.getProgramacomponentesList().remove(programacomponentes);
+                componentesicfesOld.getProgramacomponentesCollection().remove(programacomponentes);
                 componentesicfesOld = em.merge(componentesicfesOld);
             }
             if (componentesicfesNew != null && !componentesicfesNew.equals(componentesicfesOld)) {
-                componentesicfesNew.getProgramacomponentesList().add(programacomponentes);
+                componentesicfesNew.getProgramacomponentesCollection().add(programacomponentes);
                 componentesicfesNew = em.merge(componentesicfesNew);
             }
             if (programaOld != null && !programaOld.equals(programaNew)) {
-                programaOld.getProgramacomponentesList().remove(programacomponentes);
+                programaOld.getProgramacomponentesCollection().remove(programacomponentes);
                 programaOld = em.merge(programaOld);
             }
             if (programaNew != null && !programaNew.equals(programaOld)) {
-                programaNew.getProgramacomponentesList().add(programacomponentes);
+                programaNew.getProgramacomponentesCollection().add(programacomponentes);
                 programaNew = em.merge(programaNew);
             }
             if (periodoacademicoOld != null && !periodoacademicoOld.equals(periodoacademicoNew)) {
-                periodoacademicoOld.getProgramacomponentesList().remove(programacomponentes);
+                periodoacademicoOld.getProgramacomponentesCollection().remove(programacomponentes);
                 periodoacademicoOld = em.merge(periodoacademicoOld);
             }
             if (periodoacademicoNew != null && !periodoacademicoNew.equals(periodoacademicoOld)) {
-                periodoacademicoNew.getProgramacomponentesList().add(programacomponentes);
+                periodoacademicoNew.getProgramacomponentesCollection().add(programacomponentes);
                 periodoacademicoNew = em.merge(periodoacademicoNew);
             }
             em.getTransaction().commit();
@@ -171,17 +171,17 @@ public class ProgramacomponentesJpaController implements Serializable {
             }
             Componentesicfes componentesicfes = programacomponentes.getComponentesicfes();
             if (componentesicfes != null) {
-                componentesicfes.getProgramacomponentesList().remove(programacomponentes);
+                componentesicfes.getProgramacomponentesCollection().remove(programacomponentes);
                 componentesicfes = em.merge(componentesicfes);
             }
             Programa programa = programacomponentes.getPrograma();
             if (programa != null) {
-                programa.getProgramacomponentesList().remove(programacomponentes);
+                programa.getProgramacomponentesCollection().remove(programacomponentes);
                 programa = em.merge(programa);
             }
             Periodoacademico periodoacademico = programacomponentes.getPeriodoacademico();
             if (periodoacademico != null) {
-                periodoacademico.getProgramacomponentesList().remove(programacomponentes);
+                periodoacademico.getProgramacomponentesCollection().remove(programacomponentes);
                 periodoacademico = em.merge(periodoacademico);
             }
             em.remove(programacomponentes);

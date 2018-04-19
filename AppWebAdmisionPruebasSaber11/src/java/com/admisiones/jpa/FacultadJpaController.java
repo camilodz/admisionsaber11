@@ -16,13 +16,14 @@ import com.admisiones.jpa.exceptions.IllegalOrphanException;
 import com.admisiones.jpa.exceptions.NonexistentEntityException;
 import com.admisiones.jpa.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class FacultadJpaController implements Serializable {
 
@@ -36,27 +37,27 @@ public class FacultadJpaController implements Serializable {
     }
 
     public void create(Facultad facultad) throws PreexistingEntityException, Exception {
-        if (facultad.getProgramaList() == null) {
-            facultad.setProgramaList(new ArrayList<Programa>());
+        if (facultad.getProgramaCollection() == null) {
+            facultad.setProgramaCollection(new ArrayList<Programa>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Programa> attachedProgramaList = new ArrayList<Programa>();
-            for (Programa programaListProgramaToAttach : facultad.getProgramaList()) {
-                programaListProgramaToAttach = em.getReference(programaListProgramaToAttach.getClass(), programaListProgramaToAttach.getProid());
-                attachedProgramaList.add(programaListProgramaToAttach);
+            Collection<Programa> attachedProgramaCollection = new ArrayList<Programa>();
+            for (Programa programaCollectionProgramaToAttach : facultad.getProgramaCollection()) {
+                programaCollectionProgramaToAttach = em.getReference(programaCollectionProgramaToAttach.getClass(), programaCollectionProgramaToAttach.getProid());
+                attachedProgramaCollection.add(programaCollectionProgramaToAttach);
             }
-            facultad.setProgramaList(attachedProgramaList);
+            facultad.setProgramaCollection(attachedProgramaCollection);
             em.persist(facultad);
-            for (Programa programaListPrograma : facultad.getProgramaList()) {
-                Facultad oldFacidOfProgramaListPrograma = programaListPrograma.getFacid();
-                programaListPrograma.setFacid(facultad);
-                programaListPrograma = em.merge(programaListPrograma);
-                if (oldFacidOfProgramaListPrograma != null) {
-                    oldFacidOfProgramaListPrograma.getProgramaList().remove(programaListPrograma);
-                    oldFacidOfProgramaListPrograma = em.merge(oldFacidOfProgramaListPrograma);
+            for (Programa programaCollectionPrograma : facultad.getProgramaCollection()) {
+                Facultad oldFacidOfProgramaCollectionPrograma = programaCollectionPrograma.getFacid();
+                programaCollectionPrograma.setFacid(facultad);
+                programaCollectionPrograma = em.merge(programaCollectionPrograma);
+                if (oldFacidOfProgramaCollectionPrograma != null) {
+                    oldFacidOfProgramaCollectionPrograma.getProgramaCollection().remove(programaCollectionPrograma);
+                    oldFacidOfProgramaCollectionPrograma = em.merge(oldFacidOfProgramaCollectionPrograma);
                 }
             }
             em.getTransaction().commit();
@@ -78,36 +79,36 @@ public class FacultadJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Facultad persistentFacultad = em.find(Facultad.class, facultad.getFacid());
-            List<Programa> programaListOld = persistentFacultad.getProgramaList();
-            List<Programa> programaListNew = facultad.getProgramaList();
+            Collection<Programa> programaCollectionOld = persistentFacultad.getProgramaCollection();
+            Collection<Programa> programaCollectionNew = facultad.getProgramaCollection();
             List<String> illegalOrphanMessages = null;
-            for (Programa programaListOldPrograma : programaListOld) {
-                if (!programaListNew.contains(programaListOldPrograma)) {
+            for (Programa programaCollectionOldPrograma : programaCollectionOld) {
+                if (!programaCollectionNew.contains(programaCollectionOldPrograma)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programa " + programaListOldPrograma + " since its facid field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programa " + programaCollectionOldPrograma + " since its facid field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Programa> attachedProgramaListNew = new ArrayList<Programa>();
-            for (Programa programaListNewProgramaToAttach : programaListNew) {
-                programaListNewProgramaToAttach = em.getReference(programaListNewProgramaToAttach.getClass(), programaListNewProgramaToAttach.getProid());
-                attachedProgramaListNew.add(programaListNewProgramaToAttach);
+            Collection<Programa> attachedProgramaCollectionNew = new ArrayList<Programa>();
+            for (Programa programaCollectionNewProgramaToAttach : programaCollectionNew) {
+                programaCollectionNewProgramaToAttach = em.getReference(programaCollectionNewProgramaToAttach.getClass(), programaCollectionNewProgramaToAttach.getProid());
+                attachedProgramaCollectionNew.add(programaCollectionNewProgramaToAttach);
             }
-            programaListNew = attachedProgramaListNew;
-            facultad.setProgramaList(programaListNew);
+            programaCollectionNew = attachedProgramaCollectionNew;
+            facultad.setProgramaCollection(programaCollectionNew);
             facultad = em.merge(facultad);
-            for (Programa programaListNewPrograma : programaListNew) {
-                if (!programaListOld.contains(programaListNewPrograma)) {
-                    Facultad oldFacidOfProgramaListNewPrograma = programaListNewPrograma.getFacid();
-                    programaListNewPrograma.setFacid(facultad);
-                    programaListNewPrograma = em.merge(programaListNewPrograma);
-                    if (oldFacidOfProgramaListNewPrograma != null && !oldFacidOfProgramaListNewPrograma.equals(facultad)) {
-                        oldFacidOfProgramaListNewPrograma.getProgramaList().remove(programaListNewPrograma);
-                        oldFacidOfProgramaListNewPrograma = em.merge(oldFacidOfProgramaListNewPrograma);
+            for (Programa programaCollectionNewPrograma : programaCollectionNew) {
+                if (!programaCollectionOld.contains(programaCollectionNewPrograma)) {
+                    Facultad oldFacidOfProgramaCollectionNewPrograma = programaCollectionNewPrograma.getFacid();
+                    programaCollectionNewPrograma.setFacid(facultad);
+                    programaCollectionNewPrograma = em.merge(programaCollectionNewPrograma);
+                    if (oldFacidOfProgramaCollectionNewPrograma != null && !oldFacidOfProgramaCollectionNewPrograma.equals(facultad)) {
+                        oldFacidOfProgramaCollectionNewPrograma.getProgramaCollection().remove(programaCollectionNewPrograma);
+                        oldFacidOfProgramaCollectionNewPrograma = em.merge(oldFacidOfProgramaCollectionNewPrograma);
                     }
                 }
             }
@@ -141,12 +142,12 @@ public class FacultadJpaController implements Serializable {
                 throw new NonexistentEntityException("The facultad with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Programa> programaListOrphanCheck = facultad.getProgramaList();
-            for (Programa programaListOrphanCheckPrograma : programaListOrphanCheck) {
+            Collection<Programa> programaCollectionOrphanCheck = facultad.getProgramaCollection();
+            for (Programa programaCollectionOrphanCheckPrograma : programaCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Facultad (" + facultad + ") cannot be destroyed since the Programa " + programaListOrphanCheckPrograma + " in its programaList field has a non-nullable facid field.");
+                illegalOrphanMessages.add("This Facultad (" + facultad + ") cannot be destroyed since the Programa " + programaCollectionOrphanCheckPrograma + " in its programaCollection field has a non-nullable facid field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

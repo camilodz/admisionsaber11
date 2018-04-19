@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="AdmisionesSaber11" default="default" basedir=".">
-    <description>Builds, tests, and runs the project AdmisionesSaber11.</description>
+<project name="ProyectoII_AdmisionesSaber11" default="default" basedir=".">
+    <description>Builds, tests, and runs the project ProyectoII_AdmisionesSaber11.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

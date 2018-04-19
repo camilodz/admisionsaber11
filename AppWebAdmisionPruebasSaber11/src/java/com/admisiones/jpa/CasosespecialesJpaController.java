@@ -16,13 +16,14 @@ import com.admisiones.jpa.exceptions.IllegalOrphanException;
 import com.admisiones.jpa.exceptions.NonexistentEntityException;
 import com.admisiones.jpa.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class CasosespecialesJpaController implements Serializable {
 
@@ -36,27 +37,27 @@ public class CasosespecialesJpaController implements Serializable {
     }
 
     public void create(Casosespeciales casosespeciales) throws PreexistingEntityException, Exception {
-        if (casosespeciales.getProgramacasosList() == null) {
-            casosespeciales.setProgramacasosList(new ArrayList<Programacasos>());
+        if (casosespeciales.getProgramacasosCollection() == null) {
+            casosespeciales.setProgramacasosCollection(new ArrayList<Programacasos>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Programacasos> attachedProgramacasosList = new ArrayList<Programacasos>();
-            for (Programacasos programacasosListProgramacasosToAttach : casosespeciales.getProgramacasosList()) {
-                programacasosListProgramacasosToAttach = em.getReference(programacasosListProgramacasosToAttach.getClass(), programacasosListProgramacasosToAttach.getProgramacasosPK());
-                attachedProgramacasosList.add(programacasosListProgramacasosToAttach);
+            Collection<Programacasos> attachedProgramacasosCollection = new ArrayList<Programacasos>();
+            for (Programacasos programacasosCollectionProgramacasosToAttach : casosespeciales.getProgramacasosCollection()) {
+                programacasosCollectionProgramacasosToAttach = em.getReference(programacasosCollectionProgramacasosToAttach.getClass(), programacasosCollectionProgramacasosToAttach.getProgramacasosPK());
+                attachedProgramacasosCollection.add(programacasosCollectionProgramacasosToAttach);
             }
-            casosespeciales.setProgramacasosList(attachedProgramacasosList);
+            casosespeciales.setProgramacasosCollection(attachedProgramacasosCollection);
             em.persist(casosespeciales);
-            for (Programacasos programacasosListProgramacasos : casosespeciales.getProgramacasosList()) {
-                Casosespeciales oldCasosespecialesOfProgramacasosListProgramacasos = programacasosListProgramacasos.getCasosespeciales();
-                programacasosListProgramacasos.setCasosespeciales(casosespeciales);
-                programacasosListProgramacasos = em.merge(programacasosListProgramacasos);
-                if (oldCasosespecialesOfProgramacasosListProgramacasos != null) {
-                    oldCasosespecialesOfProgramacasosListProgramacasos.getProgramacasosList().remove(programacasosListProgramacasos);
-                    oldCasosespecialesOfProgramacasosListProgramacasos = em.merge(oldCasosespecialesOfProgramacasosListProgramacasos);
+            for (Programacasos programacasosCollectionProgramacasos : casosespeciales.getProgramacasosCollection()) {
+                Casosespeciales oldCasosespecialesOfProgramacasosCollectionProgramacasos = programacasosCollectionProgramacasos.getCasosespeciales();
+                programacasosCollectionProgramacasos.setCasosespeciales(casosespeciales);
+                programacasosCollectionProgramacasos = em.merge(programacasosCollectionProgramacasos);
+                if (oldCasosespecialesOfProgramacasosCollectionProgramacasos != null) {
+                    oldCasosespecialesOfProgramacasosCollectionProgramacasos.getProgramacasosCollection().remove(programacasosCollectionProgramacasos);
+                    oldCasosespecialesOfProgramacasosCollectionProgramacasos = em.merge(oldCasosespecialesOfProgramacasosCollectionProgramacasos);
                 }
             }
             em.getTransaction().commit();
@@ -78,36 +79,36 @@ public class CasosespecialesJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Casosespeciales persistentCasosespeciales = em.find(Casosespeciales.class, casosespeciales.getEspid());
-            List<Programacasos> programacasosListOld = persistentCasosespeciales.getProgramacasosList();
-            List<Programacasos> programacasosListNew = casosespeciales.getProgramacasosList();
+            Collection<Programacasos> programacasosCollectionOld = persistentCasosespeciales.getProgramacasosCollection();
+            Collection<Programacasos> programacasosCollectionNew = casosespeciales.getProgramacasosCollection();
             List<String> illegalOrphanMessages = null;
-            for (Programacasos programacasosListOldProgramacasos : programacasosListOld) {
-                if (!programacasosListNew.contains(programacasosListOldProgramacasos)) {
+            for (Programacasos programacasosCollectionOldProgramacasos : programacasosCollectionOld) {
+                if (!programacasosCollectionNew.contains(programacasosCollectionOldProgramacasos)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programacasos " + programacasosListOldProgramacasos + " since its casosespeciales field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programacasos " + programacasosCollectionOldProgramacasos + " since its casosespeciales field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Programacasos> attachedProgramacasosListNew = new ArrayList<Programacasos>();
-            for (Programacasos programacasosListNewProgramacasosToAttach : programacasosListNew) {
-                programacasosListNewProgramacasosToAttach = em.getReference(programacasosListNewProgramacasosToAttach.getClass(), programacasosListNewProgramacasosToAttach.getProgramacasosPK());
-                attachedProgramacasosListNew.add(programacasosListNewProgramacasosToAttach);
+            Collection<Programacasos> attachedProgramacasosCollectionNew = new ArrayList<Programacasos>();
+            for (Programacasos programacasosCollectionNewProgramacasosToAttach : programacasosCollectionNew) {
+                programacasosCollectionNewProgramacasosToAttach = em.getReference(programacasosCollectionNewProgramacasosToAttach.getClass(), programacasosCollectionNewProgramacasosToAttach.getProgramacasosPK());
+                attachedProgramacasosCollectionNew.add(programacasosCollectionNewProgramacasosToAttach);
             }
-            programacasosListNew = attachedProgramacasosListNew;
-            casosespeciales.setProgramacasosList(programacasosListNew);
+            programacasosCollectionNew = attachedProgramacasosCollectionNew;
+            casosespeciales.setProgramacasosCollection(programacasosCollectionNew);
             casosespeciales = em.merge(casosespeciales);
-            for (Programacasos programacasosListNewProgramacasos : programacasosListNew) {
-                if (!programacasosListOld.contains(programacasosListNewProgramacasos)) {
-                    Casosespeciales oldCasosespecialesOfProgramacasosListNewProgramacasos = programacasosListNewProgramacasos.getCasosespeciales();
-                    programacasosListNewProgramacasos.setCasosespeciales(casosespeciales);
-                    programacasosListNewProgramacasos = em.merge(programacasosListNewProgramacasos);
-                    if (oldCasosespecialesOfProgramacasosListNewProgramacasos != null && !oldCasosespecialesOfProgramacasosListNewProgramacasos.equals(casosespeciales)) {
-                        oldCasosespecialesOfProgramacasosListNewProgramacasos.getProgramacasosList().remove(programacasosListNewProgramacasos);
-                        oldCasosespecialesOfProgramacasosListNewProgramacasos = em.merge(oldCasosespecialesOfProgramacasosListNewProgramacasos);
+            for (Programacasos programacasosCollectionNewProgramacasos : programacasosCollectionNew) {
+                if (!programacasosCollectionOld.contains(programacasosCollectionNewProgramacasos)) {
+                    Casosespeciales oldCasosespecialesOfProgramacasosCollectionNewProgramacasos = programacasosCollectionNewProgramacasos.getCasosespeciales();
+                    programacasosCollectionNewProgramacasos.setCasosespeciales(casosespeciales);
+                    programacasosCollectionNewProgramacasos = em.merge(programacasosCollectionNewProgramacasos);
+                    if (oldCasosespecialesOfProgramacasosCollectionNewProgramacasos != null && !oldCasosespecialesOfProgramacasosCollectionNewProgramacasos.equals(casosespeciales)) {
+                        oldCasosespecialesOfProgramacasosCollectionNewProgramacasos.getProgramacasosCollection().remove(programacasosCollectionNewProgramacasos);
+                        oldCasosespecialesOfProgramacasosCollectionNewProgramacasos = em.merge(oldCasosespecialesOfProgramacasosCollectionNewProgramacasos);
                     }
                 }
             }
@@ -141,12 +142,12 @@ public class CasosespecialesJpaController implements Serializable {
                 throw new NonexistentEntityException("The casosespeciales with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Programacasos> programacasosListOrphanCheck = casosespeciales.getProgramacasosList();
-            for (Programacasos programacasosListOrphanCheckProgramacasos : programacasosListOrphanCheck) {
+            Collection<Programacasos> programacasosCollectionOrphanCheck = casosespeciales.getProgramacasosCollection();
+            for (Programacasos programacasosCollectionOrphanCheckProgramacasos : programacasosCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Casosespeciales (" + casosespeciales + ") cannot be destroyed since the Programacasos " + programacasosListOrphanCheckProgramacasos + " in its programacasosList field has a non-nullable casosespeciales field.");
+                illegalOrphanMessages.add("This Casosespeciales (" + casosespeciales + ") cannot be destroyed since the Programacasos " + programacasosCollectionOrphanCheckProgramacasos + " in its programacasosCollection field has a non-nullable casosespeciales field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

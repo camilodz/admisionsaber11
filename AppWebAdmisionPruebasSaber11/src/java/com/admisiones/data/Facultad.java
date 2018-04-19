@@ -6,7 +6,7 @@
 package com.admisiones.data;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Entity
 @Table(name = "facultad")
@@ -41,7 +41,7 @@ public class Facultad implements Serializable {
     @Column(name = "FACNOMBRE")
     private String facnombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facid")
-    private List<Programa> programaList;
+    private Collection<Programa> programaCollection;
 
     public Facultad() {
     }
@@ -72,12 +72,12 @@ public class Facultad implements Serializable {
     }
 
     @XmlTransient
-    public List<Programa> getProgramaList() {
-        return programaList;
+    public Collection<Programa> getProgramaCollection() {
+        return programaCollection;
     }
 
-    public void setProgramaList(List<Programa> programaList) {
-        this.programaList = programaList;
+    public void setProgramaCollection(Collection<Programa> programaCollection) {
+        this.programaCollection = programaCollection;
     }
 
     @Override

@@ -13,7 +13,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import com.admisiones.data.Programacasos;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import com.admisiones.data.Programacomponentes;
 import com.admisiones.data.Programaofertado;
 import com.admisiones.data.Pruebaadicional;
@@ -21,12 +21,13 @@ import com.admisiones.jpa.exceptions.IllegalOrphanException;
 import com.admisiones.jpa.exceptions.NonexistentEntityException;
 import com.admisiones.jpa.exceptions.PreexistingEntityException;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class PeriodoacademicoJpaController implements Serializable {
 
@@ -40,81 +41,81 @@ public class PeriodoacademicoJpaController implements Serializable {
     }
 
     public void create(Periodoacademico periodoacademico) throws PreexistingEntityException, Exception {
-        if (periodoacademico.getProgramacasosList() == null) {
-            periodoacademico.setProgramacasosList(new ArrayList<Programacasos>());
+        if (periodoacademico.getProgramacasosCollection() == null) {
+            periodoacademico.setProgramacasosCollection(new ArrayList<Programacasos>());
         }
-        if (periodoacademico.getProgramacomponentesList() == null) {
-            periodoacademico.setProgramacomponentesList(new ArrayList<Programacomponentes>());
+        if (periodoacademico.getProgramacomponentesCollection() == null) {
+            periodoacademico.setProgramacomponentesCollection(new ArrayList<Programacomponentes>());
         }
-        if (periodoacademico.getProgramaofertadoList() == null) {
-            periodoacademico.setProgramaofertadoList(new ArrayList<Programaofertado>());
+        if (periodoacademico.getProgramaofertadoCollection() == null) {
+            periodoacademico.setProgramaofertadoCollection(new ArrayList<Programaofertado>());
         }
-        if (periodoacademico.getPruebaadicionalList() == null) {
-            periodoacademico.setPruebaadicionalList(new ArrayList<Pruebaadicional>());
+        if (periodoacademico.getPruebaadicionalCollection() == null) {
+            periodoacademico.setPruebaadicionalCollection(new ArrayList<Pruebaadicional>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            List<Programacasos> attachedProgramacasosList = new ArrayList<Programacasos>();
-            for (Programacasos programacasosListProgramacasosToAttach : periodoacademico.getProgramacasosList()) {
-                programacasosListProgramacasosToAttach = em.getReference(programacasosListProgramacasosToAttach.getClass(), programacasosListProgramacasosToAttach.getProgramacasosPK());
-                attachedProgramacasosList.add(programacasosListProgramacasosToAttach);
+            Collection<Programacasos> attachedProgramacasosCollection = new ArrayList<Programacasos>();
+            for (Programacasos programacasosCollectionProgramacasosToAttach : periodoacademico.getProgramacasosCollection()) {
+                programacasosCollectionProgramacasosToAttach = em.getReference(programacasosCollectionProgramacasosToAttach.getClass(), programacasosCollectionProgramacasosToAttach.getProgramacasosPK());
+                attachedProgramacasosCollection.add(programacasosCollectionProgramacasosToAttach);
             }
-            periodoacademico.setProgramacasosList(attachedProgramacasosList);
-            List<Programacomponentes> attachedProgramacomponentesList = new ArrayList<Programacomponentes>();
-            for (Programacomponentes programacomponentesListProgramacomponentesToAttach : periodoacademico.getProgramacomponentesList()) {
-                programacomponentesListProgramacomponentesToAttach = em.getReference(programacomponentesListProgramacomponentesToAttach.getClass(), programacomponentesListProgramacomponentesToAttach.getProgramacomponentesPK());
-                attachedProgramacomponentesList.add(programacomponentesListProgramacomponentesToAttach);
+            periodoacademico.setProgramacasosCollection(attachedProgramacasosCollection);
+            Collection<Programacomponentes> attachedProgramacomponentesCollection = new ArrayList<Programacomponentes>();
+            for (Programacomponentes programacomponentesCollectionProgramacomponentesToAttach : periodoacademico.getProgramacomponentesCollection()) {
+                programacomponentesCollectionProgramacomponentesToAttach = em.getReference(programacomponentesCollectionProgramacomponentesToAttach.getClass(), programacomponentesCollectionProgramacomponentesToAttach.getProgramacomponentesPK());
+                attachedProgramacomponentesCollection.add(programacomponentesCollectionProgramacomponentesToAttach);
             }
-            periodoacademico.setProgramacomponentesList(attachedProgramacomponentesList);
-            List<Programaofertado> attachedProgramaofertadoList = new ArrayList<Programaofertado>();
-            for (Programaofertado programaofertadoListProgramaofertadoToAttach : periodoacademico.getProgramaofertadoList()) {
-                programaofertadoListProgramaofertadoToAttach = em.getReference(programaofertadoListProgramaofertadoToAttach.getClass(), programaofertadoListProgramaofertadoToAttach.getProgramaofertadoPK());
-                attachedProgramaofertadoList.add(programaofertadoListProgramaofertadoToAttach);
+            periodoacademico.setProgramacomponentesCollection(attachedProgramacomponentesCollection);
+            Collection<Programaofertado> attachedProgramaofertadoCollection = new ArrayList<Programaofertado>();
+            for (Programaofertado programaofertadoCollectionProgramaofertadoToAttach : periodoacademico.getProgramaofertadoCollection()) {
+                programaofertadoCollectionProgramaofertadoToAttach = em.getReference(programaofertadoCollectionProgramaofertadoToAttach.getClass(), programaofertadoCollectionProgramaofertadoToAttach.getProgramaofertadoPK());
+                attachedProgramaofertadoCollection.add(programaofertadoCollectionProgramaofertadoToAttach);
             }
-            periodoacademico.setProgramaofertadoList(attachedProgramaofertadoList);
-            List<Pruebaadicional> attachedPruebaadicionalList = new ArrayList<Pruebaadicional>();
-            for (Pruebaadicional pruebaadicionalListPruebaadicionalToAttach : periodoacademico.getPruebaadicionalList()) {
-                pruebaadicionalListPruebaadicionalToAttach = em.getReference(pruebaadicionalListPruebaadicionalToAttach.getClass(), pruebaadicionalListPruebaadicionalToAttach.getPruebaadicionalPK());
-                attachedPruebaadicionalList.add(pruebaadicionalListPruebaadicionalToAttach);
+            periodoacademico.setProgramaofertadoCollection(attachedProgramaofertadoCollection);
+            Collection<Pruebaadicional> attachedPruebaadicionalCollection = new ArrayList<Pruebaadicional>();
+            for (Pruebaadicional pruebaadicionalCollectionPruebaadicionalToAttach : periodoacademico.getPruebaadicionalCollection()) {
+                pruebaadicionalCollectionPruebaadicionalToAttach = em.getReference(pruebaadicionalCollectionPruebaadicionalToAttach.getClass(), pruebaadicionalCollectionPruebaadicionalToAttach.getPruebaadicionalPK());
+                attachedPruebaadicionalCollection.add(pruebaadicionalCollectionPruebaadicionalToAttach);
             }
-            periodoacademico.setPruebaadicionalList(attachedPruebaadicionalList);
+            periodoacademico.setPruebaadicionalCollection(attachedPruebaadicionalCollection);
             em.persist(periodoacademico);
-            for (Programacasos programacasosListProgramacasos : periodoacademico.getProgramacasosList()) {
-                Periodoacademico oldPeriodoacademicoOfProgramacasosListProgramacasos = programacasosListProgramacasos.getPeriodoacademico();
-                programacasosListProgramacasos.setPeriodoacademico(periodoacademico);
-                programacasosListProgramacasos = em.merge(programacasosListProgramacasos);
-                if (oldPeriodoacademicoOfProgramacasosListProgramacasos != null) {
-                    oldPeriodoacademicoOfProgramacasosListProgramacasos.getProgramacasosList().remove(programacasosListProgramacasos);
-                    oldPeriodoacademicoOfProgramacasosListProgramacasos = em.merge(oldPeriodoacademicoOfProgramacasosListProgramacasos);
+            for (Programacasos programacasosCollectionProgramacasos : periodoacademico.getProgramacasosCollection()) {
+                Periodoacademico oldPeriodoacademicoOfProgramacasosCollectionProgramacasos = programacasosCollectionProgramacasos.getPeriodoacademico();
+                programacasosCollectionProgramacasos.setPeriodoacademico(periodoacademico);
+                programacasosCollectionProgramacasos = em.merge(programacasosCollectionProgramacasos);
+                if (oldPeriodoacademicoOfProgramacasosCollectionProgramacasos != null) {
+                    oldPeriodoacademicoOfProgramacasosCollectionProgramacasos.getProgramacasosCollection().remove(programacasosCollectionProgramacasos);
+                    oldPeriodoacademicoOfProgramacasosCollectionProgramacasos = em.merge(oldPeriodoacademicoOfProgramacasosCollectionProgramacasos);
                 }
             }
-            for (Programacomponentes programacomponentesListProgramacomponentes : periodoacademico.getProgramacomponentesList()) {
-                Periodoacademico oldPeriodoacademicoOfProgramacomponentesListProgramacomponentes = programacomponentesListProgramacomponentes.getPeriodoacademico();
-                programacomponentesListProgramacomponentes.setPeriodoacademico(periodoacademico);
-                programacomponentesListProgramacomponentes = em.merge(programacomponentesListProgramacomponentes);
-                if (oldPeriodoacademicoOfProgramacomponentesListProgramacomponentes != null) {
-                    oldPeriodoacademicoOfProgramacomponentesListProgramacomponentes.getProgramacomponentesList().remove(programacomponentesListProgramacomponentes);
-                    oldPeriodoacademicoOfProgramacomponentesListProgramacomponentes = em.merge(oldPeriodoacademicoOfProgramacomponentesListProgramacomponentes);
+            for (Programacomponentes programacomponentesCollectionProgramacomponentes : periodoacademico.getProgramacomponentesCollection()) {
+                Periodoacademico oldPeriodoacademicoOfProgramacomponentesCollectionProgramacomponentes = programacomponentesCollectionProgramacomponentes.getPeriodoacademico();
+                programacomponentesCollectionProgramacomponentes.setPeriodoacademico(periodoacademico);
+                programacomponentesCollectionProgramacomponentes = em.merge(programacomponentesCollectionProgramacomponentes);
+                if (oldPeriodoacademicoOfProgramacomponentesCollectionProgramacomponentes != null) {
+                    oldPeriodoacademicoOfProgramacomponentesCollectionProgramacomponentes.getProgramacomponentesCollection().remove(programacomponentesCollectionProgramacomponentes);
+                    oldPeriodoacademicoOfProgramacomponentesCollectionProgramacomponentes = em.merge(oldPeriodoacademicoOfProgramacomponentesCollectionProgramacomponentes);
                 }
             }
-            for (Programaofertado programaofertadoListProgramaofertado : periodoacademico.getProgramaofertadoList()) {
-                Periodoacademico oldPeriodoacademicoOfProgramaofertadoListProgramaofertado = programaofertadoListProgramaofertado.getPeriodoacademico();
-                programaofertadoListProgramaofertado.setPeriodoacademico(periodoacademico);
-                programaofertadoListProgramaofertado = em.merge(programaofertadoListProgramaofertado);
-                if (oldPeriodoacademicoOfProgramaofertadoListProgramaofertado != null) {
-                    oldPeriodoacademicoOfProgramaofertadoListProgramaofertado.getProgramaofertadoList().remove(programaofertadoListProgramaofertado);
-                    oldPeriodoacademicoOfProgramaofertadoListProgramaofertado = em.merge(oldPeriodoacademicoOfProgramaofertadoListProgramaofertado);
+            for (Programaofertado programaofertadoCollectionProgramaofertado : periodoacademico.getProgramaofertadoCollection()) {
+                Periodoacademico oldPeriodoacademicoOfProgramaofertadoCollectionProgramaofertado = programaofertadoCollectionProgramaofertado.getPeriodoacademico();
+                programaofertadoCollectionProgramaofertado.setPeriodoacademico(periodoacademico);
+                programaofertadoCollectionProgramaofertado = em.merge(programaofertadoCollectionProgramaofertado);
+                if (oldPeriodoacademicoOfProgramaofertadoCollectionProgramaofertado != null) {
+                    oldPeriodoacademicoOfProgramaofertadoCollectionProgramaofertado.getProgramaofertadoCollection().remove(programaofertadoCollectionProgramaofertado);
+                    oldPeriodoacademicoOfProgramaofertadoCollectionProgramaofertado = em.merge(oldPeriodoacademicoOfProgramaofertadoCollectionProgramaofertado);
                 }
             }
-            for (Pruebaadicional pruebaadicionalListPruebaadicional : periodoacademico.getPruebaadicionalList()) {
-                Periodoacademico oldPeriodoacademicoOfPruebaadicionalListPruebaadicional = pruebaadicionalListPruebaadicional.getPeriodoacademico();
-                pruebaadicionalListPruebaadicional.setPeriodoacademico(periodoacademico);
-                pruebaadicionalListPruebaadicional = em.merge(pruebaadicionalListPruebaadicional);
-                if (oldPeriodoacademicoOfPruebaadicionalListPruebaadicional != null) {
-                    oldPeriodoacademicoOfPruebaadicionalListPruebaadicional.getPruebaadicionalList().remove(pruebaadicionalListPruebaadicional);
-                    oldPeriodoacademicoOfPruebaadicionalListPruebaadicional = em.merge(oldPeriodoacademicoOfPruebaadicionalListPruebaadicional);
+            for (Pruebaadicional pruebaadicionalCollectionPruebaadicional : periodoacademico.getPruebaadicionalCollection()) {
+                Periodoacademico oldPeriodoacademicoOfPruebaadicionalCollectionPruebaadicional = pruebaadicionalCollectionPruebaadicional.getPeriodoacademico();
+                pruebaadicionalCollectionPruebaadicional.setPeriodoacademico(periodoacademico);
+                pruebaadicionalCollectionPruebaadicional = em.merge(pruebaadicionalCollectionPruebaadicional);
+                if (oldPeriodoacademicoOfPruebaadicionalCollectionPruebaadicional != null) {
+                    oldPeriodoacademicoOfPruebaadicionalCollectionPruebaadicional.getPruebaadicionalCollection().remove(pruebaadicionalCollectionPruebaadicional);
+                    oldPeriodoacademicoOfPruebaadicionalCollectionPruebaadicional = em.merge(oldPeriodoacademicoOfPruebaadicionalCollectionPruebaadicional);
                 }
             }
             em.getTransaction().commit();
@@ -136,120 +137,120 @@ public class PeriodoacademicoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Periodoacademico persistentPeriodoacademico = em.find(Periodoacademico.class, periodoacademico.getPerid());
-            List<Programacasos> programacasosListOld = persistentPeriodoacademico.getProgramacasosList();
-            List<Programacasos> programacasosListNew = periodoacademico.getProgramacasosList();
-            List<Programacomponentes> programacomponentesListOld = persistentPeriodoacademico.getProgramacomponentesList();
-            List<Programacomponentes> programacomponentesListNew = periodoacademico.getProgramacomponentesList();
-            List<Programaofertado> programaofertadoListOld = persistentPeriodoacademico.getProgramaofertadoList();
-            List<Programaofertado> programaofertadoListNew = periodoacademico.getProgramaofertadoList();
-            List<Pruebaadicional> pruebaadicionalListOld = persistentPeriodoacademico.getPruebaadicionalList();
-            List<Pruebaadicional> pruebaadicionalListNew = periodoacademico.getPruebaadicionalList();
+            Collection<Programacasos> programacasosCollectionOld = persistentPeriodoacademico.getProgramacasosCollection();
+            Collection<Programacasos> programacasosCollectionNew = periodoacademico.getProgramacasosCollection();
+            Collection<Programacomponentes> programacomponentesCollectionOld = persistentPeriodoacademico.getProgramacomponentesCollection();
+            Collection<Programacomponentes> programacomponentesCollectionNew = periodoacademico.getProgramacomponentesCollection();
+            Collection<Programaofertado> programaofertadoCollectionOld = persistentPeriodoacademico.getProgramaofertadoCollection();
+            Collection<Programaofertado> programaofertadoCollectionNew = periodoacademico.getProgramaofertadoCollection();
+            Collection<Pruebaadicional> pruebaadicionalCollectionOld = persistentPeriodoacademico.getPruebaadicionalCollection();
+            Collection<Pruebaadicional> pruebaadicionalCollectionNew = periodoacademico.getPruebaadicionalCollection();
             List<String> illegalOrphanMessages = null;
-            for (Programacasos programacasosListOldProgramacasos : programacasosListOld) {
-                if (!programacasosListNew.contains(programacasosListOldProgramacasos)) {
+            for (Programacasos programacasosCollectionOldProgramacasos : programacasosCollectionOld) {
+                if (!programacasosCollectionNew.contains(programacasosCollectionOldProgramacasos)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programacasos " + programacasosListOldProgramacasos + " since its periodoacademico field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programacasos " + programacasosCollectionOldProgramacasos + " since its periodoacademico field is not nullable.");
                 }
             }
-            for (Programacomponentes programacomponentesListOldProgramacomponentes : programacomponentesListOld) {
-                if (!programacomponentesListNew.contains(programacomponentesListOldProgramacomponentes)) {
+            for (Programacomponentes programacomponentesCollectionOldProgramacomponentes : programacomponentesCollectionOld) {
+                if (!programacomponentesCollectionNew.contains(programacomponentesCollectionOldProgramacomponentes)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programacomponentes " + programacomponentesListOldProgramacomponentes + " since its periodoacademico field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programacomponentes " + programacomponentesCollectionOldProgramacomponentes + " since its periodoacademico field is not nullable.");
                 }
             }
-            for (Programaofertado programaofertadoListOldProgramaofertado : programaofertadoListOld) {
-                if (!programaofertadoListNew.contains(programaofertadoListOldProgramaofertado)) {
+            for (Programaofertado programaofertadoCollectionOldProgramaofertado : programaofertadoCollectionOld) {
+                if (!programaofertadoCollectionNew.contains(programaofertadoCollectionOldProgramaofertado)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Programaofertado " + programaofertadoListOldProgramaofertado + " since its periodoacademico field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Programaofertado " + programaofertadoCollectionOldProgramaofertado + " since its periodoacademico field is not nullable.");
                 }
             }
-            for (Pruebaadicional pruebaadicionalListOldPruebaadicional : pruebaadicionalListOld) {
-                if (!pruebaadicionalListNew.contains(pruebaadicionalListOldPruebaadicional)) {
+            for (Pruebaadicional pruebaadicionalCollectionOldPruebaadicional : pruebaadicionalCollectionOld) {
+                if (!pruebaadicionalCollectionNew.contains(pruebaadicionalCollectionOldPruebaadicional)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Pruebaadicional " + pruebaadicionalListOldPruebaadicional + " since its periodoacademico field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Pruebaadicional " + pruebaadicionalCollectionOldPruebaadicional + " since its periodoacademico field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            List<Programacasos> attachedProgramacasosListNew = new ArrayList<Programacasos>();
-            for (Programacasos programacasosListNewProgramacasosToAttach : programacasosListNew) {
-                programacasosListNewProgramacasosToAttach = em.getReference(programacasosListNewProgramacasosToAttach.getClass(), programacasosListNewProgramacasosToAttach.getProgramacasosPK());
-                attachedProgramacasosListNew.add(programacasosListNewProgramacasosToAttach);
+            Collection<Programacasos> attachedProgramacasosCollectionNew = new ArrayList<Programacasos>();
+            for (Programacasos programacasosCollectionNewProgramacasosToAttach : programacasosCollectionNew) {
+                programacasosCollectionNewProgramacasosToAttach = em.getReference(programacasosCollectionNewProgramacasosToAttach.getClass(), programacasosCollectionNewProgramacasosToAttach.getProgramacasosPK());
+                attachedProgramacasosCollectionNew.add(programacasosCollectionNewProgramacasosToAttach);
             }
-            programacasosListNew = attachedProgramacasosListNew;
-            periodoacademico.setProgramacasosList(programacasosListNew);
-            List<Programacomponentes> attachedProgramacomponentesListNew = new ArrayList<Programacomponentes>();
-            for (Programacomponentes programacomponentesListNewProgramacomponentesToAttach : programacomponentesListNew) {
-                programacomponentesListNewProgramacomponentesToAttach = em.getReference(programacomponentesListNewProgramacomponentesToAttach.getClass(), programacomponentesListNewProgramacomponentesToAttach.getProgramacomponentesPK());
-                attachedProgramacomponentesListNew.add(programacomponentesListNewProgramacomponentesToAttach);
+            programacasosCollectionNew = attachedProgramacasosCollectionNew;
+            periodoacademico.setProgramacasosCollection(programacasosCollectionNew);
+            Collection<Programacomponentes> attachedProgramacomponentesCollectionNew = new ArrayList<Programacomponentes>();
+            for (Programacomponentes programacomponentesCollectionNewProgramacomponentesToAttach : programacomponentesCollectionNew) {
+                programacomponentesCollectionNewProgramacomponentesToAttach = em.getReference(programacomponentesCollectionNewProgramacomponentesToAttach.getClass(), programacomponentesCollectionNewProgramacomponentesToAttach.getProgramacomponentesPK());
+                attachedProgramacomponentesCollectionNew.add(programacomponentesCollectionNewProgramacomponentesToAttach);
             }
-            programacomponentesListNew = attachedProgramacomponentesListNew;
-            periodoacademico.setProgramacomponentesList(programacomponentesListNew);
-            List<Programaofertado> attachedProgramaofertadoListNew = new ArrayList<Programaofertado>();
-            for (Programaofertado programaofertadoListNewProgramaofertadoToAttach : programaofertadoListNew) {
-                programaofertadoListNewProgramaofertadoToAttach = em.getReference(programaofertadoListNewProgramaofertadoToAttach.getClass(), programaofertadoListNewProgramaofertadoToAttach.getProgramaofertadoPK());
-                attachedProgramaofertadoListNew.add(programaofertadoListNewProgramaofertadoToAttach);
+            programacomponentesCollectionNew = attachedProgramacomponentesCollectionNew;
+            periodoacademico.setProgramacomponentesCollection(programacomponentesCollectionNew);
+            Collection<Programaofertado> attachedProgramaofertadoCollectionNew = new ArrayList<Programaofertado>();
+            for (Programaofertado programaofertadoCollectionNewProgramaofertadoToAttach : programaofertadoCollectionNew) {
+                programaofertadoCollectionNewProgramaofertadoToAttach = em.getReference(programaofertadoCollectionNewProgramaofertadoToAttach.getClass(), programaofertadoCollectionNewProgramaofertadoToAttach.getProgramaofertadoPK());
+                attachedProgramaofertadoCollectionNew.add(programaofertadoCollectionNewProgramaofertadoToAttach);
             }
-            programaofertadoListNew = attachedProgramaofertadoListNew;
-            periodoacademico.setProgramaofertadoList(programaofertadoListNew);
-            List<Pruebaadicional> attachedPruebaadicionalListNew = new ArrayList<Pruebaadicional>();
-            for (Pruebaadicional pruebaadicionalListNewPruebaadicionalToAttach : pruebaadicionalListNew) {
-                pruebaadicionalListNewPruebaadicionalToAttach = em.getReference(pruebaadicionalListNewPruebaadicionalToAttach.getClass(), pruebaadicionalListNewPruebaadicionalToAttach.getPruebaadicionalPK());
-                attachedPruebaadicionalListNew.add(pruebaadicionalListNewPruebaadicionalToAttach);
+            programaofertadoCollectionNew = attachedProgramaofertadoCollectionNew;
+            periodoacademico.setProgramaofertadoCollection(programaofertadoCollectionNew);
+            Collection<Pruebaadicional> attachedPruebaadicionalCollectionNew = new ArrayList<Pruebaadicional>();
+            for (Pruebaadicional pruebaadicionalCollectionNewPruebaadicionalToAttach : pruebaadicionalCollectionNew) {
+                pruebaadicionalCollectionNewPruebaadicionalToAttach = em.getReference(pruebaadicionalCollectionNewPruebaadicionalToAttach.getClass(), pruebaadicionalCollectionNewPruebaadicionalToAttach.getPruebaadicionalPK());
+                attachedPruebaadicionalCollectionNew.add(pruebaadicionalCollectionNewPruebaadicionalToAttach);
             }
-            pruebaadicionalListNew = attachedPruebaadicionalListNew;
-            periodoacademico.setPruebaadicionalList(pruebaadicionalListNew);
+            pruebaadicionalCollectionNew = attachedPruebaadicionalCollectionNew;
+            periodoacademico.setPruebaadicionalCollection(pruebaadicionalCollectionNew);
             periodoacademico = em.merge(periodoacademico);
-            for (Programacasos programacasosListNewProgramacasos : programacasosListNew) {
-                if (!programacasosListOld.contains(programacasosListNewProgramacasos)) {
-                    Periodoacademico oldPeriodoacademicoOfProgramacasosListNewProgramacasos = programacasosListNewProgramacasos.getPeriodoacademico();
-                    programacasosListNewProgramacasos.setPeriodoacademico(periodoacademico);
-                    programacasosListNewProgramacasos = em.merge(programacasosListNewProgramacasos);
-                    if (oldPeriodoacademicoOfProgramacasosListNewProgramacasos != null && !oldPeriodoacademicoOfProgramacasosListNewProgramacasos.equals(periodoacademico)) {
-                        oldPeriodoacademicoOfProgramacasosListNewProgramacasos.getProgramacasosList().remove(programacasosListNewProgramacasos);
-                        oldPeriodoacademicoOfProgramacasosListNewProgramacasos = em.merge(oldPeriodoacademicoOfProgramacasosListNewProgramacasos);
+            for (Programacasos programacasosCollectionNewProgramacasos : programacasosCollectionNew) {
+                if (!programacasosCollectionOld.contains(programacasosCollectionNewProgramacasos)) {
+                    Periodoacademico oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos = programacasosCollectionNewProgramacasos.getPeriodoacademico();
+                    programacasosCollectionNewProgramacasos.setPeriodoacademico(periodoacademico);
+                    programacasosCollectionNewProgramacasos = em.merge(programacasosCollectionNewProgramacasos);
+                    if (oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos != null && !oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos.equals(periodoacademico)) {
+                        oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos.getProgramacasosCollection().remove(programacasosCollectionNewProgramacasos);
+                        oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos = em.merge(oldPeriodoacademicoOfProgramacasosCollectionNewProgramacasos);
                     }
                 }
             }
-            for (Programacomponentes programacomponentesListNewProgramacomponentes : programacomponentesListNew) {
-                if (!programacomponentesListOld.contains(programacomponentesListNewProgramacomponentes)) {
-                    Periodoacademico oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes = programacomponentesListNewProgramacomponentes.getPeriodoacademico();
-                    programacomponentesListNewProgramacomponentes.setPeriodoacademico(periodoacademico);
-                    programacomponentesListNewProgramacomponentes = em.merge(programacomponentesListNewProgramacomponentes);
-                    if (oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes != null && !oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes.equals(periodoacademico)) {
-                        oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes.getProgramacomponentesList().remove(programacomponentesListNewProgramacomponentes);
-                        oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes = em.merge(oldPeriodoacademicoOfProgramacomponentesListNewProgramacomponentes);
+            for (Programacomponentes programacomponentesCollectionNewProgramacomponentes : programacomponentesCollectionNew) {
+                if (!programacomponentesCollectionOld.contains(programacomponentesCollectionNewProgramacomponentes)) {
+                    Periodoacademico oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes = programacomponentesCollectionNewProgramacomponentes.getPeriodoacademico();
+                    programacomponentesCollectionNewProgramacomponentes.setPeriodoacademico(periodoacademico);
+                    programacomponentesCollectionNewProgramacomponentes = em.merge(programacomponentesCollectionNewProgramacomponentes);
+                    if (oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes != null && !oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes.equals(periodoacademico)) {
+                        oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes.getProgramacomponentesCollection().remove(programacomponentesCollectionNewProgramacomponentes);
+                        oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes = em.merge(oldPeriodoacademicoOfProgramacomponentesCollectionNewProgramacomponentes);
                     }
                 }
             }
-            for (Programaofertado programaofertadoListNewProgramaofertado : programaofertadoListNew) {
-                if (!programaofertadoListOld.contains(programaofertadoListNewProgramaofertado)) {
-                    Periodoacademico oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado = programaofertadoListNewProgramaofertado.getPeriodoacademico();
-                    programaofertadoListNewProgramaofertado.setPeriodoacademico(periodoacademico);
-                    programaofertadoListNewProgramaofertado = em.merge(programaofertadoListNewProgramaofertado);
-                    if (oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado != null && !oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado.equals(periodoacademico)) {
-                        oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado.getProgramaofertadoList().remove(programaofertadoListNewProgramaofertado);
-                        oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado = em.merge(oldPeriodoacademicoOfProgramaofertadoListNewProgramaofertado);
+            for (Programaofertado programaofertadoCollectionNewProgramaofertado : programaofertadoCollectionNew) {
+                if (!programaofertadoCollectionOld.contains(programaofertadoCollectionNewProgramaofertado)) {
+                    Periodoacademico oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado = programaofertadoCollectionNewProgramaofertado.getPeriodoacademico();
+                    programaofertadoCollectionNewProgramaofertado.setPeriodoacademico(periodoacademico);
+                    programaofertadoCollectionNewProgramaofertado = em.merge(programaofertadoCollectionNewProgramaofertado);
+                    if (oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado != null && !oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado.equals(periodoacademico)) {
+                        oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado.getProgramaofertadoCollection().remove(programaofertadoCollectionNewProgramaofertado);
+                        oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado = em.merge(oldPeriodoacademicoOfProgramaofertadoCollectionNewProgramaofertado);
                     }
                 }
             }
-            for (Pruebaadicional pruebaadicionalListNewPruebaadicional : pruebaadicionalListNew) {
-                if (!pruebaadicionalListOld.contains(pruebaadicionalListNewPruebaadicional)) {
-                    Periodoacademico oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional = pruebaadicionalListNewPruebaadicional.getPeriodoacademico();
-                    pruebaadicionalListNewPruebaadicional.setPeriodoacademico(periodoacademico);
-                    pruebaadicionalListNewPruebaadicional = em.merge(pruebaadicionalListNewPruebaadicional);
-                    if (oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional != null && !oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional.equals(periodoacademico)) {
-                        oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional.getPruebaadicionalList().remove(pruebaadicionalListNewPruebaadicional);
-                        oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional = em.merge(oldPeriodoacademicoOfPruebaadicionalListNewPruebaadicional);
+            for (Pruebaadicional pruebaadicionalCollectionNewPruebaadicional : pruebaadicionalCollectionNew) {
+                if (!pruebaadicionalCollectionOld.contains(pruebaadicionalCollectionNewPruebaadicional)) {
+                    Periodoacademico oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional = pruebaadicionalCollectionNewPruebaadicional.getPeriodoacademico();
+                    pruebaadicionalCollectionNewPruebaadicional.setPeriodoacademico(periodoacademico);
+                    pruebaadicionalCollectionNewPruebaadicional = em.merge(pruebaadicionalCollectionNewPruebaadicional);
+                    if (oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional != null && !oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional.equals(periodoacademico)) {
+                        oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional.getPruebaadicionalCollection().remove(pruebaadicionalCollectionNewPruebaadicional);
+                        oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional = em.merge(oldPeriodoacademicoOfPruebaadicionalCollectionNewPruebaadicional);
                     }
                 }
             }
@@ -283,33 +284,33 @@ public class PeriodoacademicoJpaController implements Serializable {
                 throw new NonexistentEntityException("The periodoacademico with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            List<Programacasos> programacasosListOrphanCheck = periodoacademico.getProgramacasosList();
-            for (Programacasos programacasosListOrphanCheckProgramacasos : programacasosListOrphanCheck) {
+            Collection<Programacasos> programacasosCollectionOrphanCheck = periodoacademico.getProgramacasosCollection();
+            for (Programacasos programacasosCollectionOrphanCheckProgramacasos : programacasosCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programacasos " + programacasosListOrphanCheckProgramacasos + " in its programacasosList field has a non-nullable periodoacademico field.");
+                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programacasos " + programacasosCollectionOrphanCheckProgramacasos + " in its programacasosCollection field has a non-nullable periodoacademico field.");
             }
-            List<Programacomponentes> programacomponentesListOrphanCheck = periodoacademico.getProgramacomponentesList();
-            for (Programacomponentes programacomponentesListOrphanCheckProgramacomponentes : programacomponentesListOrphanCheck) {
+            Collection<Programacomponentes> programacomponentesCollectionOrphanCheck = periodoacademico.getProgramacomponentesCollection();
+            for (Programacomponentes programacomponentesCollectionOrphanCheckProgramacomponentes : programacomponentesCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programacomponentes " + programacomponentesListOrphanCheckProgramacomponentes + " in its programacomponentesList field has a non-nullable periodoacademico field.");
+                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programacomponentes " + programacomponentesCollectionOrphanCheckProgramacomponentes + " in its programacomponentesCollection field has a non-nullable periodoacademico field.");
             }
-            List<Programaofertado> programaofertadoListOrphanCheck = periodoacademico.getProgramaofertadoList();
-            for (Programaofertado programaofertadoListOrphanCheckProgramaofertado : programaofertadoListOrphanCheck) {
+            Collection<Programaofertado> programaofertadoCollectionOrphanCheck = periodoacademico.getProgramaofertadoCollection();
+            for (Programaofertado programaofertadoCollectionOrphanCheckProgramaofertado : programaofertadoCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programaofertado " + programaofertadoListOrphanCheckProgramaofertado + " in its programaofertadoList field has a non-nullable periodoacademico field.");
+                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Programaofertado " + programaofertadoCollectionOrphanCheckProgramaofertado + " in its programaofertadoCollection field has a non-nullable periodoacademico field.");
             }
-            List<Pruebaadicional> pruebaadicionalListOrphanCheck = periodoacademico.getPruebaadicionalList();
-            for (Pruebaadicional pruebaadicionalListOrphanCheckPruebaadicional : pruebaadicionalListOrphanCheck) {
+            Collection<Pruebaadicional> pruebaadicionalCollectionOrphanCheck = periodoacademico.getPruebaadicionalCollection();
+            for (Pruebaadicional pruebaadicionalCollectionOrphanCheckPruebaadicional : pruebaadicionalCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Pruebaadicional " + pruebaadicionalListOrphanCheckPruebaadicional + " in its pruebaadicionalList field has a non-nullable periodoacademico field.");
+                illegalOrphanMessages.add("This Periodoacademico (" + periodoacademico + ") cannot be destroyed since the Pruebaadicional " + pruebaadicionalCollectionOrphanCheckPruebaadicional + " in its pruebaadicionalCollection field has a non-nullable periodoacademico field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);

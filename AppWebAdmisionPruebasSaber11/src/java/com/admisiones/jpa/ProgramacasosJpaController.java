@@ -23,7 +23,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class ProgramacasosJpaController implements Serializable {
 
@@ -40,9 +40,9 @@ public class ProgramacasosJpaController implements Serializable {
         if (programacasos.getProgramacasosPK() == null) {
             programacasos.setProgramacasosPK(new ProgramacasosPK());
         }
+        programacasos.getProgramacasosPK().setPerid(programacasos.getPeriodoacademico().getPerid());
         programacasos.getProgramacasosPK().setProid(programacasos.getPrograma().getProid());
         programacasos.getProgramacasosPK().setEspid(programacasos.getCasosespeciales().getEspid());
-        programacasos.getProgramacasosPK().setPerid(programacasos.getPeriodoacademico().getPerid());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -64,15 +64,15 @@ public class ProgramacasosJpaController implements Serializable {
             }
             em.persist(programacasos);
             if (casosespeciales != null) {
-                casosespeciales.getProgramacasosList().add(programacasos);
+                casosespeciales.getProgramacasosCollection().add(programacasos);
                 casosespeciales = em.merge(casosespeciales);
             }
             if (programa != null) {
-                programa.getProgramacasosList().add(programacasos);
+                programa.getProgramacasosCollection().add(programacasos);
                 programa = em.merge(programa);
             }
             if (periodoacademico != null) {
-                periodoacademico.getProgramacasosList().add(programacasos);
+                periodoacademico.getProgramacasosCollection().add(programacasos);
                 periodoacademico = em.merge(periodoacademico);
             }
             em.getTransaction().commit();
@@ -89,9 +89,9 @@ public class ProgramacasosJpaController implements Serializable {
     }
 
     public void edit(Programacasos programacasos) throws NonexistentEntityException, Exception {
+        programacasos.getProgramacasosPK().setPerid(programacasos.getPeriodoacademico().getPerid());
         programacasos.getProgramacasosPK().setProid(programacasos.getPrograma().getProid());
         programacasos.getProgramacasosPK().setEspid(programacasos.getCasosespeciales().getEspid());
-        programacasos.getProgramacasosPK().setPerid(programacasos.getPeriodoacademico().getPerid());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -117,27 +117,27 @@ public class ProgramacasosJpaController implements Serializable {
             }
             programacasos = em.merge(programacasos);
             if (casosespecialesOld != null && !casosespecialesOld.equals(casosespecialesNew)) {
-                casosespecialesOld.getProgramacasosList().remove(programacasos);
+                casosespecialesOld.getProgramacasosCollection().remove(programacasos);
                 casosespecialesOld = em.merge(casosespecialesOld);
             }
             if (casosespecialesNew != null && !casosespecialesNew.equals(casosespecialesOld)) {
-                casosespecialesNew.getProgramacasosList().add(programacasos);
+                casosespecialesNew.getProgramacasosCollection().add(programacasos);
                 casosespecialesNew = em.merge(casosespecialesNew);
             }
             if (programaOld != null && !programaOld.equals(programaNew)) {
-                programaOld.getProgramacasosList().remove(programacasos);
+                programaOld.getProgramacasosCollection().remove(programacasos);
                 programaOld = em.merge(programaOld);
             }
             if (programaNew != null && !programaNew.equals(programaOld)) {
-                programaNew.getProgramacasosList().add(programacasos);
+                programaNew.getProgramacasosCollection().add(programacasos);
                 programaNew = em.merge(programaNew);
             }
             if (periodoacademicoOld != null && !periodoacademicoOld.equals(periodoacademicoNew)) {
-                periodoacademicoOld.getProgramacasosList().remove(programacasos);
+                periodoacademicoOld.getProgramacasosCollection().remove(programacasos);
                 periodoacademicoOld = em.merge(periodoacademicoOld);
             }
             if (periodoacademicoNew != null && !periodoacademicoNew.equals(periodoacademicoOld)) {
-                periodoacademicoNew.getProgramacasosList().add(programacasos);
+                periodoacademicoNew.getProgramacasosCollection().add(programacasos);
                 periodoacademicoNew = em.merge(periodoacademicoNew);
             }
             em.getTransaction().commit();
@@ -171,17 +171,17 @@ public class ProgramacasosJpaController implements Serializable {
             }
             Casosespeciales casosespeciales = programacasos.getCasosespeciales();
             if (casosespeciales != null) {
-                casosespeciales.getProgramacasosList().remove(programacasos);
+                casosespeciales.getProgramacasosCollection().remove(programacasos);
                 casosespeciales = em.merge(casosespeciales);
             }
             Programa programa = programacasos.getPrograma();
             if (programa != null) {
-                programa.getProgramacasosList().remove(programacasos);
+                programa.getProgramacasosCollection().remove(programacasos);
                 programa = em.merge(programa);
             }
             Periodoacademico periodoacademico = programacasos.getPeriodoacademico();
             if (periodoacademico != null) {
-                periodoacademico.getProgramacasosList().remove(programacasos);
+                periodoacademico.getProgramacasosCollection().remove(programacasos);
                 periodoacademico = em.merge(periodoacademico);
             }
             em.remove(programacasos);

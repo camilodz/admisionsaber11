@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Entity
 @Table(name = "programaofertado")
@@ -30,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Programaofertado.findByProid", query = "SELECT p FROM Programaofertado p WHERE p.programaofertadoPK.proid = :proid")
     , @NamedQuery(name = "Programaofertado.findByPerid", query = "SELECT p FROM Programaofertado p WHERE p.programaofertadoPK.perid = :perid")
     , @NamedQuery(name = "Programaofertado.findByProgofcuposregulares", query = "SELECT p FROM Programaofertado p WHERE p.progofcuposregulares = :progofcuposregulares")
-    , @NamedQuery(name = "Programaofertado.findByProgoflistadeespera", query = "SELECT p FROM Programaofertado p WHERE p.progoflistadeespera = :progoflistadeespera")})
+    , @NamedQuery(name = "Programaofertado.findByProgoflistadeespera", query = "SELECT p FROM Programaofertado p WHERE p.progoflistadeespera = :progoflistadeespera")
+    , @NamedQuery(name = "Programaofertado.findByProgofcupostotales", query = "SELECT p FROM Programaofertado p WHERE p.progofcupostotales = :progofcupostotales")})
 public class Programaofertado implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +43,9 @@ public class Programaofertado implements Serializable {
     @Basic(optional = false)
     @Column(name = "PROGOFLISTADEESPERA")
     private short progoflistadeespera;
+    @Basic(optional = false)
+    @Column(name = "PROGOFCUPOSTOTALES")
+    private short progofcupostotales;
     @JoinColumn(name = "PERID", referencedColumnName = "PERID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Periodoacademico periodoacademico;
@@ -56,10 +60,11 @@ public class Programaofertado implements Serializable {
         this.programaofertadoPK = programaofertadoPK;
     }
 
-    public Programaofertado(ProgramaofertadoPK programaofertadoPK, short progofcuposregulares, short progoflistadeespera) {
+    public Programaofertado(ProgramaofertadoPK programaofertadoPK, short progofcuposregulares, short progoflistadeespera, short progofcupostotales) {
         this.programaofertadoPK = programaofertadoPK;
         this.progofcuposregulares = progofcuposregulares;
         this.progoflistadeespera = progoflistadeespera;
+        this.progofcupostotales = progofcupostotales;
     }
 
     public Programaofertado(short proid, BigDecimal perid) {
@@ -88,6 +93,14 @@ public class Programaofertado implements Serializable {
 
     public void setProgoflistadeespera(short progoflistadeespera) {
         this.progoflistadeespera = progoflistadeespera;
+    }
+
+    public short getProgofcupostotales() {
+        return progofcupostotales;
+    }
+
+    public void setProgofcupostotales(short progofcupostotales) {
+        this.progofcupostotales = progofcupostotales;
     }
 
     public Periodoacademico getPeriodoacademico() {

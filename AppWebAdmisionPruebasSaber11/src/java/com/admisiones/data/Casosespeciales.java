@@ -6,7 +6,7 @@
 package com.admisiones.data;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Entity
 @Table(name = "casosespeciales")
@@ -41,7 +41,7 @@ public class Casosespeciales implements Serializable {
     @Column(name = "ESPNOMBRE")
     private String espnombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "casosespeciales")
-    private List<Programacasos> programacasosList;
+    private Collection<Programacasos> programacasosCollection;
 
     public Casosespeciales() {
     }
@@ -72,12 +72,12 @@ public class Casosespeciales implements Serializable {
     }
 
     @XmlTransient
-    public List<Programacasos> getProgramacasosList() {
-        return programacasosList;
+    public Collection<Programacasos> getProgramacasosCollection() {
+        return programacasosCollection;
     }
 
-    public void setProgramacasosList(List<Programacasos> programacasosList) {
-        this.programacasosList = programacasosList;
+    public void setProgramacasosCollection(Collection<Programacasos> programacasosCollection) {
+        this.programacasosCollection = programacasosCollection;
     }
 
     @Override

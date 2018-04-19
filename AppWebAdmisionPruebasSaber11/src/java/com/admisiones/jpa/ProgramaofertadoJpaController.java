@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class ProgramaofertadoJpaController implements Serializable {
 
@@ -57,11 +57,11 @@ public class ProgramaofertadoJpaController implements Serializable {
             }
             em.persist(programaofertado);
             if (periodoacademico != null) {
-                periodoacademico.getProgramaofertadoList().add(programaofertado);
+                periodoacademico.getProgramaofertadoCollection().add(programaofertado);
                 periodoacademico = em.merge(periodoacademico);
             }
             if (programa != null) {
-                programa.getProgramaofertadoList().add(programaofertado);
+                programa.getProgramaofertadoCollection().add(programaofertado);
                 programa = em.merge(programa);
             }
             em.getTransaction().commit();
@@ -99,19 +99,19 @@ public class ProgramaofertadoJpaController implements Serializable {
             }
             programaofertado = em.merge(programaofertado);
             if (periodoacademicoOld != null && !periodoacademicoOld.equals(periodoacademicoNew)) {
-                periodoacademicoOld.getProgramaofertadoList().remove(programaofertado);
+                periodoacademicoOld.getProgramaofertadoCollection().remove(programaofertado);
                 periodoacademicoOld = em.merge(periodoacademicoOld);
             }
             if (periodoacademicoNew != null && !periodoacademicoNew.equals(periodoacademicoOld)) {
-                periodoacademicoNew.getProgramaofertadoList().add(programaofertado);
+                periodoacademicoNew.getProgramaofertadoCollection().add(programaofertado);
                 periodoacademicoNew = em.merge(periodoacademicoNew);
             }
             if (programaOld != null && !programaOld.equals(programaNew)) {
-                programaOld.getProgramaofertadoList().remove(programaofertado);
+                programaOld.getProgramaofertadoCollection().remove(programaofertado);
                 programaOld = em.merge(programaOld);
             }
             if (programaNew != null && !programaNew.equals(programaOld)) {
-                programaNew.getProgramaofertadoList().add(programaofertado);
+                programaNew.getProgramaofertadoCollection().add(programaofertado);
                 programaNew = em.merge(programaNew);
             }
             em.getTransaction().commit();
@@ -145,12 +145,12 @@ public class ProgramaofertadoJpaController implements Serializable {
             }
             Periodoacademico periodoacademico = programaofertado.getPeriodoacademico();
             if (periodoacademico != null) {
-                periodoacademico.getProgramaofertadoList().remove(programaofertado);
+                periodoacademico.getProgramaofertadoCollection().remove(programaofertado);
                 periodoacademico = em.merge(periodoacademico);
             }
             Programa programa = programaofertado.getPrograma();
             if (programa != null) {
-                programa.getProgramaofertadoList().remove(programaofertado);
+                programa.getProgramaofertadoCollection().remove(programaofertado);
                 programa = em.merge(programa);
             }
             em.remove(programaofertado);

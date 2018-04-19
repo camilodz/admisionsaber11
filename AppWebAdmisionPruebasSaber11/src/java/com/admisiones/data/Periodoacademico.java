@@ -7,7 +7,7 @@ package com.admisiones.data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Entity
 @Table(name = "periodoacademico")
@@ -51,13 +51,13 @@ public class Periodoacademico implements Serializable {
     @Column(name = "PERESTADO")
     private short perestado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodoacademico")
-    private List<Programacasos> programacasosList;
+    private Collection<Programacasos> programacasosCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodoacademico")
-    private List<Programacomponentes> programacomponentesList;
+    private Collection<Programacomponentes> programacomponentesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodoacademico")
-    private List<Programaofertado> programaofertadoList;
+    private Collection<Programaofertado> programaofertadoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodoacademico")
-    private List<Pruebaadicional> pruebaadicionalList;
+    private Collection<Pruebaadicional> pruebaadicionalCollection;
 
     public Periodoacademico() {
     }
@@ -106,39 +106,39 @@ public class Periodoacademico implements Serializable {
     }
 
     @XmlTransient
-    public List<Programacasos> getProgramacasosList() {
-        return programacasosList;
+    public Collection<Programacasos> getProgramacasosCollection() {
+        return programacasosCollection;
     }
 
-    public void setProgramacasosList(List<Programacasos> programacasosList) {
-        this.programacasosList = programacasosList;
-    }
-
-    @XmlTransient
-    public List<Programacomponentes> getProgramacomponentesList() {
-        return programacomponentesList;
-    }
-
-    public void setProgramacomponentesList(List<Programacomponentes> programacomponentesList) {
-        this.programacomponentesList = programacomponentesList;
+    public void setProgramacasosCollection(Collection<Programacasos> programacasosCollection) {
+        this.programacasosCollection = programacasosCollection;
     }
 
     @XmlTransient
-    public List<Programaofertado> getProgramaofertadoList() {
-        return programaofertadoList;
+    public Collection<Programacomponentes> getProgramacomponentesCollection() {
+        return programacomponentesCollection;
     }
 
-    public void setProgramaofertadoList(List<Programaofertado> programaofertadoList) {
-        this.programaofertadoList = programaofertadoList;
+    public void setProgramacomponentesCollection(Collection<Programacomponentes> programacomponentesCollection) {
+        this.programacomponentesCollection = programacomponentesCollection;
     }
 
     @XmlTransient
-    public List<Pruebaadicional> getPruebaadicionalList() {
-        return pruebaadicionalList;
+    public Collection<Programaofertado> getProgramaofertadoCollection() {
+        return programaofertadoCollection;
     }
 
-    public void setPruebaadicionalList(List<Pruebaadicional> pruebaadicionalList) {
-        this.pruebaadicionalList = pruebaadicionalList;
+    public void setProgramaofertadoCollection(Collection<Programaofertado> programaofertadoCollection) {
+        this.programaofertadoCollection = programaofertadoCollection;
+    }
+
+    @XmlTransient
+    public Collection<Pruebaadicional> getPruebaadicionalCollection() {
+        return pruebaadicionalCollection;
+    }
+
+    public void setPruebaadicionalCollection(Collection<Pruebaadicional> pruebaadicionalCollection) {
+        this.pruebaadicionalCollection = pruebaadicionalCollection;
     }
 
     @Override

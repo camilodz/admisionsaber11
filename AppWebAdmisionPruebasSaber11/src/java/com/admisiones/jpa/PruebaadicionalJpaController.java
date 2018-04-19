@@ -22,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 public class PruebaadicionalJpaController implements Serializable {
 
@@ -57,11 +57,11 @@ public class PruebaadicionalJpaController implements Serializable {
             }
             em.persist(pruebaadicional);
             if (periodoacademico != null) {
-                periodoacademico.getPruebaadicionalList().add(pruebaadicional);
+                periodoacademico.getPruebaadicionalCollection().add(pruebaadicional);
                 periodoacademico = em.merge(periodoacademico);
             }
             if (programa != null) {
-                programa.getPruebaadicionalList().add(pruebaadicional);
+                programa.getPruebaadicionalCollection().add(pruebaadicional);
                 programa = em.merge(programa);
             }
             em.getTransaction().commit();
@@ -99,19 +99,19 @@ public class PruebaadicionalJpaController implements Serializable {
             }
             pruebaadicional = em.merge(pruebaadicional);
             if (periodoacademicoOld != null && !periodoacademicoOld.equals(periodoacademicoNew)) {
-                periodoacademicoOld.getPruebaadicionalList().remove(pruebaadicional);
+                periodoacademicoOld.getPruebaadicionalCollection().remove(pruebaadicional);
                 periodoacademicoOld = em.merge(periodoacademicoOld);
             }
             if (periodoacademicoNew != null && !periodoacademicoNew.equals(periodoacademicoOld)) {
-                periodoacademicoNew.getPruebaadicionalList().add(pruebaadicional);
+                periodoacademicoNew.getPruebaadicionalCollection().add(pruebaadicional);
                 periodoacademicoNew = em.merge(periodoacademicoNew);
             }
             if (programaOld != null && !programaOld.equals(programaNew)) {
-                programaOld.getPruebaadicionalList().remove(pruebaadicional);
+                programaOld.getPruebaadicionalCollection().remove(pruebaadicional);
                 programaOld = em.merge(programaOld);
             }
             if (programaNew != null && !programaNew.equals(programaOld)) {
-                programaNew.getPruebaadicionalList().add(pruebaadicional);
+                programaNew.getPruebaadicionalCollection().add(pruebaadicional);
                 programaNew = em.merge(programaNew);
             }
             em.getTransaction().commit();
@@ -145,12 +145,12 @@ public class PruebaadicionalJpaController implements Serializable {
             }
             Periodoacademico periodoacademico = pruebaadicional.getPeriodoacademico();
             if (periodoacademico != null) {
-                periodoacademico.getPruebaadicionalList().remove(pruebaadicional);
+                periodoacademico.getPruebaadicionalCollection().remove(pruebaadicional);
                 periodoacademico = em.merge(periodoacademico);
             }
             Programa programa = pruebaadicional.getPrograma();
             if (programa != null) {
-                programa.getPruebaadicionalList().remove(pruebaadicional);
+                programa.getPruebaadicionalCollection().remove(pruebaadicional);
                 programa = em.merge(programa);
             }
             em.remove(pruebaadicional);

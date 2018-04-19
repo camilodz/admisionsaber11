@@ -6,7 +6,7 @@
 package com.admisiones.data;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Karen
+ * @author JORGE
  */
 @Entity
 @Table(name = "componentesicfes")
@@ -41,7 +41,7 @@ public class Componentesicfes implements Serializable {
     @Column(name = "COMPNOMBRE")
     private String compnombre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "componentesicfes")
-    private List<Programacomponentes> programacomponentesList;
+    private Collection<Programacomponentes> programacomponentesCollection;
 
     public Componentesicfes() {
     }
@@ -72,12 +72,12 @@ public class Componentesicfes implements Serializable {
     }
 
     @XmlTransient
-    public List<Programacomponentes> getProgramacomponentesList() {
-        return programacomponentesList;
+    public Collection<Programacomponentes> getProgramacomponentesCollection() {
+        return programacomponentesCollection;
     }
 
-    public void setProgramacomponentesList(List<Programacomponentes> programacomponentesList) {
-        this.programacomponentesList = programacomponentesList;
+    public void setProgramacomponentesCollection(Collection<Programacomponentes> programacomponentesCollection) {
+        this.programacomponentesCollection = programacomponentesCollection;
     }
 
     @Override
