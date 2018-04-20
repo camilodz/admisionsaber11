@@ -59,4 +59,34 @@ public class ProgramaBean {
         }
         return listProgramasFac;
     }
+    
+    
+    public List<Programa> getProgramasPopayan() {
+        emf = Persistence.createEntityManagerFactory("ProyectoII_AdmisionesSaber11PU");
+        ProgramaJpaController ctrl = new ProgramaJpaController(emf);
+        listProgramas = ctrl.findProgramaEntities();
+
+        List<Programa> listProgramasPopayan = new ArrayList();
+        for (Programa p : listProgramas) {
+            if (p.getProsede().equals("Popayán")) {
+                listProgramasPopayan.add(p);
+            }
+        }
+        return listProgramasPopayan;
+    }
+    
+    public List<Programa> getProgramasRegionalizacion() {
+        emf = Persistence.createEntityManagerFactory("ProyectoII_AdmisionesSaber11PU");
+        ProgramaJpaController ctrl = new ProgramaJpaController(emf);
+        listProgramas = ctrl.findProgramaEntities();
+
+        List<Programa> listProgramasRegionalizacion = new ArrayList();
+        for (Programa p : listProgramas) {
+            if (p.getProsede().equals("Regionalización")) {
+                listProgramasRegionalizacion.add(p);
+            }
+        }
+        return listProgramasRegionalizacion;
+    }
+    
 }
