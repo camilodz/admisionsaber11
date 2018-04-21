@@ -12,7 +12,7 @@
                 <br/>            
                 <h:form id="configPro">
                     <p:panel>
-                        <h2 align="center"><h:outputText value="Configurar Programas - #{periodoacademicoController.periodoActual}"></h:outputText></h2>
+                        <h2 align="center"><h:outputText value="Configurar Programas - #{gestorAdmisionesBean.getPeriodoAcademicoActual()}"></h:outputText></h2>
                         <h2><h:outputText value="Seleccione una Facultad para configurar cupos y ponderados de los programas pertenecientes" /> </h2>                    
                         <p:outputLabel for="console" value="Ver por:" />
                         <p:selectOneMenu id="console" style="width:150px">
@@ -22,22 +22,20 @@
                         </p:selectOneMenu>
                         <br/>
                         <br/>                    
-                        <p:dataTable value="#{facultadBean.listFacultades}" var="facultades" >
+                        <p:dataTable value="#{gestorAdmisionesBean.listFacultades}" var="facultades" >
                             <p:column headerText="Facultad" >
                                 <h:outputText value="#{facultades.facnombre}" />
                             </p:column>
 
                             <p:column headerText="Acciones">
                                 <p:column>
-                                    <p:commandButton  action="#{facultadBean.viewProgramas}" icon="ui-icon-search" title="View" value="Ver" >
-                                        <f:setPropertyActionListener value="#{facultades.facid}" target="#{programaBean.selectedFac}" />
-                                    </p:commandButton>
+                                    <p:commandButton  action="#{gestorAdmisionesBean.viewProgramas(facultades.facid)}" icon="ui-icon-search" title="View" value="Ver" />
                                 </p:column>                            
                                 <p:column>
-                                    <p:commandButton action="#{facultadController.prepareViewEditConfigPro}" value="CONFIGURAR"/>
+                                    <p:commandButton action="#{gestorAdmisionesBean.configProgramas()}" value="CONFIGURAR"/>
                                 </p:column>
                             </p:column>
-                        </p:dataTable>                                            
+                        </p:dataTable>                        
                     </p:panel>
                 </h:form>
             </ui:define>

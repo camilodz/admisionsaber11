@@ -5,6 +5,7 @@
  */
 package com.admisiones.bean;
 
+import com.admisiones.utilidades.Utilidades;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -23,8 +24,8 @@ public class TemplateBean {
     public TemplateBean() {
     }
 
-    public String verConfiguracionProgramas(){
-        return "verConfigProg";
+    public void verConfiguracionProgramas(){
+        Utilidades.redireccionar("/ProyectoII_AdmisionesSaber11/faces/Vistas/ConfigurarProgramas/ListarFacultades.xhtml");
     }
     
 }
