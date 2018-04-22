@@ -10,10 +10,16 @@ import com.admisiones.jpa.*;
 import com.admisiones.utilidades.Utilidades;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -31,6 +37,7 @@ public class gestorAdmisionesBean {
     private List<Pruebaadicional> listPruebaAd;
     private Short facSelected;
     private EntityManagerFactory emf;
+    private PruebaadicionalJpaController pjc;
 
     /**
      * Creates a new instance of gestorAdmisionesBean
@@ -192,6 +199,21 @@ public class gestorAdmisionesBean {
         }
         return 0;
     }
+    
+    public String variable;
+
+    public String getVariable() {
+        return variable;
+    }
+
+    public void setVariable(String variable) {
+        this.variable = variable;
+    }
+    
+    public void actualizar(CellEditEvent event) throws Exception {
+        
+    }
+    
 
     public int getPonderadoPruebaIcfes(Short idProg) {
         if (listPruebaAd.isEmpty()) {

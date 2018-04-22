@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -23,83 +24,157 @@
                         <h2><h:outputText value="Configurando los Cupos de los Programas ofertados pertenecientes a la #{gestorAdmisionesBean.facNombre} en el periodo Academico: #{gestorAdmisionesBean.getPeriodoAcademicoActual()}"></h:outputText></h2>
                         <br/> <br/>
                         <p:tabView scrollable="true">
+                            
                             <p:tab title="Cupos">
-                                <p:dataTable var="obj" value="#{gestorAdmisionesBean.programasFacultad}" >
+                                <p:dataTable id="cupos" var="obj" value="#{gestorAdmisionesBean.programasFacultad}" editable="true" editMode="cell" widgetVar="cellCupos">
+
+                                    <p:ajax event="cellEdit" listener="#{gestorAdmisionesBean.actualizar}" update=":form:msgs" />
+
                                     <p:column headerText="Nombre">
                                         <h:outputText value="#{obj.programa.pronombre}" />
-                                    </p:column>   
-
-                                    <p:column headerText="Cupos Regulares" > 
-                                        <p:spinner min="0" max="80" size="10" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Regulares', obj.programa.proid)}" />
+                                    </p:column>  
+                                    
+                                    <p:column headerText="Cupos Regulares" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="80" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Regulares', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="80" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Regulares', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Dificil Acceso" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Difícil Acceso', obj.programa.proid)}" />
+                                    <p:column headerText="Dificil Acceso" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Difícil Acceso', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Difícil Acceso', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Normalistas" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Normalistas', obj.programa.proid)}" />
+                                    <p:column headerText="Normalistas" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Normalistas', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Normalistas', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Indígena" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Indígena', obj.programa.proid)}" />
+                                    <p:column headerText="Indígena" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Indígena', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Indígena', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
+                                        
                                     </p:column>
 
-                                    <p:column headerText="Zona Marginal" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Zona Marginal', obj.programa.proid)}" />
+                                    <p:column headerText="Zona Marginal" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Zona Marginal', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Zona Marginal', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Afrodescendiente" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Afrodescendiente', obj.programa.proid)}" />
+                                    <p:column headerText="Afrodescendiente" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Afrodescendiente', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Afrodescendiente', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Costa Pacífica" > 
-                                        <p:spinner min="0" max="2" size="10" value="#{gestorAdmisionesBean.getCupos('Costa Pacífica', obj.programa.proid)}" />
+                                    <p:column headerText="Costa Pacífica" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Costa Pacífica', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="2" size="5" value="#{gestorAdmisionesBean.getCupos('Costa Pacífica', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>                                        
                                     </p:column>
                                     
-                                    <p:column headerText="Cupos Totales" > 
-                                        <p:spinner min="0" max="80" size="10" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Totales', obj.programa.proid)}" />
+                                    <p:column headerText="Cupos Totales" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="80" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Totales', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="80" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Cupos Totales', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
 
-                                    <p:column headerText="Lista Espera" > 
-                                        <p:spinner min="0" max="10" size="10" value="#{gestorAdmisionesBean.getCuposTotal('Lista Espera', obj.programa.proid)}" />
+                                    <p:column headerText="Lista Espera" >
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="10" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Lista Espera', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="10" size="5" value="#{gestorAdmisionesBean.getCuposTotal('Lista Espera', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column>
-                                </p:dataTable>    
+
+                                </p:dataTable>
+                                <p:contextMenu for="cupos" widgetVar="cMenu">   
+                                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCupos').showCellEditor();return false;"/>  
+                                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>  
+                                </p:contextMenu> 
                             </p:tab>
+
+                            
                             <p:tab title="Ponderados ICFES">
-                                <p:dataTable var="obj" value="#{gestorAdmisionesBean.programasFacultad}" >
+                                <p:dataTable id="ponderados" var="obj" value="#{gestorAdmisionesBean.programasFacultad}" editable="true" editMode="cell" widgetVar="cellPonderados">
+
+                                    <p:ajax event="cellEdit" listener="#{gestorAdmisionesBean.actualizar}" update=":form:msgs" />
+
                                     <p:column headerText="Nombre">
                                         <h:outputText value="#{obj.programa.pronombre}" />
                                     </p:column>
                                     <p:column headerText="%Lectura Crítica">
-                                        <p:spinner min="0" max="50" size="10" value="#{gestorAdmisionesBean.getComponenteIcfes('Lectura Crítica', obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Lectura Crítica', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Lectura Crítica', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column> 
                                     <p:column headerText="%Matemáticas">
-                                        <p:spinner min="0" max="50" size="10" value="#{gestorAdmisionesBean.getComponenteIcfes('Matemáticas', obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Matemáticas', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Matemáticas', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
                                     </p:column> 
                                     <p:column headerText="%Sociales y Ciudadanas">
-                                        <p:spinner min="0" max="50" size="10" value="#{gestorAdmisionesBean.getComponenteIcfes('Sociales y Ciudadanas', obj.programa.proid)}" />                                        
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Sociales y Ciudadanas', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Sociales y Ciudadanas', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>                            
                                     </p:column> 
                                     <p:column headerText="%Ciencias Naturales">
-                                        <p:spinner min="0" max="50" size="10" value="#{gestorAdmisionesBean.getComponenteIcfes('Ciencias Naturaes', obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Ciencias Naturaes', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Ciencias Naturaes', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
+                                        
                                     </p:column> 
                                     <p:column headerText="%Inglés">
-                                        <p:spinner min="0" max="50" size="10" value="#{gestorAdmisionesBean.getComponenteIcfes('Inglés', obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Inglés', obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="50" size="5" value="#{gestorAdmisionesBean.getComponenteIcfes('Inglés', obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
+                                        
                                     </p:column> 
                                     <p:column headerText="%Prueba Icfes">
-                                        <p:spinner min="0" max="100" size="10" value="#{gestorAdmisionesBean.getPonderadoPruebaIcfes(obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="100" size="5" value="#{gestorAdmisionesBean.getPonderadoPruebaIcfes(obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="100" size="5" value="#{gestorAdmisionesBean.getPonderadoPruebaIcfes(obj.programa.proid)}" /></f:facet>
+                                        </p:cellEditor>
+                                        
                                     </p:column> 
                                     <p:column headerText="%Prueba Adicional">
-                                        <p:spinner min="0" max="60" size="10" value="#{gestorAdmisionesBean.getPonderadoPruebaAd(obj.programa.proid)}" />
+                                        <p:cellEditor>
+                                            <f:facet name="output"><p:spinner min="0" max="60" size="5" value="#{gestorAdmisionesBean.getPonderadoPruebaAd(obj.programa.proid)}" /></f:facet>
+                                            <f:facet name="input"><p:spinner min="0" max="60" size="5" value="#{gestorAdmisionesBean.variable}" /></f:facet>
+                                        </p:cellEditor>
+                                        
                                     </p:column> 
-                                </p:dataTable>    
+
+                                </p:dataTable>
+                                <p:contextMenu for="ponderados" widgetVar="cPonderados">   
+                                    <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellPonderados').showCellEditor();return false;"/>  
+                                    <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cPonderados').hide()"/>  
+                                </p:contextMenu> 
                             </p:tab>
+                            
                         </p:tabView>
                         <br/><br/><br/><br/><br/><br/>
                         <p:panelGrid columns="2" style="text-align: center">
                             <p:commandButton action="#{gestorAdmisionesBean.volver()}" value="Volver"/>
-                            <p:commandButton action="#{menuView.save}" value="Editar"/>
+                            <p:commandButton action="#{gestorAdmisionesBean}" value="Guardar"/>
                         </p:panelGrid>
+                        
                     </p:panel>
                 </h:form>
             </ui:define>            
