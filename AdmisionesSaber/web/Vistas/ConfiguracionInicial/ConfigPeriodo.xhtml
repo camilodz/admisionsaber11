@@ -26,8 +26,10 @@
                                 <p:spinner min="0" max="160" value="150" id="puntajeRegionalizacion"/>
                                  
                                 <div class="row">
-                                    <div class="column" > <p:commandButton action="/index" value="Cancelar"/></div>
-                                    <div class="column"><p:commandButton  value="Siguiente" actionListener="/Vistas/ConfiguracionInicial/ProgramasOfertados.html" /></div>
+                                    <h:panelGrid columns="2" cellspacing="100"  style="align-items: center">
+                                     <p:commandButton action="/index" value="Cancelar"/>
+                                    <p:commandButton  value="Siguiente" action="/Vistas/ConfiguracionInicial/ProgramasOfertados.html" />
+                                    </h:panelGrid>
                                 </div>
                                 
 
