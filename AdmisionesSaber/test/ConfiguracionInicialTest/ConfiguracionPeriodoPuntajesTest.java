@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ConfiguracionProgramasTest;
+package ConfiguracionInicialTest;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author JULIAN
  */
-public class ConfiguracionCupos {
+public class ConfiguracionPeriodoPuntajesTest {
     
-    public ConfiguracionCupos() {
+    public ConfiguracionPeriodoPuntajesTest() {
     }
     
     @BeforeClass
