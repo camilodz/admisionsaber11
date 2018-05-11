@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-may-2018 22:32:56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="admisiones.model.Programaofertado" table="programaofertado" catalog="admisiones44" optimistic-lock="version">
+        <id name="pofid" type="short">
+            <column name="POFID" precision="3" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="periodo" class="admisiones.model.Periodo" fetch="select">
+            <column name="PERID" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="programa" class="admisiones.model.Programa" fetch="select">
+            <column name="PROID" precision="3" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="pofcuposreg" type="byte">
+            <column name="POFCUPOSREG" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposzonamarginal" type="byte">
+            <column name="POFCUPOSZONAMARGINAL" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposdificilacceso" type="byte">
+            <column name="POFCUPOSDIFICILACCESO" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposnormalista" type="byte">
+            <column name="POFCUPOSNORMALISTA" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposindigena" type="byte">
+            <column name="POFCUPOSINDIGENA" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposafrodescendiente" type="byte">
+            <column name="POFCUPOSAFRODESCENDIENTE" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofcuposcostapacifica" type="byte">
+            <column name="POFCUPOSCOSTAPACIFICA" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondlecturacritica" type="byte">
+            <column name="POFPONDLECTURACRITICA" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondmatematicas" type="byte">
+            <column name="POFPONDMATEMATICAS" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondcsociales" type="byte">
+            <column name="POFPONDCSOCIALES" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondcnaturales" type="byte">
+            <column name="POFPONDCNATURALES" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondingles" type="byte">
+            <column name="POFPONDINGLES" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="pofpondpruebaad" type="java.lang.Byte">
+            <column name="POFPONDPRUEBAAD" precision="2" scale="0" />
+        </property>
+        <property name="poflistaespera" type="byte">
+            <column name="POFLISTAESPERA" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="poftotalcupos" type="byte">
+            <column name="POFTOTALCUPOS" precision="2" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
