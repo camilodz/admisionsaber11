@@ -15,7 +15,7 @@ import javax.inject.Named;
  */
 @Named(value = "aplicaBean")
 @ApplicationScoped
-public class AplicaBean implements Serializable{
+public class aplicaBean implements Serializable{
     private List<Aplica> listar;
     private String selectedPro;
     private String selectedNomPro;
@@ -65,7 +65,7 @@ public class AplicaBean implements Serializable{
     /**
      * Creates a new instance of AplicaBean
      */
-    public AplicaBean() {
+    public aplicaBean() {
     }
     public void verAdmitidosPublicados(){
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");

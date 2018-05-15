@@ -19,13 +19,13 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "aspirantePonderableBean")
 @ViewScoped
-public class AspirantePonderableBean implements Serializable{
+public class aspirantePonderableBean implements Serializable{
     private List<AspirantePonderable> listar;
     private AspirantePonderable aspirante;
     /**
      * Creates a new instance of AspirantePonderableBean
      */
-    public AspirantePonderableBean() {
+    public aspirantePonderableBean() {
     }
 
     public List<AspirantePonderable> getListar() {
