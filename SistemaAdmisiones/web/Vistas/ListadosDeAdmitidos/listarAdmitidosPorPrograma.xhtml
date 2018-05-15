@@ -23,6 +23,7 @@
 
                     <h:form id="formMostrarAspirantesPOPrograma">
                         <p:growl id="growl" showDetail="true" sticky="true" />  
+                        
 
                         <p:dataTable id="tablaMostrarAspirantesPOPrograma" var="ap" value="#{aplicaBean.listar}" 
                                      emptyMessage="No hay Aspirantes Ponderables" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
@@ -30,7 +31,7 @@
 
 
                             <p:column headerText="Puesto">
-                                <h:outputText value="---" />
+                                <h:outputText value="--" />
                             </p:column>
                             <p:column headerText="Identificación/CC" filterBy="#{ap.aspirantePonderable.aspid}" filterMatchMode="contains">
                                 <h:outputText value="#{ap.aspirantePonderable.aspid}" />
@@ -57,26 +58,28 @@
                             <p:column headerText="%Inglés">
                                 <h:outputText value="#{ap.aspirantePonderable.aspingles}" />
                             </p:column>
-                            <p:column headerText="%Estado">
+                            <p:column headerText="Estado">
                                 <h:outputText value="#{ap.listaAdmitidos.listestado}" />
                             </p:column>
-                            <p:column headerText="%Tipo Inscrito">
+                            <p:column headerText="Tipo Inscrito">
                                 <h:outputText value="#{ap.aspirantePonderable.asptipoinscrito}" />
                             </p:column>
-                            <p:column headerText="%Tipo Admitido">
+                            <p:column headerText="Tipo Admitido">
                                 <h:outputText value="#{ap.listaAdmitidos.listtipoadmitido}" />
                             </p:column>
 
 
                         </p:dataTable>
-                        <h:commandLink>
-                            <p:graphicImage name="/demo/images/pdf.png" />
-                            <p:dataExporter type="pdf" target="tablaMostrarAspirantesPOPrograma" fileName="Aspirantes_" />
-                        </h:commandLink>
                         <br/><br/>
+                        
                         <p:commandButton value="Volver" action="#{aplicaBean.verAdmitidosPublicados()}" ></p:commandButton>
 
 
+                        
+                        <h:commandLink>
+                            <p:graphicImage name="./../resources/images/pdf.jpg" />
+                            <p:dataExporter type="pdf" target="tablaMostrarAspirantesPOPrograma" fileName="Aspirantes" />
+                        </h:commandLink>
                     </h:form>
                 </p:panel>
 
