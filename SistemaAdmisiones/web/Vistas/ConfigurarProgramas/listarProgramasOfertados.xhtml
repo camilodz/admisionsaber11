@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="./../../Template.xhtml">
+
+            <ui:define name="content">
+                <h2><h:outputText value="Ver configuración de programas ofertados - ...
+                                  "></h:outputText></h2>
+                <p:growl id="msgs" life="1000"/>
+                <h3><h:outputText value="Visualizando la configuración de 
+                                  cupos de los programas ofertados pertenecientes a la 
+                                  --- 
+                                  para el Perido Académico #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h3>
+                <br/> <br/>
+
+                <h:form id="formMostrarPO">
+
+                    <p:dataTable id="tablaMostrarPO" var="pof" value="#{programaofertadoBean.listaPOFacultad}" 
+                                 emptyMessage="No hay Programas Ofertados">
+
+
+                        <p:column headerText="Programa">
+                            <h:outputText value="#{pof.programa.pronombre}" />
+                        </p:column>
+                        <p:column headerText="Cupos Regulares">
+                            <h:outputText value="#{pof.pofcuposreg}" />
+                        </p:column>
+                        <p:column headerText="Difícil Acceso">
+                            <h:outputText value="#{pof.pofcuposdificilacceso}" />
+                        </p:column>
+                        <p:column headerText="Normalistas">
+                            <h:outputText value="#{pof.pofcuposnormalista}" />
+                        </p:column>
+                        <p:column headerText="Indígena">
+                            <h:outputText value="#{pof.pofcuposindigena}" />
+                        </p:column>
+                        <p:column headerText="Zona Marginal">
+                            <h:outputText value="#{pof.pofcuposzonamarginal}" />
+                        </p:column>
+                        <p:column headerText="Afrodescendiente">
+                            <h:outputText value="#{pof.pofcuposafrodescendiente}" />
+                        </p:column>
+                        <p:column headerText="Costa Pacífica">
+                            <h:outputText value="#{pof.pofcuposcostapacifica}" />
+                        </p:column>
+                        <p:column headerText="Cupos Totales">
+                            <h:outputText value="#{pof.poftotalcupos}" />
+                        </p:column>
+                        <p:column headerText="Lista de Espera">
+                            <h:outputText value="#{pof.poflistaespera}" />
+                        </p:column>
+
+
+                        <p:column headerText="Acciones">
+                            <p:commandButton value="Modificar" oncomplete="PF('dlgModificar').show();"
+                                             update=":formModificar">
+                                <f:setPropertyActionListener target="#{programaofertadoBean.pof}" value="#{pof}" />
+                            </p:commandButton>
+                        </p:column>
+
+                    </p:dataTable>
+                    
+                </h:form>
+
+                <p:dialog id="dlg" header="Modificar Datos" widgetVar="dlgModificar"
+                          showEffect="explode" hideEffect="explode" modal="true">
+                    <h:form id="formModificar">
+                        <p:panelGrid columns="2" style="margin: 0 auto">
+
+                            <p:outputLabel value="Programa" />
+                            <h:outputText value="#{programaofertadoBean.pof.programa.pronombre}" />
+
+                            <p:outputLabel value="Cupos regulares" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposreg}"/>
+
+                            <p:outputLabel value="Difícil Acceso" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposdificilacceso}"/>
+
+                            <p:outputLabel value="Normalistas" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposnormalista}"/>
+
+                            <p:outputLabel value="Indígena" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposindigena}"/>
+
+                            <p:outputLabel value="Zona Marginal" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposzonamarginal}"/>
+
+                            <p:outputLabel value="Afroescendiente" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposafrodescendiente}"/>
+
+                            <p:outputLabel value="Costa Pacífica" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofcuposcostapacifica}"/>
+
+                            <p:outputLabel value="Cupos Totales" />
+                            <h:outputText value="#{programaofertadoBean.pof.poftotalcupos}" />
+
+                            <p:outputLabel value="Lista de Espera" />
+                            <p:inputText value="#{programaofertadoBean.pof.poflistaespera}"/>
+
+                            <p:commandButton value="Guardar" actionListener="#{programaofertadoBean.modificarPO()}"
+                                             update=":formMostrarPO:tablaMostrarPO" />
+                            <p:commandButton value="Cancelar" onclick="PF('dlgModificar').hide();" update=":formMostrarPO" />
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+
+
+                <br/>
+                <br/>
+
+
+                <h:form id="formMostrarPOPonderados">
+
+                    <p:dataTable id="tablaMostrarPOPonderados" var="pof" value="#{programaofertadoBean.listaPOFacultad}" 
+                                 emptyMessage="No hay Programas Ofertados">
+
+                        <p:column headerText="Programa">
+                            <h:outputText value="#{pof.programa.pronombre}" />
+                        </p:column>
+                        <p:column headerText="%Lectura Crítica">
+                            <h:outputText value="#{pof.pofpondlecturacritica}" />
+                        </p:column>
+                        <p:column headerText="%Matemáticas">
+                            <h:outputText value="#{pof.pofpondmatematicas}" />
+                        </p:column>
+                        <p:column headerText="%Sociales y Ciudadanas">
+                            <h:outputText value="#{pof.pofpondcsociales}" />
+                        </p:column>
+                        <p:column headerText="%Ciencias Naturales">
+                            <h:outputText value="#{pof.pofpondcnaturales}" />
+                        </p:column>
+                        <p:column headerText="%Inglés">
+                            <h:outputText value="#{pof.pofpondingles}" />
+                        </p:column>
+                        <p:column headerText="%Prueba ICFES">
+                            <h:outputText value="---" />
+                        </p:column>
+                        <p:column headerText="%Prueba Adicional">
+                            <h:outputText value="#{pof.pofpondpruebaad}" />
+                        </p:column>
+
+                        <p:column headerText="Acciones">
+                            <p:commandButton value="Modificar" oncomplete="PF('dlgModificarPonderados').show();"
+                                             update=":formModificarPonderados">
+                                <f:setPropertyActionListener target="#{programaofertadoBean.pof}" value="#{pof}" />
+                            </p:commandButton>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+                <p:dialog id="dlg2" header="Modificar Datos" widgetVar="dlgModificarPonderados"
+                          showEffect="explode" hideEffect="explode" modal="true">
+                    <h:form id="formModificarPonderados">
+                        <p:panelGrid columns="2" style="margin: 0 auto">
+
+                            <p:outputLabel value="Programa" />
+                            <h:outputText value="#{programaofertadoBean.pof.programa.pronombre}" />
+
+                            <p:outputLabel value="%Lectura Crítica" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondlecturacritica}"/>
+
+                            <p:outputLabel value="%Matemáticas" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondmatematicas}"/>
+
+                            <p:outputLabel value="%Sociales y Ciudadanas" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondcsociales}"/>
+
+                            <p:outputLabel value="%Ciencias Naturales" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondcnaturales}"/>
+
+                            <p:outputLabel value="%Inglés" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondingles}"/>
+
+                            <p:outputLabel value="%Prueba ICFES" />
+                            <p:inputText value="--"/>
+
+                            <p:outputLabel value="%Prueba Adicional" />
+                            <p:inputText value="#{programaofertadoBean.pof.pofpondpruebaad}"/>
+
+                            <p:commandButton value="Guardar" actionListener="#{programaofertadoBean.modificarPO()}"
+                                             update=":formMostrarPOPonderados:tablaMostrarPOPonderados" />
+                            <p:commandButton value="Cancelar" onclick="PF('dlgModificarPonderados').hide();" update=":formMostrarPOPonderados" />
+                        </p:panelGrid>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

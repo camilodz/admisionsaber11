@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/05/2018 10:11:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.AspirantePonderable" table="aspirante_ponderable" catalog="admisiones44" optimistic-lock="version">
+        <id name="aspid" type="int">
+            <column name="ASPID" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="asptipo" type="string">
+            <column name="ASPTIPO" length="13" not-null="true" />
+        </property>
+        <property name="asptipodoc" type="string">
+            <column name="ASPTIPODOC" length="2" not-null="true" />
+        </property>
+        <property name="aspnombre" type="string">
+            <column name="ASPNOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="aspfechanac" type="date">
+            <column name="ASPFECHANAC" length="10" not-null="true" />
+        </property>
+        <property name="asppondtotal" type="short">
+            <column name="ASPPONDTOTAL" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="asplecturacritica" type="short">
+            <column name="ASPLECTURACRITICA" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspmatematicas" type="short">
+            <column name="ASPMATEMATICAS" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspcsociales" type="short">
+            <column name="ASPCSOCIALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspcnaturales" type="short">
+            <column name="ASPCNATURALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspingles" type="short">
+            <column name="ASPINGLES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="asptipoinscrito" type="string">
+            <column name="ASPTIPOINSCRITO" length="30" not-null="true" />
+        </property>
+        <property name="aspcorreo" type="string">
+            <column name="ASPCORREO" length="40" not-null="true" />
+        </property>
+        <property name="asppruebaad" type="java.lang.Short">
+            <column name="ASPPRUEBAAD" precision="3" scale="0" />
+        </property>
+        <set name="aplicas" table="aplica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ASPID" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Aplica" />
+        </set>
+        <one-to-one name="aspiranteNoPonderable" class="com.model.AspiranteNoPonderable"></one-to-one>
+    </class>
+</hibernate-mapping>

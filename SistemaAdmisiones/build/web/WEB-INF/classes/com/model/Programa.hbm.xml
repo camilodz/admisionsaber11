@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/05/2018 10:11:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Programa" table="programa" catalog="admisiones44" optimistic-lock="version">
+        <id name="proid" type="short">
+            <column name="PROID" precision="3" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="facultad" class="com.model.Facultad" fetch="select">
+            <column name="FACID" precision="3" scale="0" />
+        </many-to-one>
+        <property name="pronombre" type="string">
+            <column name="PRONOMBRE" length="40" not-null="true" />
+        </property>
+        <property name="prosede" type="string">
+            <column name="PROSEDE" length="15" not-null="true" />
+        </property>
+        <set name="programaofertados" table="programaofertado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PROID" precision="3" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Programaofertado" />
+        </set>
+    </class>
+</hibernate-mapping>

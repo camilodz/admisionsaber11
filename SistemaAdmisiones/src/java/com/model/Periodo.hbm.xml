@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/05/2018 10:11:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Periodo" table="periodo" catalog="admisiones44" optimistic-lock="version">
+        <id name="perid" type="string">
+            <column name="PERID" length="6" />
+            <generator class="assigned" />
+        </id>
+        <property name="perminpop" type="short">
+            <column name="PERMINPOP" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="perminreg" type="short">
+            <column name="PERMINREG" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="pervigente" type="boolean">
+            <column name="PERVIGENTE" precision="1" scale="0" not-null="true" />
+        </property>
+        <set name="programaofertados" table="programaofertado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PERID" length="6" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Programaofertado" />
+        </set>
+    </class>
+</hibernate-mapping>

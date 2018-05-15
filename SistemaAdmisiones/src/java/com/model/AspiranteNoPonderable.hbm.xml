@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/05/2018 10:11:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.AspiranteNoPonderable" table="aspirante_no_ponderable" catalog="admisiones44" optimistic-lock="version">
+        <id name="aspid" type="int">
+            <column name="ASPID" precision="6" scale="0" />
+            <generator class="foreign">
+                <param name="property">aspirantePonderable</param>
+            </generator>
+        </id>
+        <one-to-one name="aspirantePonderable" class="com.model.AspirantePonderable" constrained="true"></one-to-one>
+        <property name="aspmotivo" type="string">
+            <column name="ASPMOTIVO" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
