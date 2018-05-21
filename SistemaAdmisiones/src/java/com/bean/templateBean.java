@@ -31,4 +31,8 @@ public class templateBean {
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
     }
     
+    public void verConfiguracionInicial(){
+        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
+    }
+    
 }
