@@ -70,17 +70,17 @@
 
 
                         </p:dataTable>
-                        <h:outputText id="recuperados" value="Mostrando #{aplicaBean.listar.size()} aspirantes en el listado"/>
                         <br/><br/>
                         
                         <p:commandButton value="Volver" action="#{aplicaBean.verAdmitidosPublicados()}" ></p:commandButton>
 
 
-                        
                         <h:commandLink>
-                            <p:graphicImage name="./../resources/images/pdf.jpg" />
+                            <p:graphicImage name="/images/pdf.bmp" />
                             <p:dataExporter type="pdf" target="tablaMostrarAspirantesPOPrograma" fileName="Aspirantes" />
                         </h:commandLink>
+                        
+                        <p:commandButton value="Volver" action="#{aplicaBean.verAdmitidosPublicados()}" ></p:commandButton>
                     </h:form>
                 </p:panel>
 
