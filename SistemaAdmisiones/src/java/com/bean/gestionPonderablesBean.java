@@ -1,5 +1,6 @@
 package com.bean;
 
+import com.utilidades.Utilidades;
 import java.io.Serializable;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
