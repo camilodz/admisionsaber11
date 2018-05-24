@@ -30,5 +30,14 @@ public class gestionPonderablesBean implements Serializable{
             return "Ningún Archivo Seleccionado";
         return nombreArcIcfes;
     }
+
+    /*Navegar entre vistas*/
+    public void datosProcesados(){
+        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
+    }
+    
+    public void listaNoPonderable(){
+        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/listaAspirantesNoPonderables.xhtml");
+    }
           
 }
