@@ -3,10 +3,13 @@ package com.bean;
 import com.dao.facultadDao;
 import com.dao.facultadDaoImp;
 import com.model.Facultad;
+import com.model.Programaofertado;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -48,4 +51,15 @@ public class facultadBean implements Serializable {
         this.selectedFac = selectedFac;
     }
     
+    public List<SelectItem> facultades(){
+        List<SelectItem> listaPro = new ArrayList<>();
+        this.getListaFac();
+        String nombrePro;
+        for (Facultad facultades : listaFac) {
+            nombrePro = facultades.getFacnombre();
+            listaPro.add(new SelectItem(nombrePro));
+        }
+        return listaPro;
+    }
+
 }

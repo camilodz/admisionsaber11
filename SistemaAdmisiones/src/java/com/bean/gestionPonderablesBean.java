@@ -13,7 +13,7 @@ import javax.inject.Named;
 @ApplicationScoped
 public class gestionPonderablesBean implements Serializable{
     
-    private String nombreArcAsp, nombreArcIcfes;        
+    private String nombreArcAsp, nombreArcIcfes, nombrePrograma;        
     
     public gestionPonderablesBean() {
         nombreArcAsp = "";
@@ -32,6 +32,14 @@ public class gestionPonderablesBean implements Serializable{
         return nombreArcIcfes;
     }
 
+    public String getNombrePrograma() {
+        return nombrePrograma;
+    }
+
+    public void setNombrePrograma(String nombrePrograma) {
+        this.nombrePrograma = nombrePrograma;
+    }   
+
     /*Navegar entre vistas*/
     public void datosProcesados(){
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
@@ -39,6 +47,11 @@ public class gestionPonderablesBean implements Serializable{
     
     public void listaNoPonderable(){
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/listaAspirantesNoPonderables.xhtml");
+    }
+
+    public void verAspirantesPorPrograma(String nombrePro){
+        this.setNombrePrograma(nombrePro);
+        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/verAspirantesPorPrograma.xhtml");
     }
           
 }

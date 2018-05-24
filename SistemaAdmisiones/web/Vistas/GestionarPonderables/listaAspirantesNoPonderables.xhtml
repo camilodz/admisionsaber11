@@ -17,40 +17,28 @@
                             <p:outputLabel for="console" value="Ver por:" />
                             <p:selectOneMenu id="console" style="width:150px">
                                 <f:selectItem itemLabel="Todos" itemValue="Todos los Programas" />
-                                <f:selectItem itemLabel="Facultad de Artes" itemValue="Sede Popayán" />
-                                <f:selectItem itemLabel="Facultad de Ingenieria Civil" itemValue="Regionalización" />                                
+                                <f:selectItems value="#{facultadBean.facultades()}" />                                
                             </p:selectOneMenu>
                             <p:commandButton value="Buscar" action="#{menuView.save}" update="growl" />
                         </h:panelGrid>
                         <br/><br/>
                         <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes no Ponderables." /></h1>
                         <br/>
-                        <p:dataTable id="tablaMostrarFac" var="fac" value="#{facultadBean.listaFac}" 
+                        <p:dataTable id="tablaMostrarProg" var="pro" value="#{programaofertadoBean.listaPO}" 
                                      emptyMessage="No hay Facultades">
-                            <p:column headerText="Facultad">
-                                <h:outputText value="#{fac.facnombre}" />
+                            <p:column headerText="Programa" filterBy="#{pro.programa.pronombre}" filterMatchMode="contains">
+                                <h:outputText value="#{pro.programa.pronombre}" />
+                            </p:column>
+                            <p:column headerText="Número Aspirante">
+                                <h:outputText value="#{pro.poftotalcupos}" />
                             </p:column>
                             <p:column headerText="Acciones">
-                                <p:column>
-                                    <p:commandButton value="Listar" action="listarProgramasOfertados.xhtml">
-                                        <f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />
-                                    </p:commandButton>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton  action="#{programaofertadoBean.verProgramasFacultad(fac.facid)}" icon="ui-icon-search" title="View" value="Ver" >
-                                        <!--<f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />-->
-                                    </p:commandButton>
-                                </p:column>                            
-                                <p:column>
-                                    <p:commandButton action="#{programaofertadoBean.configProgramasFacultad(fac.facid)}" value="Configurar" >
-                                        <!--<f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />-->
-                                    </p:commandButton>
-                                </p:column>
+                                <p:commandButton value="VER" actionListener="#{gestionPonderablesBean.verAspirantesPorPrograma(pro.programa.pronombre)}"/>
                             </p:column>
                         </p:dataTable>
                         <br/><br/>
                         <p:panelGrid columns="3">
-                            <p:commandButton value="Volver" actionListener="#{menuView.save}" />
+                            <p:commandButton value="Volver" actionListener="#{gestionPonderablesBean.datosProcesados()}" />
                             <p:commandButton value="Enviar Correo de Notificacion" actionListener="#{menuView.save}" />
                             <p:commandLink value="Ver Listado de los Ponderables" actionListener="#{menuView.save}" />
                         </p:panelGrid>
