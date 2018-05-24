@@ -68,9 +68,9 @@
                                     <p:menuitem value="Gestionar Casos Especiales" actionListener="#{menuView.save}" />
                                 </p:submenu>
                                 <p:submenu label="Proceso de Admisión">
-                                    <p:menuitem value="Configuración Inicial" actionListener="#{templateBean.verConfiguracionInicial()}" />
+                                    <p:menuitem value="Configuración Inicial" action="#{templateBean.verConfiguracionInicial()}" />
                                     <p:menuitem value="Configurar Programas" action="#{templateBean.verConfiguracionProgramas()}" />
-                                    <p:menuitem value="Gestionar Ponderables" actionListener="#{templateBean.gestionarPonderables()}" update="messages" />
+                                    <p:menuitem value="Gestionar Ponderables" action="#{templateBean.gestionarPonderables()}" update="messages" />
                                     <p:menuitem value="Resultados Prueba Adicional" actionListener="#{menuView.save}" update="messages" />
                                     <p:menuitem value="Listado de Admitidos" action="#{templateBean.verListadosDeAdmitidos()}" />
                                 </p:submenu>
