@@ -35,4 +35,8 @@ public class templateBean {
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
     }
     
+    public void gestionarPonderables(){
+        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/seleccionArchivos.xhtml");
+    }
+
 }
