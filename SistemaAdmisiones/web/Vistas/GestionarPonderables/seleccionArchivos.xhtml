@@ -26,6 +26,15 @@
                                 <p:outputLabel value="#{gestionPonderablesBean.nombreArchivoAsp}" />
                             </h:panelGrid>
                         </p:fieldset>
+                        <br/>
+                        <p:outputPanel>NOTA: Estos dos archivos serán procesados con el fin de hacer distinción entre los
+                        aspirantes cuya información es correca y aquellos que presentan incosistencias en la información
+                        suministrada.</p:outputPanel>
+                        <br/><br/>
+                        <p:panelGrid columns="2" >
+                            <p:commandButton value="Cancelar" />
+                            <p:commandButton value="Procesar" action="#{gestionPonderablesBean.datosProcesados()}"/>
+                        </p:panelGrid>
                     </p:panel>
                 </h:form>
             </ui:define>            
