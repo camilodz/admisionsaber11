@@ -13,11 +13,13 @@ import javax.inject.Named;
 @ApplicationScoped
 public class gestionPonderablesBean implements Serializable{
     
-    private String nombreArcAsp, nombreArcIcfes, nombrePrograma;        
+    private String nombreArcAsp, nombreArcIcfes, nombrePrograma, itemSeleccionado;        
     
     public gestionPonderablesBean() {
         nombreArcAsp = "";
         nombreArcIcfes = "";
+        nombrePrograma = "";
+        itemSeleccionado = "Todos";
     }
     
     public String getNombreArchivoAsp(){
@@ -39,6 +41,14 @@ public class gestionPonderablesBean implements Serializable{
     public void setNombrePrograma(String nombrePrograma) {
         this.nombrePrograma = nombrePrograma;
     }   
+
+    public String getItemSeleccionado() {
+        return itemSeleccionado;
+    }
+
+    public void setItemSeleccionado(String itemSeleccionado) {
+        this.itemSeleccionado = itemSeleccionado;
+    }
 
     /*Navegar entre vistas*/
     public void datosProcesados(){

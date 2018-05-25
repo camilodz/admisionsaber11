@@ -1,15 +1,12 @@
 package com.bean;
 
-
 import com.dao.*;
-import com.model.AspirantePonderable;
 import com.model.Periodo;
 import com.model.Programaofertado;
 import com.utilidades.Utilidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -42,8 +39,7 @@ public class programaofertadoBean implements Serializable {
     public void setFiltro(List<Programaofertado> filtro) {
         this.filtro = filtro;
     }
-    
-    
+
     public programaofertadoBean() {
     }
 
@@ -66,7 +62,24 @@ public class programaofertadoBean implements Serializable {
         System.out.println("************** selected - " + selectedFac);
         this.listaPO = poDao.listarPOFacultad(selectedFac);
         return listaPO;
+    }    
+
+    /*metodos utilizados para buscar programas de una facultad*/
+    public List<Programaofertado> getListaPOFacultadPrograma(String parametro) {
+        programaofertadoDao poDao = new programaofertadoDaoImp();
+        this.setIdFacSeleccionada(parametro);
+        if(selectedFac.equals(""))
+            return this.getListaPO();
+        this.listaPO = poDao.listarPOFacultad(selectedFac);
+        return listaPO;
     }
+
+    private void setIdFacSeleccionada(String nombreFac) {
+        facultadDao faDao = new facultadDaoImp();
+        selectedFac = faDao.getIdFacultad(nombreFac);
+    }
+
+    //hasta aqui
 
     public void modificarPO() {
         programaofertadoDao poDao = new programaofertadoDaoImp();
@@ -97,6 +110,5 @@ public class programaofertadoBean implements Serializable {
         this.setSelectedFac(selectedFac);
         Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
     }
-    
     
 }

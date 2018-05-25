@@ -8,23 +8,23 @@
     <h:body>
         <ui:composition template="./../../Template.xhtml">
             <ui:define name="content">                
-                <h:form>
+                <h:form id="formulario">
                     <p:growl id="growl" showDetail="true" sticky="true" />  
                     <p:panel>                    
                         <h2><h:outputText value="Gestion de Ponderables - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
                         <h3><p:outputLabel value="Listado de Aspirantes por Programa que NO se pueden ponderar." /></h3>
                         <h:panelGrid columns="3" border="0">
                             <p:outputLabel for="console" value="Ver por:" />
-                            <p:selectOneMenu id="console" style="width:150px">
-                                <f:selectItem itemLabel="Todos" itemValue="Todos los Programas" />
+                            <p:selectOneMenu id="console" value="#{gestionPonderablesBean.itemSeleccionado}" style="width:150px">
+                                <f:selectItem itemLabel="Todos" itemValue="Todos" />
                                 <f:selectItems value="#{facultadBean.facultades()}" />                                
                             </p:selectOneMenu>
-                            <p:commandButton value="Buscar" action="#{menuView.save}" update="growl" />
+                            <p:commandButton value="Buscar" update="tablaMostrarProg" />
                         </h:panelGrid>
                         <br/><br/>
                         <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes no Ponderables." /></h1>
                         <br/>
-                        <p:dataTable id="tablaMostrarProg" var="pro" value="#{programaofertadoBean.listaPO}" 
+                        <p:dataTable id="tablaMostrarProg" var="pro" value="#{programaofertadoBean.getListaPOFacultadPrograma(gestionPonderablesBean.itemSeleccionado)}" 
                                      emptyMessage="No hay Facultades">
                             <p:column headerText="Programa" filterBy="#{pro.programa.pronombre}" filterMatchMode="contains">
                                 <h:outputText value="#{pro.programa.pronombre}" />

@@ -34,4 +34,26 @@ public class facultadDaoImp implements facultadDao{
         return listaFac;
     }
     
+    @Override
+    public String getIdFacultad(String nombreFac){
+        String id = "";
+        List<Facultad> listaFac = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        String hql = "FROM Facultad";
+        try {
+            listaFac = session.createQuery(hql).list();
+            for (Facultad listaFac1 : listaFac) {
+                if(listaFac1.getFacnombre().equalsIgnoreCase(nombreFac))
+                    id = Short.toString(listaFac1.getFacid());
+            }
+            transaction.commit();
+            session.close();            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }               
+        return id;
+    }
+    
 }

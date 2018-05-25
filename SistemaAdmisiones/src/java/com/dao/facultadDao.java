@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface facultadDao {
     public List<Facultad> listarFac();
+    public String getIdFacultad(String nombreFac);
 }
