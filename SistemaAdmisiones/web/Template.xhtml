@@ -71,7 +71,7 @@
                                     <p:menuitem value="Configuración Inicial" action="#{templateBean.verConfiguracionInicial()}" />
                                     <p:menuitem value="Configurar Programas" action="#{templateBean.verConfiguracionProgramas()}" />
                                     <p:menuitem value="Gestionar Ponderables" action="#{templateBean.gestionarPonderables()}" update="messages" />
-                                    <p:menuitem value="Resultados Prueba Adicional" actionListener="#{menuView.save}" update="messages" />
+                                    <p:menuitem value="Resultados Prueba Adicional" action="#{templateBean.gestionarPonderables()}" update="messages" />
                                     <p:menuitem value="Listado de Admitidos" action="#{templateBean.verListadosDeAdmitidos()}" />
                                 </p:submenu>
                             </p:menu>
