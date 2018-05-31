@@ -14,7 +14,7 @@
                         <h3><p:outputLabel>Los datos han sido procesados correctamente</p:outputLabel></h3>
                         <p:panelGrid columns="2">
                             <p:graphicImage name="demo/images/misc/kobe.png" />
-                            <p:commandLink value="Ver listado de Aspirantes que se pueden Ponderar"/>
+                            <p:commandLink value="Ver listado de Aspirantes que se pueden ponderar" action="#{gestionPonderablesBean.listaPonderable()}" />
                             <p:graphicImage name="demo/images/misc/kobe.png" />
                             <p:commandLink value="Ver listado de Aspirantes que NO se pueden ponderar" action="#{gestionPonderablesBean.listaNoPonderable()}" />
                         </p:panelGrid>
