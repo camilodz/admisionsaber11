@@ -1,0 +1,194 @@
+body {
+	background: url("../images/background.png") no-repeat;
+	background-color: #0C3664;
+	background-size: 100%;
+	font-family: "Vegur", "Arial Narrow", Arial, sans-serif !important; 
+}
+
+h3, h5 {
+	font-family: "Vegur", "Arial Narrow", Arial, sans-serif;
+}
+
+#bandera {
+	background: url("../images/bandera.png") no-repeat;
+	width: 345px;
+	height: 130px;
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	bottom: 0;
+}
+#general {
+	margin: 0 auto 15px;
+	display: table;
+}
+
+
+header {
+	display: table;
+	margin: 30px auto 5px;
+}
+header .separador {
+	background: url("../images/barra.png") no-repeat;
+	width: 2px;
+	height: 40px;
+	float: left;
+	margin: 25px 10px 27px 0;
+}
+	#logoU {
+		background: url("../images/logo.png") no-repeat;
+		width: 188px;
+		height: 92px;
+		float: left;
+		margin-right: 10px;
+	}
+	#desc {
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 17px;
+		color: #FFFFFF;
+		margin-top: 27px;
+    	width: 235px;
+    	float: left;
+	}
+header.top {
+	display: block;
+	background: url("../images/back-header-int1.png") no-repeat center; 
+	background-size: 100%;
+	background-color: #0C3664;
+	margin: 0;
+	position: relative;
+}
+header.top #logoU {
+	margin: 5px 10px 5px 50px;
+	position: relative;
+	z-index: 1;
+}
+header.top .separador {
+	margin-top: 30px;
+	margin-bottom: 32px;
+}
+header.top #desc {
+	margin-top: 32px;
+	position: relative;
+	z-index: 1;
+}
+	#banderaHeader {
+		background: url("../images/bandera-head-int.png") no-repeat;
+		width: 195px;
+		height: 102px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		z-index: 0;
+	}
+
+
+
+
+footer {
+	margin: auto;
+	display: table;
+}
+footer p {
+	font-size: 16px;
+	color: #FFFFFF;
+}
+footer.bottom {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	height: 111px;
+}
+footer.bottom p {
+	color: #666666;
+	margin: auto;
+	display: table;
+	position: relative;
+	z-index: 1;
+	margin-top: 35px;
+}
+	#PiePagina {
+		background: url("../images/bandera.png") no-repeat;
+		width: 345px;
+		height: 111px;
+		position: absolute;
+		left: 0;
+		z-index: 0;
+	}
+
+div.campo {
+	position: relative;
+}
+.clear {
+	clear: both;
+}
+
+@media all and (max-width: 979px)
+
+{
+	#left
+	{
+		width: 97.86% !important;
+		border: 0 !important;
+		border-radius: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}	
+	html, body
+	{
+		overflow-x: auto;
+	}
+	footer.bottom p
+	{
+		background-color: #D2DFE5;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	
+}
+
+
+@media all and (max-height: 1080px) {
+	#left {
+		min-height: 768px;
+	}
+}
+@media all and (max-height: 1024px) {
+	#left {
+		min-height: 710px;   
+	}
+}
+@media all and (max-height: 900px) {
+	#left {
+		min-height: 586px;
+	}
+}
+@media all and (max-height: 800px) {
+	#left {
+		min-height: 486px;
+	}
+}
+@media all and (max-height: 768px) {
+	#left {
+		min-height: 555px;
+	}
+}
+@media all and (max-height: 600px) {
+	#left {
+		min-height: 387px;
+	}
+}
+
+html, body {
+	width: 100%; 
+	margin: 0px;
+	padding: 0px;
+}
+
+.centeredP {
+position:relative;
+height: 100px;
+margin:0 auto;
+padding: 10% 0;
+}

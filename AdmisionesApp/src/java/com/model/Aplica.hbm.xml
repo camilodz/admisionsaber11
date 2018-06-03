@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/06/2018 07:20:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Aplica" table="aplica" catalog="admisiones" optimistic-lock="version">
+        <id name="apliid" type="short">
+            <column name="APLIID" precision="3" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="aspirante" class="com.model.Aspirante" fetch="select">
+            <column name="ASPID" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="programaofertado" class="com.model.Programaofertado" fetch="select">
+            <column name="POFID" precision="3" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="apliprioridad" type="boolean">
+            <column name="APLIPRIORIDAD" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="aplisnp" type="string">
+            <column name="APLISNP" length="15" not-null="true" />
+        </property>
+        <one-to-one name="listaAdmitidos" class="com.model.ListaAdmitidos"></one-to-one>
+    </class>
+</hibernate-mapping>

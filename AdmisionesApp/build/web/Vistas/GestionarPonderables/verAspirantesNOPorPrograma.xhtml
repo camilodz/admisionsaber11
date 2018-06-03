@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="./../../Template.xhtml">
+            <ui:define name="content">                
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />  
+                    <p:panel>                    
+                        <h2><h:outputText value="Gestion de Ponderables - #{gestionPonderablesBean.nombrePrograma} - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
+                        <h3><p:outputLabel value="Listado de Aspirantes a #{gestionPonderablesBean.nombrePrograma} que NO se pueden ponderar." /></h3>                        
+                        <br/><br/>
+                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes no Ponderables por ese programa." /></h1>
+                        <br/>
+                        <p:dataTable id="tablaListNoPond" var="pro" value="#{programaofertadoBean.listaPO}" 
+                                     emptyMessage="No hay Facultades">
+                            <p:column headerText="Check" width="30">
+                                <h:outputText value="--" />
+                            </p:column>
+                            <p:column headerText="Identificacion" filterBy="#{pro.programa.proid}" filterMatchMode="contains">
+                                <h:outputText value="#{pro.programa.proid}" />
+                            </p:column>
+                            <p:column headerText="Programa" filterBy="#{pro.programa.pronombre}" filterMatchMode="contains">
+                                <h:outputText value="#{pro.programa.pronombre}" />
+                            </p:column>
+                            <p:column headerText="Motivo">
+                                <h:outputText value="#{pro.programa.prosede}" />
+                            </p:column>
+                            <p:column headerText="Acciones" >
+                                <p:commandButton value="VER" actionListener="#{menuView.save}"/>
+                                <p:commandButton value="REINTEGRAR" actionListener="#{menuView.save}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <br/><br/>
+                        <p:panelGrid columns="3">
+                            <p:commandButton value="Volver" actionListener="#{gestionPonderablesBean.datosProcesados()}" />
+                            <p:commandButton value="Enviar Correo de Notificacion" actionListener="#{menuView.save}" />                            
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>            
+        </ui:composition>        
+    </h:body>
+</html>

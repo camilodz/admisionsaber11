@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/06/2018 07:20:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Facultad" table="facultad" catalog="admisiones" optimistic-lock="version">
+        <id name="facid" type="short">
+            <column name="FACID" precision="3" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="facnombre" type="string">
+            <column name="FACNOMBRE" length="40" not-null="true" />
+        </property>
+        <set name="programas" table="programa" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FACID" precision="3" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.model.Programa" />
+        </set>
+    </class>
+</hibernate-mapping>

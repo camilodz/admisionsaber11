@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/06/2018 07:20:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.AspirantePonderable" table="aspirante_ponderable" catalog="admisiones" optimistic-lock="version">
+        <id name="aspid" type="int">
+            <column name="ASPID" precision="6" scale="0" />
+            <generator class="foreign">
+                <param name="property">aspirante</param>
+            </generator>
+        </id>
+        <one-to-one name="aspirante" class="com.model.Aspirante" constrained="true"></one-to-one>
+        <property name="asptipo" type="string">
+            <column name="ASPTIPO" length="13" not-null="true" />
+        </property>
+        <property name="asppondtotal" type="short">
+            <column name="ASPPONDTOTAL" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="asplecturacritica" type="short">
+            <column name="ASPLECTURACRITICA" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspmatematicas" type="short">
+            <column name="ASPMATEMATICAS" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspcsociales" type="short">
+            <column name="ASPCSOCIALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspcnaturales" type="short">
+            <column name="ASPCNATURALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="aspingles" type="short">
+            <column name="ASPINGLES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="asppruebaad" type="java.lang.Short">
+            <column name="ASPPRUEBAAD" precision="3" scale="0" />
+        </property>
+        <one-to-one name="aspiranteNoPonderable" class="com.model.AspiranteNoPonderable"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/06/2018 07:20:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.Resultadoicfes" table="resultadoicfes" catalog="admisiones" optimistic-lock="version">
+        <id name="ressnp" type="string">
+            <column name="RESSNP" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="resperiodo" type="string">
+            <column name="RESPERIODO" length="6" not-null="true" />
+        </property>
+        <property name="resnombreest" type="string">
+            <column name="RESNOMBREEST" length="50" not-null="true" />
+        </property>
+        <property name="restipodocest" type="byte">
+            <column name="RESTIPODOCEST" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="residest" type="int">
+            <column name="RESIDEST" precision="6" scale="0" not-null="true" />
+        </property>
+        <property name="resglobal" type="short">
+            <column name="RESGLOBAL" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="reslecturacritica" type="short">
+            <column name="RESLECTURACRITICA" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="resmatematicas" type="short">
+            <column name="RESMATEMATICAS" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="rescsociales" type="short">
+            <column name="RESCSOCIALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="rescnaturales" type="short">
+            <column name="RESCNATURALES" precision="3" scale="0" not-null="true" />
+        </property>
+        <property name="resingles" type="short">
+            <column name="RESINGLES" precision="3" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

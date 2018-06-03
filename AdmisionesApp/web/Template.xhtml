@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <title>Sistema de admisión</title>
+    </h:head>
+
+    <h:body>
+
+            <!--Inicio Cabecera-->       
+            <div id="top">
+                <ui:insert name="top">
+                    <header class="top">
+                        <div id="logoU"></div>
+                        <div class="separador"></div>
+                        <p id="desc">Sistema Admisión Saber 11.</p>
+                        <div class="logoSimca"></div>
+                        <div id="banderaHeader"></div>
+                        <div class="clear"></div>
+                    </header>
+                    <h:form>
+                        <p:growl id="messages" showDetail="false"/>
+                        <p:toolbar>
+
+                            <f:facet name="left">
+                            <p:breadCrumb>
+                                <p:menuitem value="Menú de usuario" url="#" />
+                                <p:menuitem value="Opciones" url="#" />
+                            </p:breadCrumb>
+                            </f:facet>
+                            <f:facet name="right">
+                                <p:commandButton id="dynaButton" value="Mostrar" type="button" icon="ui-icon-extlink"/>
+                                <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+                                    <p:submenu label="Perfil">
+                                        <p:menuitem value="Ver mi perfil" actionListener="#{menuView.save}" update="messages" icon="ui-icon-info"/>
+                                        <p:menuitem value="Ayuda" actionListener="#{menuView.delete}" update="messages" ajax="false" icon="ui-icon-flag"/>
+                                        </p:submenu>
+                                    <p:submenu label="Sesión">
+                                        <p:menuitem value="Cerrar Sesión" actionListener="#{menuView.update}" update="messages" icon="ui-icon-power"/>
+                                    </p:submenu>
+                                </p:menu>
+                            </f:facet>
+                        </p:toolbar>
+                    </h:form>
+
+                </ui:insert>
+            </div>
+            <!--Fin Cabecera-->
+        
+            <div>
+                <!--Inicio Menú desplegable-->
+                <div id="left">
+                    <ui:insert name="left">
+                        <h:form>
+                            <p:growl id="messages" showDetail="false"/>
+                            <p:menu >
+                                <p:submenu label="Gestionar">
+                                    <p:menuitem value="Gestionar Programas" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Gestionar Componentes ICFES" actionListener="#{menuView.save}" />
+                                    <p:menuitem value="Gestionar Casos Especiales" actionListener="#{menuView.save}" />
+                                </p:submenu>
+                                <p:submenu label="Proceso de Admisión">
+                                    <p:menuitem value="Configuración Inicial" action="#{templateBean.verConfiguracionInicial()}" />
+                                    <p:menuitem value="Configurar Programas" action="#{templateBean.verConfiguracionProgramas()}" />
+                                    <p:menuitem value="Gestionar Ponderables" action="#{templateBean.gestionarPonderables()}" update="messages" />
+                                    <p:menuitem value="Resultados Prueba Adicional" actionListener="#{menuView.save}" update="messages" />
+                                    <p:menuitem value="Listado de Admitidos" action="#{templateBean.verListadosDeAdmitidos()}" />
+                                </p:submenu>
+                            </p:menu>
+                        </h:form>
+                    </ui:insert>
+                </div>
+                <!--Fin Menú desplegable-->
+        
+                <div id="content" class="left_content">
+                    <ui:insert name="content">
+                    </ui:insert>
+                </div>
+                
+            </div>
+        <!--Inicio Pie de página-->
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    <footer class="bottom">
+                        <div id="PiePagina"></div>
+                        <p>2018  |  Grupo Desarrollo Admisión Saber 11 <br />
+                                <a href="http://www.unicauca.edu.co">Universidad del Cauca</a>  		
+                        </p>
+                    </footer>
+                </ui:insert>
+            </div>
+
+        <!--Fin Pie de página-->
+
+    </h:body>
+
+</html>

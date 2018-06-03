@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2/06/2018 07:20:15 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.model.ListaAdmitidos" table="lista_admitidos" catalog="admisiones" optimistic-lock="version">
+        <id name="apliid" type="short">
+            <column name="APLIID" precision="3" scale="0" />
+            <generator class="foreign">
+                <param name="property">aplica</param>
+            </generator>
+        </id>
+        <one-to-one name="aplica" class="com.model.Aplica" constrained="true"></one-to-one>
+        <property name="listestado" type="string">
+            <column name="LISTESTADO" length="15" not-null="true" />
+        </property>
+        <property name="listtipoadmitido" type="string">
+            <column name="LISTTIPOADMITIDO" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
