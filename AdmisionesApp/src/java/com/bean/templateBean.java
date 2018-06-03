@@ -24,23 +24,23 @@ public class templateBean {
     }
     
     public void verConfiguracionProgramas(){        
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfigurarProgramas/listarFacultades.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarFacultades.xhtml");
     }
     
     public void verListadosDeAdmitidos(){        
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
     }
     
     public void verConfiguracionInicial(){
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
     }
     
     public void gestionarPonderables(){
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/seleccionArchivos.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/seleccionArchivos.xhtml");
     }
     
     public void verPaginaPrincipal(){        
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/vistaInicio.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/vistaInicio.xhtml");
     }
 
 }

@@ -5,13 +5,13 @@
  */
 package com.bean;
 
-import com.dao.AspirantePonderableDao;
-import com.dao.AspirantePonderableDaoImp;
-import com.model.AspirantePonderable;
+import com.dao.AspiranteDaoImp;
+import com.model.Aspirante;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import com.dao.AspiranteDao;
 
 /**
  *
@@ -19,26 +19,27 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "aspirantePonderableBean")
 @ViewScoped
-public class aspirantePonderableBean implements Serializable{
-    private List<AspirantePonderable> listar;
-    private AspirantePonderable aspirante;
+public class aspiranteBean implements Serializable{
+    private List<Aspirante> listar;
+    private Aspirante aspirante;
+    
     /**
      * Creates a new instance of AspirantePonderableBean
      */
-    public aspirantePonderableBean() {
+    public aspiranteBean() {
     }
 
-    public List<AspirantePonderable> getListar() {
-        AspirantePonderableDao aspdao = new AspirantePonderableDaoImp();
+    public List<Aspirante> getListar() {
+        AspiranteDao aspdao = new AspiranteDaoImp();
         listar = aspdao.mostrarAspirantes();
         return listar;
     }
 
-    public AspirantePonderable getAspirante() {
+    public Aspirante getAspirante() {
         return aspirante;
     }
 
-    public void setAspirante(AspirantePonderable aspirante) {
+    public void setAspirante(Aspirante aspirante) {
         this.aspirante = aspirante;
     }
     

@@ -103,12 +103,12 @@ public class programaofertadoBean implements Serializable {
     /*Métodos para Redireccionar entre Páginas*/
     public void verProgramasFacultad(String selectedFac){
         this.setSelectedFac(selectedFac);
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
     }
     
     public void configProgramasFacultad(String selectedFac){
         this.setSelectedFac(selectedFac);
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
     }
     
 }

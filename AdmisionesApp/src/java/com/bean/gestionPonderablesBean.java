@@ -52,16 +52,16 @@ public class gestionPonderablesBean implements Serializable{
 
     /*Navegar entre vistas*/
     public void datosProcesados(){
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
     }
     
     public void listaNoPonderable(){
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/listaAspirantesNoPonderables.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaAspirantesNoPonderables.xhtml");
     }
 
     public void verAspirantesPorPrograma(String nombrePro){
         this.setNombrePrograma(nombrePro);
-        Utilidades.redireccionar("/SistemaAdmisiones/faces/Vistas/GestionarPonderables/verAspirantesPorPrograma.xhtml");
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/verAspirantesPorPrograma.xhtml");
     }
           
 }

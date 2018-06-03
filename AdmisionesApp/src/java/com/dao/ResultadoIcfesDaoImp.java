@@ -5,7 +5,8 @@
  */
 package com.dao;
 
-import com.model.AspirantePonderable;
+import com.model.Periodo;
+import com.model.Resultadoicfes;
 import com.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
@@ -13,26 +14,25 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author HP
+ * @author JULIAN
  */
-public class AspirantePonderableDaoImp implements AspirantePonderableDao{
+public class ResultadoIcfesDaoImp implements ResultadoIcfesDao{
 
     @Override
-    public List<AspirantePonderable> mostrarAspirantes() {
-        List<AspirantePonderable> listAspirantes = null;
+    public List<Resultadoicfes> listarResultados() {
+         List<Resultadoicfes> listaR = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "FROM AspirantePonderable as ap inner join fetch ap.programaofertado inner join fetch ap.programa";
-        
+        String hql = "FROM Resultadoicfes";
         try {
-            listAspirantes = session.createQuery(hql).list();
+            listaR = session.createQuery(hql).list();
             transaction.commit();
-            session.close();
-        } catch (Exception e) {
+            session.close();            
+        }catch (Exception e){
             System.out.println(e.getMessage());
             transaction.rollback();
-        }
-        return listAspirantes;
+        } 
+        return listaR;
     }
     
 }

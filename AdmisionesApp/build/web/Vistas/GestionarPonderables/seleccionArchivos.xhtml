@@ -7,17 +7,21 @@
     <h:body>
         <ui:composition template="./../../Template.xhtml">
             <ui:define name="content">
-                <h:form>                    
+                <h:form enctype="multipart/form-data">                    
                     <p:panel>
                         <h2><h:outputText value="Gestion de Ponderables - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>                                                  
                         <br/>
                         <h3><h:outputText value="Seleccione el archivo de Aspirantes"/></h3>
                         <p:fieldset id="fieldsetAsp" legend="Aspirantes" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="5">
-                                <p:commandButton id="btnSelArchiAsp" value="Seleccionar Archivo" actionListener="#{menuView.save}"/>
-                                <p:outputLabel value="#{gestionPonderablesBean.nombreArchivoAsp}" />
+              
                             </h:panelGrid>
                         </p:fieldset>
+
+                        
+
+                        
+
                         <br/><br/>
                         <h3><h:outputText value="Seleccione el archivo del ICFES"/></h3>
                         <p:fieldset id="fieldsetIcfes" legend="ICFES" style="margin-bottom:20px">
@@ -28,12 +32,12 @@
                         </p:fieldset>
                         <br/>
                         <p:outputPanel>NOTA: Estos dos archivos serán procesados con el fin de hacer distinción entre los
-                        aspirantes cuya información es correca y aquellos que presentan incosistencias en la información
-                        suministrada.</p:outputPanel>
+                            aspirantes cuya información es correca y aquellos que presentan incosistencias en la información
+                            suministrada.</p:outputPanel>
                         <br/><br/>
                         <p:panelGrid columns="2" >
                             <p:commandButton value="Cancelar" />
-                            <p:commandButton value="Procesar" action="#{gestionPonderablesBean.datosProcesados()}"/>
+                            <p:commandButton value="Procesar" action="#{aplicaBean.cruce()}"/>
                         </p:panelGrid>
                     </p:panel>
                 </h:form>

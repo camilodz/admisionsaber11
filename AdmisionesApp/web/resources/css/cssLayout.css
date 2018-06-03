@@ -84,6 +84,19 @@ header.top #desc {
 	}
 
 
+#left {
+	border: 5px solid #E4E4E4;
+	border-radius: 10px;
+	margin-top: 10px;
+	padding: 8px 15px;
+	background: #F0F0F0; 
+	float: left;
+	margin-right: 20px;
+}
+.left_content { 
+        margin-left: 250px;  
+        padding: 5px; 
+}
 
 
 footer {
@@ -184,11 +197,4 @@ html, body {
 	width: 100%; 
 	margin: 0px;
 	padding: 0px;
-}
-
-.centeredP {
-position:relative;
-height: 100px;
-margin:0 auto;
-padding: 10% 0;
 }
