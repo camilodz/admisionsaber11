@@ -58,10 +58,17 @@ public class gestionPonderablesBean implements Serializable{
     public void listaNoPonderable(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaAspirantesNoPonderables.xhtml");
     }
+    public void listaPonderable(){
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaAspirantesPonderables.xhtml");
+    }
 
     public void verAspirantesPorPrograma(String nombrePro){
         this.setNombrePrograma(nombrePro);
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/verAspirantesPorPrograma.xhtml");
+    }
+    public void verAspirantesNOPorPrograma(String nombrePro){
+        this.setNombrePrograma(nombrePro);
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/verAspirantesNOPorPrograma.xhtml");
     }
           
 }

@@ -155,11 +155,11 @@ public class aplicaBean implements Serializable {
                 }
             }
         }
-        System.out.println("---------- TAM ponderables " + listaPon.size());
-        System.out.println("---------- TAM no ponderables " + listaNoPon.size());
 
         this.insertarPonderables();
         this.insertarNoPonderables();
+        
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
 
     }
 
@@ -177,9 +177,9 @@ public class aplicaBean implements Serializable {
 
     private void insertarNoPonderables() {
         AplicaDao apdao = new AplicaDaoImp();
-        System.out.println("njod foasjoeidntr");
+        
         if (!this.listaNoPon.isEmpty()) {
-            System.out.println("-----***------ entro"  + this.listaNoPon.size());
+            
             for (int i = 0; i < this.listaNoPon.size(); i++) {
                 apdao.insertNoPonderables(this.listaNoPon.get(i));
             }

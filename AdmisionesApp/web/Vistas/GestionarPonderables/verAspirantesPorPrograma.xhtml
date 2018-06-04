@@ -11,9 +11,9 @@
                     <p:growl id="growl" showDetail="true" sticky="true" />  
                     <p:panel>                    
                         <h2><h:outputText value="Gestion de Ponderables - #{gestionPonderablesBean.nombrePrograma} - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
-                        <h3><p:outputLabel value="Listado de Aspirantes a #{gestionPonderablesBean.nombrePrograma} que NO se pueden ponderar." /></h3>                        
+                        <h3><p:outputLabel value="Listado de Aspirantes a #{gestionPonderablesBean.nombrePrograma} que se pueden ponderar." /></h3>                        
                         <br/><br/>
-                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes no Ponderables por ese programa." /></h1>
+                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes Ponderables por ese programa." /></h1>
                         <br/>
                         <p:dataTable id="tablaListNoPond" var="pro" value="#{programaofertadoBean.listaPO}" 
                                      emptyMessage="No hay Facultades">
@@ -26,9 +26,7 @@
                             <p:column headerText="Programa" filterBy="#{pro.programa.pronombre}" filterMatchMode="contains">
                                 <h:outputText value="#{pro.programa.pronombre}" />
                             </p:column>
-                            <p:column headerText="Motivo">
-                                <h:outputText value="#{pro.programa.prosede}" />
-                            </p:column>
+                     
                             <p:column headerText="Acciones" >
                                 <p:commandButton value="VER" actionListener="#{menuView.save}"/>
                                 <p:commandButton value="REINTEGRAR" actionListener="#{menuView.save}"/>
