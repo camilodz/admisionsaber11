@@ -123,10 +123,13 @@ public class aplicaBean implements Serializable {
                     if ((!this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
                             //                            && (this.buscarPorId( listaR.get(i).getResidest(), listaA))
                             && (this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
+                        AspirantePonderable ap = new AspirantePonderable();
+                        ap.setAspirante(listaA.get(i).getAspirante());
+                        ap.setAsptipo("1");
                         AspiranteNoPonderable anp = new AspiranteNoPonderable();
-                        anp.setAspirantePonderable(null);
+                        anp.setAspirantePonderable(ap);
                         anp.setAspid(listaR.get(i).getResidest());
-                        anp.setAspmotivo("El SNP no coincide");
+                        anp.setAspmotivo("Error SNP");
                         this.listaNoPon.add(anp);
                     }
 //                    if ((this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
@@ -140,10 +143,13 @@ public class aplicaBean implements Serializable {
                     if ((this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
                             //                            && (this.buscarPorId(listaR.get(i).getResidest(), listaA))
                             && (!this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
-                        AspiranteNoPonderable anp = new AspiranteNoPonderable();
-                        anp.setAspirantePonderable(null);
+                        AspirantePonderable ap = new AspirantePonderable();
+                        ap.setAspirante(listaA.get(i).getAspirante());
+                        ap.setAsptipo("1");
+                        AspiranteNoPonderable anp = new AspiranteNoPonderable();                        
+                        anp.setAspirantePonderable(ap);
                         anp.setAspid(listaR.get(i).getResidest());
-                        anp.setAspmotivo("El nombre no coincide");
+                        anp.setAspmotivo("Error nombre");
                         this.listaNoPon.add(anp);
                     }
                 }
@@ -164,7 +170,7 @@ public class aplicaBean implements Serializable {
             for (int i = 0; i < this.listaPon.size(); i++) {
                 
                 apdao.insertPonderables(this.listaPon.get(i));
-                System.out.println(" insertóooooooooo ");
+                
             }
         }
     }
