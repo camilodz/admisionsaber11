@@ -8,10 +8,12 @@ import com.model.Resultadoicfes;
 import java.util.List;
 
 /**
- *
- * @author HP
+ * @author Proyecto II
+ * Interface para definir los métodos de Aplica (gestión de un aspirante de un programa específico)
+ * 
  */
 public interface AplicaDao {
+    
     public List<Aplica> mostrarAplica(String selectedPro);
     
     public List<Aplica> mostrarAspirantes();
