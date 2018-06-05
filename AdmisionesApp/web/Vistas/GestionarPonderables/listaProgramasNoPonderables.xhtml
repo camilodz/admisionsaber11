@@ -12,7 +12,7 @@
                     <p:growl id="growl" showDetail="true" sticky="true" />  
                     <p:panel>                    
                         <h2><h:outputText value="Gestion de Ponderables - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
-                        <h3><p:outputLabel value="Listado de Aspirantes por Programa que se pueden ponderar." /></h3>
+                        <h3><p:outputLabel value="Listado de Aspirantes por Programa que NO se pueden ponderar." /></h3>
                         <h:panelGrid columns="3" border="0">
                             <p:outputLabel for="console" value="Ver por:" />
                             <p:selectOneMenu id="console" value="#{gestionPonderablesBean.itemSeleccionado}" style="width:150px">
@@ -22,7 +22,7 @@
                             <p:commandButton value="Buscar" update="tablaMostrarProg" />
                         </h:panelGrid>
                         <br/><br/>
-                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes Ponderables." /></h1>
+                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes no Ponderables." /></h1>
                         <br/>
                         <p:dataTable id="tablaMostrarProg" var="pro" value="#{programaofertadoBean.getListaPOFacultadPrograma(gestionPonderablesBean.itemSeleccionado)}" 
                                      emptyMessage="No hay Facultades">
@@ -33,10 +33,12 @@
                                 <h:outputText value="#{pro.poftotalcupos}" />
                             </p:column>
                             <p:column headerText="Acciones">
-                                <p:commandButton value="VER" actionListener="#{gestionPonderablesBean.verAspirantesPorPrograma(pro.programa.pronombre)}"/>
+                                <p:commandButton value="Ver" actionListener="#{aplicaBean.verAspirantesNOPorPrograma(pro.programa.proid)}"/>
                             </p:column>
                         </p:dataTable>
                         <br/><br/>
+                        
+                        
                         <p:panelGrid columns="3">
                             <p:commandButton value="Volver" actionListener="#{gestionPonderablesBean.datosProcesados()}" />
                             <p:commandButton value="Enviar Correo de Notificacion" actionListener="#{menuView.save}" />

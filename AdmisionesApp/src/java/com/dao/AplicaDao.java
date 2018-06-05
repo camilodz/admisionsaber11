@@ -19,4 +19,11 @@ public interface AplicaDao {
     
     public void insertPonderables(AspirantePonderable a);
     public void insertNoPonderables(AspiranteNoPonderable a);
+    
+    public void eliminarNoPonderable(AspiranteNoPonderable a);
+    
+    public List<Aplica> listarAspirantes(String proid);
+    public List<Integer> numAspirantes();
+    
+    
 }

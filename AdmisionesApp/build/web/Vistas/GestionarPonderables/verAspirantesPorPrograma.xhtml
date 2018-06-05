@@ -12,30 +12,27 @@
                     <p:panel>                    
                         <h2><h:outputText value="Gestion de Ponderables - #{gestionPonderablesBean.nombrePrograma} - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
                         <h3><p:outputLabel value="Listado de Aspirantes a #{gestionPonderablesBean.nombrePrograma} que se pueden ponderar." /></h3>                        
-                        <br/><br/>
-                        <h1><p:outputLabel value="NOTA: Aquí mostraria segun los datos de la base de datos Aspirantes Ponderables por ese programa." /></h1>
+                        <br/><br/>                        
                         <br/>
-                        <p:dataTable id="tablaListNoPond" var="pro" value="#{programaofertadoBean.listaPO}" 
-                                     emptyMessage="No hay Facultades">
-                            <p:column headerText="Check" width="30">
-                                <h:outputText value="--" />
+                        <p:dataTable id="tablaListPond" var="obj" value="#{aplicaBean.listaPonPrograma}" 
+                                     emptyMessage="No hay aspirantes ponderables">
+                           
+                            <p:column headerText="Identificacion" filterBy="#{obj.aspirante.aspid}" filterMatchMode="contains">
+                                <h:outputText value="#{obj.aspirante.aspid}" />
                             </p:column>
-                            <p:column headerText="Identificacion" filterBy="#{pro.programa.proid}" filterMatchMode="contains">
-                                <h:outputText value="#{pro.programa.proid}" />
+                            <p:column headerText="Nombre" filterBy="#{obj.aspirante.aspnombre}" filterMatchMode="contains">
+                                <h:outputText value="#{obj.aspirante.aspnombre}" />
                             </p:column>
-                            <p:column headerText="Programa" filterBy="#{pro.programa.pronombre}" filterMatchMode="contains">
-                                <h:outputText value="#{pro.programa.pronombre}" />
-                            </p:column>
-                     
                             <p:column headerText="Acciones" >
-                                <p:commandButton value="VER" actionListener="#{menuView.save}"/>
-                                <p:commandButton value="REINTEGRAR" actionListener="#{menuView.save}"/>
+                                <p:commandButton value="VER" actionListener="#{aplicaBean.verInfoAspirante(obj.aspid)}"/>
                             </p:column>
+                                                        
+                            
                         </p:dataTable>
                         <br/><br/>
                         <p:panelGrid columns="3">
                             <p:commandButton value="Volver" actionListener="#{gestionPonderablesBean.datosProcesados()}" />
-                            <p:commandButton value="Enviar Correo de Notificacion" actionListener="#{menuView.save}" />                            
+                            
                         </p:panelGrid>
                     </p:panel>
                 </h:form>
