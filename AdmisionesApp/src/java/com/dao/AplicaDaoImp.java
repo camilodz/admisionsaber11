@@ -22,7 +22,7 @@ public class AplicaDaoImp implements AplicaDao{
         List<Aplica> listAplica = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        String hql = "FROM Aplica as a inner join fetch a.programaofertado inner join fetch a.aspirantePonderable inner join fetch a.listaAdmitidos Where proid ="+ selectedPro + "Order by asppondtotal desc";
+        String hql = "FROM Aplica as a inner join fetch a.programaofertado inner join fetch a.aspirante Where proid ="+ selectedPro;
         try {
             listAplica = session.createQuery(hql).list();
             transaction.commit();

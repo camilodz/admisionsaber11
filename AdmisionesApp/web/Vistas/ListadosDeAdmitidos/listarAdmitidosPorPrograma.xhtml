@@ -33,36 +33,36 @@
                             <p:column headerText="Puesto">
                                 <h:outputText value="#{rowId + 1}" />
                             </p:column>
-                            <p:column headerText="Identificación/CC" filterBy="#{ap.aspirantePonderable.aspid}" filterMatchMode="contains">
-                                <h:outputText value="#{ap.aspirantePonderable.aspid}" />
+                            <p:column headerText="Identificación/CC" filterBy="#{ap.aspirante.aspid}" filterMatchMode="contains">
+                                <h:outputText value="#{ap.aspirante.aspid}" />
                             </p:column>
                             <p:column headerText="Programa">
                                 <h:outputText value="#{aplicaBean.selectedNomPro}" />
                             </p:column>
 
                             <p:column headerText="%Ponderado Total">
-                                <h:outputText value="#{ap.aspirantePonderable.asppondtotal}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.asppondtotal}" />
                             </p:column>
                             <p:column headerText="%Lectura Crítica">
-                                <h:outputText value="#{ap.aspirantePonderable.asplecturacritica}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.asplecturacritica}" />
                             </p:column>
                             <p:column headerText="%Matemáticas">
-                                <h:outputText value="#{ap.aspirantePonderable.aspmatematicas}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.aspmatematicas}" />
                             </p:column>
                             <p:column headerText="%Sociales y Ciudadanas">
-                                <h:outputText value="#{ap.aspirantePonderable.aspcsociales}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.aspcsociales}" />
                             </p:column>
                             <p:column headerText="%Ciencias Naturales">
-                                <h:outputText value="#{ap.aspirantePonderable.aspcnaturales}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.aspcnaturales}" />
                             </p:column>
                             <p:column headerText="%Inglés">
-                                <h:outputText value="#{ap.aspirantePonderable.aspingles}" />
+                                <h:outputText value="#{ap.aspirante.aspirantePonderable.aspingles}" />
                             </p:column>
                             <p:column headerText="Estado">
                                 <h:outputText value="#{ap.listaAdmitidos.listestado}" />
                             </p:column>
                             <p:column headerText="Tipo Inscrito">
-                                <h:outputText value="#{ap.aspirantePonderable.asptipoinscrito}" />
+                                <h:outputText value="#{ap.aspirante.asptipoinscrito}" />
                             </p:column>
                             <p:column headerText="Tipo Admitido">
                                 <h:outputText value="#{ap.listaAdmitidos.listtipoadmitido}" />
@@ -70,11 +70,9 @@
 
 
                         </p:dataTable>
-                        <br/><br/>
                         
-                        <p:commandButton value="Volver" action="#{aplicaBean.verAdmitidosPublicados()}" ></p:commandButton>
-
-                        <h:commandLink>
+                        
+                         <h:commandLink>
                             <p:graphicImage name="/images/pdf.png" />
                             <p:dataExporter type="pdf" target="tablaMostrarAspirantesPOPrograma" fileName="Aspirantes_#{aplicaBean.selectedNomPro}" />
                         </h:commandLink>
@@ -83,9 +81,12 @@
                             <p:graphicImage name="/images/excel.png" />
                             <p:dataExporter type="xls" target="tablaMostrarAspirantesPOPrograma" fileName="Aspirantes_#{aplicaBean.selectedNomPro}" />
                         </h:commandLink>
-                        
-                        
+                        <br/>
+                        <br/>
                         <p:commandButton value="Volver" action="#{aplicaBean.verAdmitidosPublicados()}" ></p:commandButton>
+
+                       
+                        
                     </h:form>
                 </p:panel>
 
