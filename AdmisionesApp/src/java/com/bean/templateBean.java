@@ -6,6 +6,7 @@
 package com.bean;
 
 import com.utilidades.Utilidades;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -14,7 +15,7 @@ import javax.enterprise.context.Dependent;
  * @author JORGE
  */
 @Named(value = "templateBean")
-@Dependent
+@ApplicationScoped
 public class templateBean {
 
     /**
@@ -34,6 +35,8 @@ public class templateBean {
     public void verConfiguracionInicial(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
     }
+    
+    
     
     public void gestionarPonderables(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/seleccionArchivos.xhtml");

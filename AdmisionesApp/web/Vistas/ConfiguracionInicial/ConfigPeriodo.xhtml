@@ -16,22 +16,23 @@
 
                             <h:panelGrid >
 
-                                <p:outputLabel value="Defina el periodo académico:"/>
+                                <h:outputText value="Defina el periodo académico:"/>
                                 <p:inputText value="#{periodoBean.periodo.perid}" />
-                               
-                                
-                                <br/>
+                                <br />
                                 <h:outputText value="Defina el puntaje mínimo de prueba ICFES  para programas de la Sede Popayán:"/>
                                 <p:spinner min="30" max="180" value="#{periodoBean.periodo.perminpop}" id="puntajePopayan"/>
-                                <br/>
+                                <br />
                                 <h:outputText value="Defina el puntaje mínimo de prueba ICFES  para programas de Regionalización:"/>
                                 <p:spinner min="30" max="180" value="#{periodoBean.periodo.perminreg}" id="puntajeRegionalizacion"/>
-                                 
-                                <div class="row">
-                                    <div class="column" > <p:commandButton  value="Cancelar" action="/index"/></div>
-                                    <div class="column"><p:commandButton  value="Siguiente" actionListener="#{periodoBean.nuevoPeriodo()}" /></div>
-                                </div>
-                                
+                                <br />
+                                <h:panelGrid columns="2" cellpadding="10">
+
+                                    <p:commandButton  value="Cancelar" action="#{templateBean.verPaginaPrincipal()}"/>
+                                    <p:commandButton  value="Siguiente" actionListener="#{programaBean.verConfiguracionInicialPO()}" />
+
+                                </h:panelGrid>
+
+
 
                             </h:panelGrid>
 

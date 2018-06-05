@@ -7,31 +7,35 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
         <ui:composition template="./../Template.xhtml">
-            
-            <ui:define name="content">
-                
-                
 
-                    <p:panel>
-                        <h:form>
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage name="/images/excel.png" />
+            <ui:define name="content">
+
+
+
+                <p:panel>
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <p:graphicImage name="/images/perfil.png" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" cellpadding="10">
                                 <h:outputText value="Nombre: Francisco Pino" />
                                 <h:outputText value="Identifiación: 11037692" />
                                 <h:outputText value="Tipo de identificación: Cédula" />
                                 <h:outputText value="Municipio de expedición de documento: POPAYÁN" />
                                 <h:outputText value="Fecha de nacimiento: 05-01-1990" />
                             </h:panelGrid>
-                        </h:form>
-                    </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </p:panel>
 
 
-                
-                
-                
+
+
+
             </ui:define>
-            
-            
+
+
         </ui:composition>
     </h:body>
 </html>

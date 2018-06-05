@@ -36,19 +36,12 @@
 
                             <p:column headerText="Acciones">
                                 <p:column>
-                                    <p:commandButton value="Listar" action="listarProgramasOfertados.xhtml">
-                                        <f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />
-                                    </p:commandButton>
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton  action="#{programaofertadoBean.verProgramasFacultad(fac.facid)}" icon="ui-icon-search" title="View" value="Ver" >
-                                        <!--<f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />-->
-                                    </p:commandButton>
+                                    <p:commandButton  action="#{programaofertadoBean.verProgramasFacultad(fac.facid)}" 
+                                                      icon="ui-icon-search" title="View" value="Ver" ></p:commandButton>
                                 </p:column>                            
                                 <p:column>
-                                    <p:commandButton action="#{programaofertadoBean.configProgramasFacultad(fac.facid)}" value="Configurar" >
-                                        <!--<f:setPropertyActionListener target="#{programaofertadoBean.selectedFac}" value="#{fac.facid}" />-->
-                                    </p:commandButton>
+                                    <p:commandButton action="#{programaofertadoBean.configProgramasFacultad(fac.facid)}" 
+                                                     value="Configurar" ></p:commandButton>
                                 </p:column>
                             </p:column>
                         </p:dataTable>

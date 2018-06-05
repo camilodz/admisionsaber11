@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:body>
-        <ui:composition template="./../Template.xhtml">
+        <ui:composition template="./../../Template.xhtml">
             
             <ui:define name="content">
                 
@@ -16,11 +16,21 @@
                         <h:form>
                             <h:panelGrid columns="2" cellpadding="10">
                                 
-                                <h:outputText value="Nombre: Francisco Pino" />
-                                <h:outputText value="Identifiación: 11037692" />
-                                <h:outputText value="Tipo de identificación: Cédula" />
-                                <h:outputText value="Municipio de expedición de documento: POPAYÁN" />
-                                <h:outputText value="Fecha de nacimiento: 05-01-1990" />
+                                <h:outputText value="Nombre: #{aplicaBean.aspirante.aspnombre}" />
+                                <h:outputText value="Identifiación:  #{aplicaBean.aspirante.aspid}" />
+                                <h:outputText value="Tipo de identificación: #{aplicaBean.aspirante.asptipodoc}" />                                
+                                <h:outputText value="Fecha de nacimiento: #{aplicaBean.aspirante.aspfechanac}" />
+                                <h:outputText value="Correo: #{aplicaBean.aspirante.aspcorreo}" />
+                                
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.aspcnaturales}" />
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.aspcsociales}" />
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.aspingles}" />
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.asplecturacritica}" />
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.aspmatematicas}" />
+                                
+                                <h:outputText value="Puntaje #{aplicaBean.aspirante.aspirantePonderable.asppondtotal}" />
+                                
+                                
                             </h:panelGrid>
                         </h:form>
                     </p:panel>

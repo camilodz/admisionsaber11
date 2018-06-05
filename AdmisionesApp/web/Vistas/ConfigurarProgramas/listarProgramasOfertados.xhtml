@@ -9,17 +9,19 @@
         <ui:composition template="./../../Template.xhtml">
 
             <ui:define name="content">
-                <h2><h:outputText value="Ver configuración de programas ofertados - ...
-                                  "></h:outputText></h2>
+                <h1><h:outputText value="Ver configuración de programas ofertados - #{programaofertadoBean.nombreFac} - 
+                                  #{programaofertadoBean.listaPO.get(0).periodo.perid}
+                                  "></h:outputText></h1>
                 <p:growl id="msgs" life="1000"/>
                 <h3><h:outputText value="Visualizando la configuración de 
                                   cupos de los programas ofertados pertenecientes a la 
-                                  --- 
+                                  #{programaofertadoBean.nombreFac} 
                                   para el Perido Académico #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h3>
                 <br/> <br/>
 
                 <h:form id="formMostrarPO">
 
+                    <h2>Cupos</h2>
                     <p:dataTable id="tablaMostrarPO" var="pof" value="#{programaofertadoBean.listaPOFacultad}" 
                                  emptyMessage="No hay Programas Ofertados">
 
@@ -116,6 +118,7 @@
 
                 <h:form id="formMostrarPOPonderados">
 
+                    <h2>Ponderados ICFES</h2>
                     <p:dataTable id="tablaMostrarPOPonderados" var="pof" value="#{programaofertadoBean.listaPOFacultad}" 
                                  emptyMessage="No hay Programas Ofertados">
 

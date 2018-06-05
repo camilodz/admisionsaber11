@@ -41,7 +41,7 @@ public class aplicaBean implements Serializable {
     private List<Integer> numeroAsp = new ArrayList<>();
     
     private Aplica aplica;
-    private Aspirante aspirante;
+    private Aspirante aspirante; // para sacar la info del aspirante
     
     private String aspid;
     
@@ -357,6 +357,13 @@ public class aplicaBean implements Serializable {
     public void setInfoAspirante(){
         for(int i = 0; i< this.listaAsp.size(); i++){
             if(this.listaAsp.get(i).getAspirante().getAspid() == Short.parseShort(this.aspid)){
+                this.aspirante = new Aspirante();
+                this.aspirante.setAspnombre(this.listaAsp.get(i).getAspirante().getAspnombre());
+                this.aspirante.setAspcorreo(this.listaAsp.get(i).getAspirante().getAspcorreo());
+                this.aspirante.setAspfechanac(this.listaAsp.get(i).getAspirante().getAspfechanac());
+                this.aspirante.setAspid(this.listaAsp.get(i).getAspirante().getAspid());
+                this.aspirante.setAsptipodoc(this.listaAsp.get(i).getAspirante().getAsptipodoc());
+                this.aspirante.setAspirantePonderable(this.listaAsp.get(i).getAspirante().getAspirantePonderable());
                 
             }
         }
@@ -365,6 +372,7 @@ public class aplicaBean implements Serializable {
     
     public void verInfoAspirante(String aspid){
         this.aspid = aspid;
+        
         this.setInfoAspirante();
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/informacionAspirante.xhtml");
     }

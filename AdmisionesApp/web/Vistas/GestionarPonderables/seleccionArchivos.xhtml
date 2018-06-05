@@ -14,13 +14,10 @@
                         <h3><h:outputText value="Seleccione el archivo de Aspirantes"/></h3>
                         <p:fieldset id="fieldsetAsp" legend="Aspirantes" style="margin-bottom:20px">
                             <h:panelGrid columns="2" cellpadding="5">
-              
+                                <p:commandButton id="btnSelArchiAspir" value="Seleccionar Archivo" actionListener="#{menuView.save}"/>
+                                <p:outputLabel value="#{gestionPonderablesBean.nombreArchivoAsp}" />
                             </h:panelGrid>
                         </p:fieldset>
-
-                        
-
-                        
 
                         <br/><br/>
                         <h3><h:outputText value="Seleccione el archivo del ICFES"/></h3>
@@ -36,7 +33,7 @@
                             suministrada.</p:outputPanel>
                         <br/><br/>
                         <p:panelGrid columns="2" >
-                            <p:commandButton value="Cancelar" />
+                            <p:commandButton value="Cancelar" action="#{templateBean.verPaginaPrincipal()}" />
                             <p:commandButton value="Procesar" action="#{aplicaBean.cruce()}"/>
                         </p:panelGrid>
                     </p:panel>
