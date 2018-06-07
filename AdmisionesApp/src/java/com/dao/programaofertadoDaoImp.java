@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dao;
 
 import com.model.Programaofertado;
@@ -12,11 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Contiene la implementación de los métodos declarados en ProgramaofertadoDao
+ * para gestionar los programas ofertados en un periodo académico Obtener y
+ * editar los programas ofertados desde la BD
  *
- * @author Karen
+ * @author Proyecto II - Grupo Admisiones
  */
-public class programaofertadoDaoImp implements programaofertadoDao{
+public class programaofertadoDaoImp implements programaofertadoDao {
 
+    /**
+     * Implementación del método para obtener (desde la BD) la lista de los
+     * programas ofertados de todas las facultades
+     *
+     * @return lista de los programas ofertados de todas las facultades
+     */
     @Override
     public List<Programaofertado> listarPO() {
         List<Programaofertado> listaPO = null;
@@ -26,33 +30,47 @@ public class programaofertadoDaoImp implements programaofertadoDao{
         try {
             listaPO = session.createQuery(hql).list();
             transaction.commit();
-            session.close();            
-        }catch (Exception e){
+            session.close();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             transaction.rollback();
-        } 
+        }
         return listaPO;
     }
 
+    /**
+     * Implementación del método para modificar los cupos y ponderados ICFES
+     * (desde la BD) de un programa ofertado específico
+     *
+     * @param po programa ofertado que se va a modificar
+     */
     @Override
     public void modificarPO(Programaofertado po) {
         Session session = null;
-        try{
+        try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.update(po);
             session.getTransaction().commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             session.getTransaction().rollback();
-            
-        }finally{
-            if(session!=null){
+
+        } finally {
+            if (session != null) {
                 session.close();
             }
         }
     }
 
+    /**
+     * Implementación del método para listar (desde la BD) los programas
+     * ofertados de una facultad específica
+     *
+     * @param facid id de la facultad de la cual queremos obtener los programas
+     * ofertados
+     * @return lista de los programas ofertados de la facultad específica
+     */
     @Override
     public List<Programaofertado> listarPOFacultad(String facid) {
         List<Programaofertado> listaPO = null;
@@ -63,12 +81,12 @@ public class programaofertadoDaoImp implements programaofertadoDao{
         try {
             listaPO = session.createQuery(hql).list();
             transaction.commit();
-            session.close();            
-        }catch (Exception e){
+            session.close();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             transaction.rollback();
-        } 
+        }
         return listaPO;
     }
-    
+
 }
