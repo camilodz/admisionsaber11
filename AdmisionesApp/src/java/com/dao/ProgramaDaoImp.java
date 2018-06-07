@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dao;
 
 import com.model.Programa;
@@ -12,14 +7,22 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Contiene la implementación de los métodos para gestionar los programas de
+ * cada facultad
  *
- * @author JULIAN
+ * @author Proyecto II - Grupo Admisiones
  */
-public class ProgramaDaoImp implements ProgramaDao{
+public class ProgramaDaoImp implements ProgramaDao {
 
+    /**
+     * Implementación del método para obtener (desde la BD) la lista de los
+     * programas de todas las facultades
+     *
+     * @return lista de los programas de todas las facultades
+     */
     @Override
     public List<Programa> listarProgramas() {
-       
+
         List<Programa> listaFac = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -27,13 +30,13 @@ public class ProgramaDaoImp implements ProgramaDao{
         try {
             listaFac = session.createQuery(hql).list();
             transaction.commit();
-            session.close();            
-        }catch (Exception e){
+            session.close();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             transaction.rollback();
-        } 
+        }
         return listaFac;
-    
+
     }
-    
+
 }
