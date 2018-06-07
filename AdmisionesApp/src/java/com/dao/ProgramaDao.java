@@ -1,19 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dao;
 
 import com.model.Programa;
 import java.util.List;
 
 /**
+ * Contiene la declaración de los métodos para gestionar los programas de cada
+ * facultad
  *
- * @author JULIAN
+ * @author Proyecto II - Grupo Admisiones
  */
 public interface ProgramaDao {
-     public List<Programa> listarProgramas();
-    
-    
+
+    /**
+     * Declaración del método para obtener (desde la BD) la lista de los
+     * programas de todas las facultades
+     *
+     * @return lista de los programas de todas las facultades
+     */
+    public List<Programa> listarProgramas();
+
 }
