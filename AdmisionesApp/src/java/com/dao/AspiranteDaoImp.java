@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.dao;
 
 import com.model.Aspirante;
@@ -12,18 +7,26 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Contiene la implementación de los métodos para gestionar los aspirantes a
+ * todos programas
  *
- * @author HP
+ * @author Proyecto II - Grupo Admisiones
  */
-public class AspiranteDaoImp implements AspiranteDao{
+public class AspiranteDaoImp implements AspiranteDao {
 
+    /**
+     * Implementación del método para listar (desde la BD) los aspirantes a
+     * todos los programas
+     *
+     * @return lista de aspirantes de todos los programas
+     */
     @Override
     public List<Aspirante> mostrarAspirantes() {
         List<Aspirante> listAspirantes = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         String hql = "FROM Aspirante";
-        
+
         try {
             listAspirantes = session.createQuery(hql).list();
             transaction.commit();
@@ -34,5 +37,5 @@ public class AspiranteDaoImp implements AspiranteDao{
         }
         return listAspirantes;
     }
-    
+
 }
