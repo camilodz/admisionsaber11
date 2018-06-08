@@ -7,13 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase PeriodoDaoImp 
+ * 
  * Contiene la implementación de los métodos para gestionar los periodos
  * académicos
  *
+ * Implementa los métodos de la interface PeriodoDao
+ * 
  * @author Proyecto II - Grupo Admisiones
  */
 public class PeriodoDaoImp implements PeriodoDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para obtener (desde la BD) la lista de todos
      * los periodos académicos
