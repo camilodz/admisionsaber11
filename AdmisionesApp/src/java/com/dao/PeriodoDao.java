@@ -4,12 +4,16 @@ import com.model.Periodo;
 import java.util.List;
 
 /**
+ * Interface PeriodoDAo
+ * 
  * Contiene la declaración de los métodos para gestionar los periodos académicos
  *
  * @author Proyecto II - Grupo Admisiones
  */
 public interface PeriodoDao {
 
+    /*** Declaración de los métodos ***/
+    
     /**
      * Declaración del método para obtener (desde la BD) la lista de todos los
      * periodos académicos
