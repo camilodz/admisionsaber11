@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bean;
 
 import com.dao.AspiranteDaoImp;
@@ -14,26 +9,39 @@ import javax.faces.view.ViewScoped;
 import com.dao.AspiranteDao;
 
 /**
+ * Bean aspiranteBean
  *
- * @author HP
+ * Contiene los métodos para gestionar los aspirantes 
+ *
+ * @author Proyecto II - Grupo Admisiones
  */
 @Named(value = "aspirantePonderableBean")
 @ViewScoped
 public class aspiranteBean implements Serializable{
-    private List<Aspirante> listar;
-    private Aspirante aspirante;
+    
+    /*** Atributos ***/ 
     
     /**
-     * Creates a new instance of AspirantePonderableBean
+     * Lista de los aspirantes
+     */
+    private List<Aspirante> listar;
+    
+    /**
+     * Aspirante que se clasifica en ponderable o no ponderable 
+     */
+    private Aspirante aspirante;
+    
+    
+    /*** Constructor ***/
+    
+    /**
+     * Constructor por defecto
      */
     public aspiranteBean() {
     }
 
-    public List<Aspirante> getListar() {
-        AspiranteDao aspdao = new AspiranteDaoImp();
-        listar = aspdao.mostrarAspirantes();
-        return listar;
-    }
+    
+    /*** Métodos getter y setter ***/
 
     public Aspirante getAspirante() {
         return aspirante;
@@ -41,6 +49,20 @@ public class aspiranteBean implements Serializable{
 
     public void setAspirante(Aspirante aspirante) {
         this.aspirante = aspirante;
+    }
+    
+    
+    /*** Métodos públicos ***/
+    
+    /**
+     * Obtener la lista de todos los aspirantes 
+     * 
+     * @return lista de los aspirantes
+     */
+    public List<Aspirante> getListar() {
+        AspiranteDao aspdao = new AspiranteDaoImp();
+        listar = aspdao.mostrarAspirantes();
+        return listar;
     }
     
     
