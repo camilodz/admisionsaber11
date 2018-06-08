@@ -76,6 +76,7 @@ public class facultadBean implements Serializable {
      */
     public List<Facultad> getListaFac() {
         facultadDao facDao = new facultadDaoImp();
+        // llama al método del Dao para obtener las facultades desde la BD
         this.listaFac = facDao.listarFac();
         return listaFac;
     }

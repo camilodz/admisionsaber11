@@ -68,6 +68,8 @@ public class periodoBean implements Serializable{
      */
     public List<Periodo> getListaPer() {
         PeriodoDao perDao = new PeriodoDaoImp();
+        // llama al método del Dao para obtener los periodos académicos desde la 
+        // BD
         this.listaPer = perDao.mostrarPeriodos();
         return listaPer;
     }
@@ -79,6 +81,8 @@ public class periodoBean implements Serializable{
         PeriodoDao pDao = new PeriodoDaoImp();
         periodo.setPervigente(true);
         periodo.setProgramaofertados(null);
+        // llama al método del Dao para agregar el nuevo periodo académico a 
+        // la BD
         pDao.nuevoPeriodo(periodo);
         periodo = new Periodo();
     }

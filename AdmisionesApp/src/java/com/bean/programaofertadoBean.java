@@ -98,6 +98,8 @@ public class programaofertadoBean implements Serializable {
      */
     public List<Programaofertado> getListaPO() {
         programaofertadoDao poDao = new programaofertadoDaoImp();
+        // llama al método del Dao para obtener los programas ofertados desde la 
+        // BD
         this.listaPO = poDao.listarPO();
         return listaPO;
     }
@@ -109,6 +111,8 @@ public class programaofertadoBean implements Serializable {
      */
     public List<Programaofertado> getListaPOFacultad() {
         programaofertadoDao poDao = new programaofertadoDaoImp();
+        // llama al método del Dao para obtener desde la BD los programas 
+        // ofertados de una facultad específica 
         this.listaPO = poDao.listarPOFacultad(selectedFac);
         return listaPO;
     }
@@ -125,6 +129,8 @@ public class programaofertadoBean implements Serializable {
         if (selectedFac.equals("")) {
             return this.getListaPO();
         }
+        // llama al método del Dao para obtener desde la BD los programas 
+        // ofertados de una facultad específica 
         this.listaPO = poDao.listarPOFacultad(selectedFac);
         return listaPO;
     }
@@ -136,6 +142,7 @@ public class programaofertadoBean implements Serializable {
      */
     private void setIdFacSeleccionada(String nombreFac) {
         facultadDao faDao = new facultadDaoImp();
+        // obtener el id de una facultad desde la BD
         selectedFac = faDao.getIdFacultad(nombreFac);
     }
 
@@ -144,6 +151,8 @@ public class programaofertadoBean implements Serializable {
      */
     public void modificarPO() {
         programaofertadoDao poDao = new programaofertadoDaoImp();
+        // Modificar (en la BD) los cupos y ponderados ICFES de un programa 
+        // ofertado 
         poDao.modificarPO(pof);
         this.pof = new Programaofertado();
     }
@@ -153,6 +162,7 @@ public class programaofertadoBean implements Serializable {
      */
     public void modifyNombreFac() {
         facultadDao facDao = new facultadDaoImp();
+        // se obtiene la lista de facultades desde la BD
         List<Facultad> lista = facDao.listarFac();
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getFacid() == Short.parseShort(this.selectedFac)) {

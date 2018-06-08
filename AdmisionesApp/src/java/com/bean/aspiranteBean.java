@@ -61,7 +61,8 @@ public class aspiranteBean implements Serializable{
      */
     public List<Aspirante> getListar() {
         AspiranteDao aspdao = new AspiranteDaoImp();
-        listar = aspdao.mostrarAspirantes();
+        // llama al método del Dao para obtener los aspirantes desde la BD
+        listar = aspdao.mostrarAspirantes(); 
         return listar;
     }
     

@@ -72,8 +72,8 @@ public class ProgramaBean implements Serializable {
      */
     public List<Programa> getListaPro() {
         ProgramaDao proDao = new ProgramaDaoImp();
-        this.listaProgramas = proDao.listarProgramas(); // llama al método del Dao 
-                                                        // para obtener los programas desde la BD
+        // llama al método del Dao para obtener los programas desde la BD
+        this.listaProgramas = proDao.listarProgramas(); 
         return listaProgramas;
     }
     
@@ -108,8 +108,9 @@ public class ProgramaBean implements Serializable {
      * programas ofertados 
      */
     public void verConfiguracionInicialPO(){        
-        this.setProgramasSede(); // Se llena la lista de los programas de Popayán y s
-                                 // de Regionalización respectivamente 
+        // Se llena la lista de los programas de Popayán y de Regionalización 
+        // respectivamente 
+        this.setProgramasSede(); 
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfiguracionInicial/ProgramasOfertados.xhtml");
     }
     
