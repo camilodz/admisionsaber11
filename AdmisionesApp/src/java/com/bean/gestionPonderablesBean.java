@@ -6,16 +6,45 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
+ * Bean gestionPonderablesBean
  *
- * @author JORGE
+ * Contiene los métodos para gestionar los archivos que se cargan de los
+ * aspirantes
+ *
+ * @author Proyecto II - Grupo Admisiones
  */
 @Named(value = "gestionPonderablesBean")
 @ApplicationScoped
 public class gestionPonderablesBean implements Serializable{
     
-    private String nombreArcAsp, nombreArcIcfes, nombrePrograma, itemSeleccionado; 
+    /*** Atributos ***/
+    
+    /**
+     * Nombre del archivo que contiene la información de los aspirantes 
+     */
+    private String nombreArcAsp;
+    
+    /**
+     * Nombre del archivo que contiene los resultados ICFES de cada aspirante
+     */
+    private String nombreArcIcfes;
+    
+    /**
+     * Nombre del programa al que aplican los aspirantes (del archivo cargado)
+     */
+    private String nombrePrograma;
+    
+    /**
+     * 
+     */
+    private String itemSeleccionado; 
     
     
+    /*** Constructor ***/
+    
+    /**
+     * Constructor por defecto
+     */
     public gestionPonderablesBean() {
         nombreArcAsp = "";
         nombreArcIcfes = "";
@@ -23,17 +52,8 @@ public class gestionPonderablesBean implements Serializable{
         itemSeleccionado = "Todos";
     }
     
-    public String getNombreArchivoAsp(){
-        if(nombreArcAsp.isEmpty())
-            return "Ningún Archivo Seleccionado";
-        return nombreArcAsp;
-    }
     
-    public String getNombreArchivoIcfes(){
-        if(nombreArcIcfes.isEmpty())
-            return "Ningún Archivo Seleccionado";
-        return nombreArcIcfes;
-    }
+    /*** Métodos getter y setter ***/
 
     public String getNombrePrograma() {
         return nombrePrograma;
@@ -50,15 +70,54 @@ public class gestionPonderablesBean implements Serializable{
     public void setItemSeleccionado(String itemSeleccionado) {
         this.itemSeleccionado = itemSeleccionado;
     }
-
-    /*Navegar entre vistas*/
+    
+    /**
+     * Obtener el nombre del archivo que contiene la información de los
+     * aspirantes
+     *
+     * @return nombre del archivo que contiene la información de los aspirantes
+     */
+    public String getNombreArchivoAsp(){
+        if(nombreArcAsp.isEmpty())
+            return "Ningún Archivo Seleccionado";
+        return nombreArcAsp;
+    }
+    
+    /**
+     * Obtener el nombre del archivo que contiene la información de los
+     * resultados ICFES de los aspirantes
+     *
+     * @return nombre del archivo que contiene la información de los resultados
+     * ICFES de los aspirantes
+     */
+    public String getNombreArchivoIcfes(){
+        if(nombreArcIcfes.isEmpty())
+            return "Ningún Archivo Seleccionado";
+        return nombreArcIcfes;
+    }
+    
+    
+    /*** Métodos para redireccionar a las vistas ***/
+    
+    /**
+     * Redirecciona a la vista datosProcesados.xhtml que carga los archivos
+     */
     public void datosProcesados(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
     }
     
+    /**
+     * Redirecciona a la vista listaProgramasNoPonderables.xhtml que lista los
+     * aspirantes no ponderables por programas
+     */
     public void listaNoPonderable(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaProgramasNoPonderables.xhtml");
     }
+    
+    /**
+     * Redirecciona a la vista listaProgramasPonderables.xhtml que lista los
+     * aspirantes ponderables por programas
+     */
     public void listaPonderable(){
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaProgramasPonderables.xhtml");
     }
