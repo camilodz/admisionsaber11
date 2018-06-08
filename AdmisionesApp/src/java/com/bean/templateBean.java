@@ -7,7 +7,7 @@ import javax.inject.Named;
 /**
  * Bean templateBean 
  * 
- * Permite gestionar las rutas para acceder a las vistas
+ * Contiene los métodos para gestionar las rutas para acceder a las vistas
  *
  * @author Proyecto II - Grupo Admisiones
  */
