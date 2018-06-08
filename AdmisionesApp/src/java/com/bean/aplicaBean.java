@@ -15,38 +15,95 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
+ * Bean aplicaBean
  *
- * @author HP
+ * Contiene los métodos para gestionar los aspirantes que aplican a un programa
+ * específico
+ *
+ * @author Proyecto II - Grupo Admisiones
  */
 @Named(value = "aplicaBean")
 @ApplicationScoped
 public class aplicaBean implements Serializable {
     
-    private List<Aplica> listar;
-    private String selectedPro;
-    private String selectedNomPro;
-    private List<Aplica> filtro;
+    /*** Atributos ***/ 
     
-    private List<Resultadoicfes> listaRes;
+    /**
+     * Lista de todos los aspirantes 
+     */
+    private List<Aplica> listar;
+    
+    /**
+     * * Lista los aspirantes que aplican a un programa específico
+     */
     private List<Aplica> listaAsp;
     
-    private List<Aplica> listarPyN = new ArrayList<>(); // listar ponderables y no ponderables por programa
-
+    /**
+     * Lista de los resultados ICFES de cada aspirante
+     */
+    private List<Resultadoicfes> listaRes;
+    
+    /**
+     * Lista de los aspirantes ponderables y no ponderables de cada programa
+     */
+    private List<Aplica> listarPyN = new ArrayList<>(); 
+    
+    /**
+     * Lista de todos los aspirantes ponderables
+     */
     private List<AspirantePonderable> listaPon = new ArrayList<>();
+    
+    /**
+     * Lista de todos los aspirantes no ponderables 
+     */
     private List<AspiranteNoPonderable> listaNoPon = new ArrayList<>();
     
+    /**
+     * Lista de los aspirantes ponderables de un programa específico
+     */
     private List<AspirantePonderable> listaPonPrograma = new ArrayList<>();
+    
+    /**
+     * Lista de los aspirantes no ponderables de un programa específico
+     */
     private List<AspiranteNoPonderable> listaNoPonPrograma = new ArrayList<>();
     
-    private List<Integer> numeroAsp = new ArrayList<>();
-    
+    /**
+     * Aspirante que puede ser clasificado en ponderable y no ponderable
+     */
     private Aplica aplica;
-    private Aspirante aspirante; // para sacar la info del aspirante
     
+    /**
+     * Información de un aspirante 
+     */
+    private Aspirante aspirante; 
+    
+    /**
+     * Id del programa 
+     */
+    private String selectedPro;
+    
+    /**
+     * Nombre del programa
+     */
+    private String selectedNomPro;
+    
+    /**
+     * Id del aspirante 
+     */
     private String aspid;
     
+    
+    /*** Constructor ***/ 
+    
+    /**
+     * Constructor por defecto
+     */
     public aplicaBean() {
     }
+    
+    
+    /*** Métodos getter y setter ***/
     
     public List<Resultadoicfes> getListaRes() {
         return listaRes;
@@ -76,34 +133,12 @@ public class aplicaBean implements Serializable {
         return listaNoPon;
     }
     
-    public List<Resultadoicfes> getListarResultadoIcfes() {
-        AplicaDao apdao = new AplicaDaoImp();
-        listaRes = apdao.listarResultados();
-        return listaRes;
-    }
-    
-    public List<Aplica> getListarAspirantes() {
-        AplicaDao apdao = new AplicaDaoImp();
-        listaAsp = apdao.mostrarAspirantes();
-        return listaAsp;
-    }
-    
-    public List<Aplica> getListar() {
-        AplicaDao apdao = new AplicaDaoImp();
-        listar = apdao.mostrarAplica(selectedPro);
-        return listar;
-    }
-    
-    public List<Aplica> getFiltro() {
-        return filtro;
-    }
-    
-    public void setFiltro(List<Aplica> filtro) {
-        this.filtro = filtro;
-    }
-    
     public Aplica getAplica() {
         return aplica;
+    }
+    
+    public void setAplica(Aplica aplica) {
+        this.aplica = aplica;
     }
     
     public String getSelectedNomPro() {
@@ -112,11 +147,7 @@ public class aplicaBean implements Serializable {
     
     public void setSelectedNomPro(String selectedNomPro) {
         this.selectedNomPro = selectedNomPro;
-    }
-    
-    public void setAplica(Aplica aplica) {
-        this.aplica = aplica;
-    }
+    }    
     
     public String getSelectedPro() {
         return selectedPro;
@@ -124,25 +155,85 @@ public class aplicaBean implements Serializable {
     
     public void setSelectedPro(String selectedPro) {
         this.selectedPro = selectedPro;
+    }    
+    
+    public Aspirante getAspirante() {
+        return aspirante;
+    }
+
+    public void setAspirante(Aspirante aspirante) {
+        this.aspirante = aspirante;
+    }
+
+    public String getAspid() {
+        return aspid;
     }
     
-    public void cruce() {
-        
-        if ((this.getListarAspirantes().size() == 0) || (this.getListarResultadoIcfes().size() == 0)) {
+    
+    /*** Métodos públicos ***/ 
+    
+    /**
+     * Obtener la lista de los resultados ICFES de todos los aspirantes
+     * 
+     * @return lista de los resultados ICFES de los aspirantes 
+     */
+    public List<Resultadoicfes> getListarResultadoIcfes() {
+        AplicaDao apdao = new AplicaDaoImp();
+        listaRes = apdao.listarResultados(); // llama al método del Dao 
+                                             // para obtener la lista de los 
+                                             // resultados ICFES desde la BD
+        return listaRes;
+    }
+    
+    /**
+     * Obtener la lista de todos los aspirantes 
+     * 
+     * @return lista de los aspirantes 
+     */
+    public List<Aplica> getListarAspirantes() {
+        AplicaDao apdao = new AplicaDaoImp();
+        listaAsp = apdao.mostrarAspirantes(); // obtener la lista desde la BD
+        return listaAsp;
+    }
+    
+    /**
+     * Obtener la lista de los aspirantes de un programa específico
+     * 
+     * @return lista de los aspirantes de un programa específico
+     */
+    public List<Aplica> getListar() {
+        AplicaDao apdao = new AplicaDaoImp();
+        listar = apdao.mostrarAplica(selectedPro); // obtener la lista desde la BD
+        return listar;
+    }
+
+    /**
+     * Cruzar la información de los aspirantes con los resultados ICFES de cada
+     * aspirante para clasificarlos en aspirantes PONDERABLES y NO PONDERABLES
+     */
+    public void cruce() {        
+        // si las listas de aspitantes y resultados ICFES de los aspirantes están 
+        // vacias, se llenan. 
+        if (this.getListarAspirantes().isEmpty() || this.getListarResultadoIcfes().isEmpty()) {
             this.getListarAspirantes();
             this.getListarResultadoIcfes();
-        }
+        }        
         
+        // listas auxiliares de resultados ICFES y aspirantes 
         List<Resultadoicfes> listaR = this.getListarResultadoIcfes();
         List<Aplica> listaA = this.getListarAspirantes();
         
+        // si el número de aspirantes es igual al número de resultados ICFES de 
+        // los aspirantes
         if (listaR.size() == listaA.size()) {
-            for (int i = 0; i < listaR.size(); i++) {
-                
+            // se recorre la lista de los resultados ICFES de cada aspirante 
+            for (int i = 0; i < listaR.size(); i++) {            
+                // se valida si existe en SNP registrado en el ICFES, en la lista 
+                // de aspirantes inscritos
                 if ((this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
-                        //                        && (this.buscarPorId( listaR.get(i).getResidest(), listaA))
                         && (this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
-                    
+                    // se crea un aspirante ponderable y se agrega a la lista de 
+                    // Aspirantes Ponderables 
                     AspirantePonderable ap = new AspirantePonderable();
                     ap.setAspirante(listaA.get(i).getAspirante());
                     ap.setAspid(listaR.get(i).getResidest());
@@ -154,52 +245,170 @@ public class aplicaBean implements Serializable {
                     ap.setAspcnaturales(listaR.get(i).getRescnaturales());
                     ap.setAspingles(listaR.get(i).getResingles());
                     ap.setAsppruebaad(null);
-                    
                     this.listaPon.add(ap);
                 } else {
+                    // si no existe el SNP en la lista de aspirantes inscritos 
                     if ((!this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
-                            //                            && (this.buscarPorId( listaR.get(i).getResidest(), listaA))
                             && (this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
+                        // se crea un aspirante ponderable con estado 1, 
+                        // y se agrega a la lista de Aspirantes No Ponderables 
                         AspirantePonderable ap = new AspirantePonderable();
                         ap.setAspirante(listaA.get(i).getAspirante());
-                        ap.setAsptipo("1");
+                        ap.setAsptipo("1"); // el estado 1 significa: NO PONDERABLE
                         AspiranteNoPonderable anp = new AspiranteNoPonderable();
                         anp.setAspirantePonderable(ap);
                         anp.setAspid(listaR.get(i).getResidest());
-                        anp.setAspmotivo("Error SNP");
+                        anp.setAspmotivo("Error SNP"); // se agrega el motivo por el cual es NO ponderable
                         this.listaNoPon.add(anp);
                     }
-//                    if ((this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
-//                            //                            && (!this.buscarPorId( listaR.get(i).getResidest(), listaA))
-//                            && (this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
-//                        AspiranteNoPonderable anp = new AspiranteNoPonderable();
-//                        anp.setAspid(listaR.get(i).getResidest());
-//                        anp.setAspmotivo("El id no coincide");
-//                        this.listaNoPon.add(anp);
-//                    }
+                    // si no existe el nombre (registrado en el ICFES) en la lista 
+                    // de aspirantes inscritos 
                     if ((this.buscarPorSNP(listaR.get(i).getRessnp(), listaA))
-                            //                            && (this.buscarPorId(listaR.get(i).getResidest(), listaA))
                             && (!this.buscarPorNombre(listaR.get(i).getResnombreest(), listaA))) {
+                        // se crea un aspirante ponderable con estado 1, 
+                        // y se agrega a la lista de Aspirantes No Ponderables 
                         AspirantePonderable ap = new AspirantePonderable();
                         ap.setAspirante(listaA.get(i).getAspirante());
-                        ap.setAsptipo("1");
+                        ap.setAsptipo("1"); // el estado 1 significa: NO PONDERABLE
                         AspiranteNoPonderable anp = new AspiranteNoPonderable();
                         anp.setAspirantePonderable(ap);
                         anp.setAspid(listaR.get(i).getResidest());
-                        anp.setAspmotivo("Error nombre");
+                        anp.setAspmotivo("Error nombre"); // se agrega el motivo por el cual es NO ponderable
                         this.listaNoPon.add(anp);
                     }
                 }
             }
         }
         
+        // se insertan los aspirantes ponderables a la BD
         this.insertarPonderables();
+        // se insertan los aspirantes no ponderables a la BD
         this.insertarNoPonderables();
-        
+        // se redirecciona a la vista datos Procesados.xhtml  
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/datosProcesados.xhtml");
         
     }
 
+    /**
+     * Buscar si el SNP con el que un aspirante se inscribió a un programa,
+     * coincide con el SNP del ICFES
+     *
+     * @param snp número SNP del ICFES del aspirante
+     * @param listaA lista de los aspirantes
+     * @return 
+     *      true: existe el SNP en la lista de aspirantes 
+     *      false: no existe el SNP en la lista de aspirantes
+     */
+    private boolean buscarPorSNP(String snp, List<Aplica> listaA) {
+        // se recorre la lista para buscar el SNP del asirante
+        for (int i = 0; i < listaA.size(); i++) {
+            if (listaA.get(i).getAplisnp().equals(snp)) {                
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Buscar si el nombre con el que un aspirante se inscribió a un programa,
+     * coincide con el nombre con el que se registró en el ICFES
+     * 
+     * @param name nombre registrado en el ICFES del aspirante 
+     * @param listaA lista de los aspirantes
+     * @return 
+     *      true: existe el nombre en la lista de aspirantes 
+     *      false: no existe el nombre en la lista de aspirantes
+     */
+    private boolean buscarPorNombre(String name, List<Aplica> listaA) {
+        // se recorre la lista para buscar el nombre del aspirante 
+        for (int i = 0; i < listaA.size(); i++) {
+            if (listaA.get(i).getAspirante().getAspnombre().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+   
+    /**
+     * Obtener la lista de los aspirantes ponderables y no ponderables de un
+     * programa específico
+     *
+     * @return lista de los aspirantes ponderables y no ponderables de un
+     * programa específico
+     */
+    private List<Aplica> getListarAspirantesPyN() {
+        AplicaDao adao = new AplicaDaoImp();
+        listarPyN = adao.listarAspirantes(this.selectedPro); // obtener los datos 
+                                                             // desde la BD
+        return listarPyN;
+    }
+    
+    /**
+     * Llenar las listas de aspirantes PONDERABLES y NO PONDERABLES respectivamente 
+     */
+    private void setListasPyN() {
+        // si la lista de asporantes ponderables y no ponderables está vacía,
+        // se llena
+        if (this.listarPyN.isEmpty()) {
+            this.getListarAspirantesPyN();
+        }
+        // se recorre la lista de aspirantes 
+        for (int i = 0; i < this.listarPyN.size(); i++) {
+            // si el aspirante tiene el estado 0 (en la BD), es ponderable, se agrega a la lista de ponderables 
+            if (this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAsptipo().equals("0")) {
+                // se agrega solo una vez a la lista de ponderables 
+                if (!this.buscarAspirantePRepetido(this.listarPyN.get(i).getAspirante().getAspid())) {
+                    this.listaPonPrograma.add(this.listarPyN.get(i).getAspirante().getAspirantePonderable());
+                }
+            // si el aspirante tiene el estado 1 (en la BD), es NO ponderable, se agrega a la lista de no ponderables 
+            } else if (this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAsptipo().equals("1")) {
+                // se agrega solo una vez a la lista de no ponderables 
+                if (!this.buscarAspiranteNPRepetido(this.listarPyN.get(i).getAspirante().getAspid())) {
+                    this.listaNoPonPrograma.add(this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAspiranteNoPonderable());
+                }
+            }
+        }        
+    }
+    
+
+   
+    
+    public void reintegrar(int id) {
+        for (int i = 0; i < this.listaNoPonPrograma.size(); i++) {
+            if (this.listaNoPonPrograma.get(i).getAspid() == id) {
+                this.listaNoPonPrograma.get(i).getAspirantePonderable().setAsptipo("0");
+                this.listaPonPrograma.add(this.listaNoPonPrograma.get(i).getAspirantePonderable());
+                this.listaNoPonPrograma.remove(i);
+                AplicaDao apdao = new AplicaDaoImp();
+                apdao.insertPonderables(this.listaNoPonPrograma.get(i).getAspirantePonderable());
+                apdao.eliminarNoPonderable(this.listaNoPonPrograma.get(i));
+                break;
+            }
+        }
+    }
+
+    
+    
+    private void setInfoAspirante(){
+        for(int i = 0; i< this.listaAsp.size(); i++){
+            if(this.listaAsp.get(i).getAspirante().getAspid() == Short.parseShort(this.aspid)){
+                this.aspirante = new Aspirante();
+                this.aspirante.setAspnombre(this.listaAsp.get(i).getAspirante().getAspnombre());
+                this.aspirante.setAspcorreo(this.listaAsp.get(i).getAspirante().getAspcorreo());
+                this.aspirante.setAspfechanac(this.listaAsp.get(i).getAspirante().getAspfechanac());
+                this.aspirante.setAspid(this.listaAsp.get(i).getAspirante().getAspid());
+                this.aspirante.setAsptipodoc(this.listaAsp.get(i).getAspirante().getAsptipodoc());
+                this.aspirante.setAspirantePonderable(this.listaAsp.get(i).getAspirante().getAspirantePonderable());
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    /*** Métodos privados ***/
+    
     // insertar a la BD
     private void insertarPonderables() {
         AplicaDao apdao = new AplicaDaoImp();
@@ -223,71 +432,6 @@ public class aplicaBean implements Serializable {
         }
     }
     
-    public boolean buscarPorSNP(String snp, List<Aplica> listaA) {
-        
-        for (int i = 0; i < listaA.size(); i++) {
-            if (listaA.get(i).getAplisnp().equals(snp)) {
-                
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public boolean buscarPorNombre(String name, List<Aplica> listaA) {
-        for (int i = 0; i < listaA.size(); i++) {
-            if (listaA.get(i).getAspirante().getAspnombre().equals(name)) {
-                
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public void verAdmitidosPublicados() {
-        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
-    }
-    
-    public void verAdmitidosPrograma(String selectedPro) {
-        this.setSelectedPro(selectedPro);
-        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPorPrograma.xhtml");
-    }
-
-    // listar aspirantes Ponderables y no ponderables  por programa
-    private List<Aplica> getListarAspirantesPyN() {
-        AplicaDao adao = new AplicaDaoImp();
-        listarPyN = adao.listarAspirantes(this.selectedPro);
-        System.out.println("----------------------------------------------- TAM listarPyN  " + this.listarPyN.size());
-        return listarPyN;
-    }
-    
-    private void setListasPyN() {
-        
-        if (this.listarPyN.isEmpty()) {
-            this.getListarAspirantesPyN();
-        }
-        for (int i = 0; i < this.listarPyN.size(); i++) {
-            if (this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAsptipo().equals("0")) {
-                if (!this.buscarAspirantePRepetido(this.listarPyN.get(i).getAspirante().getAspid())) {
-                    this.listaPonPrograma.add(this.listarPyN.get(i).getAspirante().getAspirantePonderable());
-                }
-            } else if (this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAsptipo().equals("1")) {
-                if (!this.buscarAspiranteNPRepetido(this.listarPyN.get(i).getAspirante().getAspid())) {
-                    this.listaNoPonPrograma.add(this.listarPyN.get(i).getAspirante().getAspirantePonderable().getAspiranteNoPonderable());
-                }
-            }
-            
-        }
-        
-    }
-    
-    public int numAspirantesPonderables() {
-        return this.listaPonPrograma.size();
-    }
-    
-    public int numAspirantesNoPonderables() {
-        return this.listaNoPonPrograma.size();
-    }
     
     private boolean buscarAspirantePRepetido(int id) {
         for (int i = 0; i < this.listaPonPrograma.size(); i++) {
@@ -307,6 +451,16 @@ public class aplicaBean implements Serializable {
         return false;
     }
     
+    
+    /*** Métodos para redireccionar a las vistas ***/
+    
+    
+    
+    public void verAdmitidosPrograma(String selectedPro) {
+        this.setSelectedPro(selectedPro);
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPorPrograma.xhtml");
+    }
+    
     public void verAspirantesPorPrograma(String proid) {
         
         System.out.println("************ ********* ************** " + proid);
@@ -324,52 +478,11 @@ public class aplicaBean implements Serializable {
         
     }
     
-    public void reintegrar(int id) {
-        for (int i = 0; i < this.listaNoPonPrograma.size(); i++) {
-            if (this.listaNoPonPrograma.get(i).getAspid() == id) {
-                this.listaNoPonPrograma.get(i).getAspirantePonderable().setAsptipo("0");
-                this.listaPonPrograma.add(this.listaNoPonPrograma.get(i).getAspirantePonderable());
-                this.listaNoPonPrograma.remove(i);
-                AplicaDao apdao = new AplicaDaoImp();
-                apdao.insertPonderables(this.listaNoPonPrograma.get(i).getAspirantePonderable());
-                apdao.eliminarNoPonderable(this.listaNoPonPrograma.get(i));
-                break;
-            }
-        }
-    }
-
-    public Aspirante getAspirante() {
-        return aspirante;
-    }
-
-    public void setAspirante(Aspirante aspirante) {
-        this.aspirante = aspirante;
-    }
-
-    public String getAspid() {
-        return aspid;
+    public void verAdmitidosPublicados() {
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
     }
     
-    public List<Integer> getNumeroAsp() {
-        return numeroAsp;
-    }
-    
-    public void setInfoAspirante(){
-        for(int i = 0; i< this.listaAsp.size(); i++){
-            if(this.listaAsp.get(i).getAspirante().getAspid() == Short.parseShort(this.aspid)){
-                this.aspirante = new Aspirante();
-                this.aspirante.setAspnombre(this.listaAsp.get(i).getAspirante().getAspnombre());
-                this.aspirante.setAspcorreo(this.listaAsp.get(i).getAspirante().getAspcorreo());
-                this.aspirante.setAspfechanac(this.listaAsp.get(i).getAspirante().getAspfechanac());
-                this.aspirante.setAspid(this.listaAsp.get(i).getAspirante().getAspid());
-                this.aspirante.setAsptipodoc(this.listaAsp.get(i).getAspirante().getAsptipodoc());
-                this.aspirante.setAspirantePonderable(this.listaAsp.get(i).getAspirante().getAspirantePonderable());
-                
-            }
-        }
-    }
-    
-    
+   
     public void verInfoAspirante(String aspid){
         this.aspid = aspid;
         
@@ -377,11 +490,6 @@ public class aplicaBean implements Serializable {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/informacionAspirante.xhtml");
     }
     
-    public List<Integer> numAspirantes() {
-        AplicaDao apdao = new AplicaDaoImp();
-        numeroAsp = apdao.numAspirantes();
-        return numeroAsp;
-    }
     
     public void listaNoPonderable() {
         this.setListasPyN();        
