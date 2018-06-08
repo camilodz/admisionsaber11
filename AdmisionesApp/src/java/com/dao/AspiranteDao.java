@@ -4,6 +4,8 @@ import com.model.Aspirante;
 import java.util.List;
 
 /**
+ * Interface AspiranteDao
+ * 
  * Contiene la declaración de los métodos para gestionar los aspirantes a todos
  * programas
  *
@@ -11,6 +13,8 @@ import java.util.List;
  */
 public interface AspiranteDao {
 
+    /*** Declaración de los métodos ***/
+    
     /**
      * Declaración del método para listar (desde la BD) los aspirantes a todos
      * los programas
