@@ -5,19 +5,25 @@ import com.model.AspiranteNoPonderable;
 import com.model.AspirantePonderable;
 import com.model.Resultadoicfes;
 import com.util.HibernateUtil;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase AplicaDaoImp
+ * 
  * Contiene la implementación de los métodos para gestionar la información de un
  * aspirante PONDERABLE y NO PONDERABLE que aplica a un un programa específico
+ * 
+ * Implementa los métodos de la interface AplicaDao
  *
  * @author Proyecto II - Grupo Admisiones
  */
+
 public class AplicaDaoImp implements AplicaDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para listar (desde la BD) los aspirantes de un
      * programa específico
@@ -199,31 +205,5 @@ public class AplicaDaoImp implements AplicaDao {
         }
         return listaA;
     }
-
-    /**
-     * Implementación del método para obtener (desde la BD) el número de
-     * aspirantes de cada programa
-     *
-     * @return lista de la cantidad de aspirantes de cada programa
-     */
-    @Override
-    public List<Integer> numAspirantes() {
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        List<Integer> listaAspirantes = new ArrayList<>();
-
-        try {
-
-            listaAspirantes = session.createQuery("select count(*) FROM Aplica as a inner join fetch a.programaofertado inner join fetch a.aspirante group by(proid)").list();
-
-            session.close();
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            transaction.rollback();
-        }
-        return listaAspirantes;
-    }
-
+    
 }
