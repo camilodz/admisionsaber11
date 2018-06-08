@@ -7,6 +7,8 @@ import com.model.Resultadoicfes;
 import java.util.List;
 
 /**
+ * Interface AplicaDao
+ * 
  * Contiene la declaración de los métodos para gestionar la información de un
  * aspirante PONDERABLE y NO PONDERABLE que aplica a un un programa específico
  *
@@ -14,6 +16,8 @@ import java.util.List;
  */
 public interface AplicaDao {
 
+    /*** Declaración de los métodos ***/
+    
     /**
      * Declaración del método para listar (desde la BD) los aspirantes de un
      * programa específico
@@ -75,13 +79,5 @@ public interface AplicaDao {
      * @return lista de los aspirantes de un programa específico
      */
     public List<Aplica> listarAspirantes(String proid);
-
-    /**
-     * Declaración del método para obtener (desde la BD) el número de aspirantes
-     * de cada programa
-     *
-     * @return lista de la cantidad de aspirantes de cada programa
-     */
-    public List<Integer> numAspirantes();
 
 }
