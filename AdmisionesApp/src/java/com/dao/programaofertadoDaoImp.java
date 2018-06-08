@@ -7,14 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase programaofertadoDaoImp
+ * 
  * Contiene la implementación de los métodos declarados en ProgramaofertadoDao
  * para gestionar los programas ofertados en un periodo académico Obtener y
  * editar los programas ofertados desde la BD
+ * 
+ * Implementa los métodos de la interface programaofertadoDao
  *
  * @author Proyecto II - Grupo Admisiones
  */
 public class programaofertadoDaoImp implements programaofertadoDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para obtener (desde la BD) la lista de los
      * programas ofertados de todas las facultades
