@@ -37,7 +37,7 @@ public class gestionPonderablesBean implements Serializable{
     /**
      * 
      */
-    private String itemSeleccionado; 
+    private String itemSeleccionado;
     
     
     /*** Constructor ***/
