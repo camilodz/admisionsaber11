@@ -7,13 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase AspiranteDaoImp 
+ * 
  * Contiene la implementación de los métodos para gestionar los aspirantes a
  * todos programas
+ * 
+ * Implementa los métodos de la interface AspiranteDao
  *
  * @author Proyecto II - Grupo Admisiones
  */
 public class AspiranteDaoImp implements AspiranteDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para listar (desde la BD) los aspirantes a
      * todos los programas
