@@ -4,6 +4,8 @@ import com.model.Programa;
 import java.util.List;
 
 /**
+ * Interface ProgramaDao
+ * 
  * Contiene la declaración de los métodos para gestionar los programas de cada
  * facultad
  *
@@ -11,6 +13,8 @@ import java.util.List;
  */
 public interface ProgramaDao {
 
+    /*** Declaración de los métodos ***/
+    
     /**
      * Declaración del método para obtener (desde la BD) la lista de los
      * programas de todas las facultades
