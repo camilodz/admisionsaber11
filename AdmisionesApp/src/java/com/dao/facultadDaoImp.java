@@ -7,13 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase facultadDaoImp 
+ * 
  * Contiene la implementación de los métodos declarados en facultadDao para
  * gestionar las facultades
+ * 
+ * Implementa los métodos de la interface facultadDao
  *
  * @author Proyecto II - Grupo Admisiones
  */
 public class facultadDaoImp implements facultadDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para obtener (desde la BD) la lista de las
      * facultades
@@ -42,7 +48,7 @@ public class facultadDaoImp implements facultadDao {
      * facultad dado su nombre
      *
      * @param nombreFac nombre de la facultad de la cual se quiere obtener su id
-     * @return id de la facultad específica
+     * @return id de la facultad específicada
      */
     @Override
     public String getIdFacultad(String nombreFac) {
