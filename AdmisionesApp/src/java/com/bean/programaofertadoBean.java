@@ -2,7 +2,6 @@ package com.bean;
 
 import com.dao.*;
 import com.model.Facultad;
-import com.model.Periodo;
 import com.model.Programaofertado;
 import com.utilidades.Utilidades;
 import java.io.Serializable;
@@ -12,96 +11,52 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
+ * Bean programaofertadoBean
+ * 
+ * Contiene los métodos para gestionar los programas ofertados de un periodo académico
  *
- * @author Karen
+ * @author Proyecto II - Grupo Admisiones
  */
 @Named(value = "programaofertadoBean")
 @ApplicationScoped
 public class programaofertadoBean implements Serializable {
 
+    /*** Atributos ***/
+    
+    /**
+     * Lista de los programas ofertados de un periodo académico
+     */
     private List<Programaofertado> listaPO = new ArrayList();
-    private List<Programaofertado> filtro;
+    
+    /**
+     * Programa ofertado que se puede configurar
+     */
     private Programaofertado pof;
 
+    /**
+     * Id de la facultad 
+     */
     private String selectedFac;
-    private String selectedPro;
     
+    /**
+     * Nombre de la facultad
+     */
     private String nombreFac;
-
-    public String getSelectedPro() {
-        return selectedPro;
-    }
     
-    public String getNombreFac(){
-        return this.nombreFac;
-    }
+    /**
+     * Id del programa ofertado
+     */
+    private String selectedPro;
+
     
-    public void setNombreFac(String fac){
-        this.nombreFac = fac;
-    }
-
-    public void setSelectedPro(String selectedPro) {
-        this.selectedPro = selectedPro;
-    }
-
-    public List<Programaofertado> getFiltro() {
-        return filtro;
-    }
-
-    public void setFiltro(List<Programaofertado> filtro) {
-        this.filtro = filtro;
-    }
-
-    public programaofertadoBean() {
-    }
-
-    public Programaofertado getPof() {
+    /*** Métodos getter y setter ***/
+    
+    public Programaofertado getPof() {    
         return pof;
     }
 
     public void setPof(Programaofertado pof) {
         this.pof = pof;
-    }
-
-    public List<Programaofertado> getListaPO() {
-        programaofertadoDao poDao = new programaofertadoDaoImp();
-        this.listaPO = poDao.listarPO();
-        return listaPO;
-    }
-
-    public List<Programaofertado> getListaPOFacultad() {
-        programaofertadoDao poDao = new programaofertadoDaoImp();
-        System.out.println("************** selected - " + selectedFac);
-        this.listaPO = poDao.listarPOFacultad(selectedFac);
-        return listaPO;
-    }
-
-    /*metodos utilizados para buscar programas de una facultad*/
-    public List<Programaofertado> getListaPOFacultadPrograma(String parametro) {
-        programaofertadoDao poDao = new programaofertadoDaoImp();
-        this.setIdFacSeleccionada(parametro);
-        if (selectedFac.equals("")) {
-            return this.getListaPO();
-        }
-        this.listaPO = poDao.listarPOFacultad(selectedFac);
-        return listaPO;
-    }
-
-    private void setIdFacSeleccionada(String nombreFac) {
-        facultadDao faDao = new facultadDaoImp();
-        selectedFac = faDao.getIdFacultad(nombreFac);
-    }
-
-    //hasta aqui
-    public void modificarPO() {
-        programaofertadoDao poDao = new programaofertadoDaoImp();
-        poDao.modificarPO(pof);
-        this.pof = new Programaofertado();
-    }
-
-    public Periodo getPeriodoPO() {
-
-        return this.pof.getPeriodo();
     }
 
     public String getSelectedFac() {
@@ -112,21 +67,91 @@ public class programaofertadoBean implements Serializable {
         this.selectedFac = selectedFac;
     }
 
-    /*Métodos para Redireccionar entre Páginas*/
-    public void verProgramasFacultad(String selectedFac) {
-        this.setSelectedFac(selectedFac);
-        this.modifyNombreFac();
-        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
+    public String getNombreFac() {
+        return nombreFac;
     }
 
-    public void configProgramasFacultad(String selectedFac) {
-        this.setSelectedFac(selectedFac);
-        this.modifyNombreFac();
-        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
+    public void setNombreFac(String nombreFac) {
+        this.nombreFac = nombreFac;
     }
 
-    public void modifyNombreFac() {       
-        
+    public String getSelectedPro() {
+        return selectedPro;
+    }
+    
+    public void setSelectedPro(String selectedPro) {
+        this.selectedPro = selectedPro;
+    }
+    
+    /*** Constructor por defecto ***/
+    
+    public programaofertadoBean() {
+    }
+
+    
+    /*** Métodos públicos ***/  
+
+    /**
+     * Obtener la lista de todos los programas ofertados 
+     * 
+     * @return lista de todos los programas ofertados 
+     */
+    public List<Programaofertado> getListaPO() {
+        programaofertadoDao poDao = new programaofertadoDaoImp();
+        this.listaPO = poDao.listarPO();
+        return listaPO;
+    }
+    
+    /**
+     * Obtener la lista de programas ofertados de una facultad específica
+     *
+     * @return lista de programas ofertados de una facultad específica
+     */
+    public List<Programaofertado> getListaPOFacultad() {
+        programaofertadoDao poDao = new programaofertadoDaoImp();
+        this.listaPO = poDao.listarPOFacultad(selectedFac);
+        return listaPO;
+    }
+    
+    /**
+     * Obtener la lista de los programas ofertados de una facultad específica 
+     * 
+     * @param parametro id de la facultad 
+     * @return lista de programas ofertados de una facultad específica
+     */
+    public List<Programaofertado> getListaPOFacultadPrograma(String parametro) {
+        programaofertadoDao poDao = new programaofertadoDaoImp();
+        this.setIdFacSeleccionada(parametro);
+        if (selectedFac.equals("")) {
+            return this.getListaPO();
+        }
+        this.listaPO = poDao.listarPOFacultad(selectedFac);
+        return listaPO;
+    }
+
+    /**
+     * Obtener el id de una fzcultad dado su nombre
+     *
+     * @param nombreFac nombre de la facultad
+     */
+    private void setIdFacSeleccionada(String nombreFac) {
+        facultadDao faDao = new facultadDaoImp();
+        selectedFac = faDao.getIdFacultad(nombreFac);
+    }
+
+    /**
+     * Editar la información de un programa ofertado (cupos y ponderados ICFES)
+     */
+    public void modificarPO() {
+        programaofertadoDao poDao = new programaofertadoDaoImp();
+        poDao.modificarPO(pof);
+        this.pof = new Programaofertado();
+    }
+
+    /**
+     * Obtener el nombre de la facultad dado el id (global)
+     */
+    public void modifyNombreFac() {
         facultadDao facDao = new facultadDaoImp();
         List<Facultad> lista = facDao.listarFac();
         for (int i = 0; i < lista.size(); i++) {
@@ -134,6 +159,32 @@ public class programaofertadoBean implements Serializable {
                 this.setNombreFac(lista.get(i).getFacnombre());
             }
         }
+    }
+   
+    /*** Métodos para redireccionar a las vistas ***/
+    
+    /**
+     * Redireccionar a la vista listarProgramasOfertados.xhtml para listar los
+     * programas ofertados de una facultad específica
+     *
+     * @param selectedFac id de la facultad
+     */
+    public void verProgramasFacultad(String selectedFac) {
+        this.setSelectedFac(selectedFac);
+        this.modifyNombreFac();
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
+    }
+
+    /**
+     * Redireccionar a la vista listarProgramasOfertados.xhtml para listar los
+     * programas ofertados de una facultad específica
+     *
+     * @param selectedFac id de la facultad
+     */
+    public void configProgramasFacultad(String selectedFac) {
+        this.setSelectedFac(selectedFac);
+        this.modifyNombreFac();
+        Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarProgramasOfertados.xhtml");
     }
 
 }
