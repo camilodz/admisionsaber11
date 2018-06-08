@@ -1,48 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.bean;
 
 import com.utilidades.Utilidades;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 
 /**
+ * Bean templateBean 
+ * 
+ * Permite gestionar las rutas para acceder a las vistas
  *
- * @author JORGE
+ * @author Proyecto II - Grupo Admisiones
  */
 @Named(value = "templateBean")
 @ApplicationScoped
 public class templateBean {
 
+    /*** Constructor ***/
+    
     /**
-     * Creates a new instance of templateBean
+     * Constructor por defecto
      */
     public templateBean() {
     }
+
+    /*** Métodos públicos ***/
     
-    public void verConfiguracionProgramas(){        
+    /**
+     * Redirecciona a la vista listarFacultades.xhtml para listar todas las
+     * facultades
+     */
+    public void verConfiguracionProgramas() {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfigurarProgramas/listarFacultades.xhtml");
     }
-    
-    public void verListadosDeAdmitidos(){        
+
+    /**
+     * Redirecciona a la vista del listado de admitidos:
+     * listarAdmitidosPublicado.xhtml
+     */
+    public void verListadosDeAdmitidos() {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ListadosDeAdmitidos/listarAdmitidosPublicado.xhtml");
     }
-    
-    public void verConfiguracionInicial(){
+
+    /**
+     * Redirecciona a la vista ConfigPeriodo.xhtml para editar la configuración
+     * de cada programa (cupos y ponderados ICFES)
+     */
+    public void verConfiguracionInicial() {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/ConfiguracionInicial/ConfigPeriodo.xhtml");
     }
-    
-    
-    
-    public void gestionarPonderables(){
+
+    /**
+     * Redirecciona a la vista seleccionArchivos.xhtml para cargar los archivos
+     * (resultadosICFES y aspirantes a cada programa)
+     */
+    public void gestionarPonderables() {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/seleccionArchivos.xhtml");
     }
-    
-    public void verPaginaPrincipal(){        
+
+    /**
+     * Redirecciona a la vista de inicio: vistaInicio.xhtml
+     */
+    public void verPaginaPrincipal() {
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/vistaInicio.xhtml");
     }
 
