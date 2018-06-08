@@ -4,6 +4,8 @@ import com.model.Programaofertado;
 import java.util.List;
 
 /**
+ * Interface programaofertadoDao
+ * 
  * Contiene la declaración de los métodos para gestionar los programas ofertados
  * en un periodo académico Obtener y editar los programas ofertados desde la BD
  *
@@ -11,6 +13,8 @@ import java.util.List;
  */
 public interface programaofertadoDao {
 
+    /*** Declaración de los métodos ***/
+    
     /**
      * Declaración del método para obtener (desde la BD) la lista de los
      * programas ofertados de todas las facultades
