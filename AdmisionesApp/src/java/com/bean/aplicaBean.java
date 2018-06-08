@@ -574,7 +574,5 @@ public class aplicaBean implements Serializable {
         this.setListasPyN();
         Utilidades.redireccionar("/AdmisionesApp/faces/Vistas/GestionarPonderables/listaProgramasPonderables.xhtml");
     }
-    
-    
-    
+        
 }
