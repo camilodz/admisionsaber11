@@ -38,6 +38,7 @@ public class facultadBean implements Serializable {
      */
     private Short selectedFac;  
     
+    
     /*** Constructor ***/
     
     /**
