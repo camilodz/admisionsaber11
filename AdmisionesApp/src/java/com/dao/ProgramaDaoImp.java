@@ -7,13 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
+ * Clase ProgramaDaoImp
+ * 
  * Contiene la implementación de los métodos para gestionar los programas de
  * cada facultad
+ * 
+ * Implementa los métodos de la interface ProgramaDao
  *
  * @author Proyecto II - Grupo Admisiones
  */
 public class ProgramaDaoImp implements ProgramaDao {
 
+    /*** Implementación de los métodos ***/
+    
     /**
      * Implementación del método para obtener (desde la BD) la lista de los
      * programas de todas las facultades
