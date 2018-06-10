@@ -17,7 +17,7 @@
     <h:body>
         <ui:composition template="./../../Template.xhtml">
             <ui:define name="content">                
-                <h:form>
+                <h:form id="formulario">
                     <p:growl id="growl" showDetail="true" sticky="true" />  
                     <p:panel>                    
                         <h2><h:outputText value="Gestion de Ponderables - #{gestionPonderablesBean.nombrePrograma} - #{programaofertadoBean.listaPO.get(0).periodo.perid}"></h:outputText></h2>
@@ -39,6 +39,7 @@
                                                         
                             
                         </p:dataTable>
+                        <h:outputText id="recuperados" value="Mostrando #{aplicaBean.listaPonPrograma.size()} de 29 aspirantes ponderables"/>
                         <br/><br/>
                         <p:panelGrid columns="3">
                             <p:commandButton value="Volver" actionListener="#{gestionPonderablesBean.datosProcesados()}" />
