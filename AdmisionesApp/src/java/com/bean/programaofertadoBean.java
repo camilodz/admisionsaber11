@@ -29,7 +29,7 @@ public class programaofertadoBean implements Serializable {
     private List<Programaofertado> listaPO = new ArrayList();
     
     /**
-     * Programa ofertado que se filtraron por nombre
+     * Programas ofertados que se filtraron por nombre
      */
     private List<Programaofertado> filtro;
     
