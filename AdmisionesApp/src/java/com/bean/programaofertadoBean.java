@@ -29,6 +29,11 @@ public class programaofertadoBean implements Serializable {
     private List<Programaofertado> listaPO = new ArrayList();
     
     /**
+     * Programa ofertado que se filtraron por nombre
+     */
+    private List<Programaofertado> filtro;
+    
+    /**
      * Programa ofertado que se puede configurar
      */
     private Programaofertado pof;
@@ -57,6 +62,14 @@ public class programaofertadoBean implements Serializable {
 
     public void setPof(Programaofertado pof) {
         this.pof = pof;
+    }
+    
+    public List<Programaofertado> getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(List<Programaofertado> filtro) {
+        this.filtro = filtro;
     }
 
     public String getSelectedFac() {
